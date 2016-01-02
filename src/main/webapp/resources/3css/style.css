@@ -1,0 +1,138 @@
+/* Sıfırlamalar */
+
+a {
+    color: #282828;
+}
+a:hover{
+    color: #e38d13!important;
+    text-decoration: none!important;
+    cursor: pointer;
+}
+
+.Aktif{
+    color: #e38d13!important;
+}
+.Aktif:hover{
+    color: #282828!important;
+}
+
+body{
+   background:url(../img/mathBg.gif) top left repeat;
+   padding-bottom: 40px; 
+}
+
+.home{
+    margin-top: -20px;
+    background: url("../images/jumbo.png");
+    background-size: cover;
+    box-shadow: 0px 2px 3px #000;
+}
+
+.home h2, .home p{
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#MySlide .item img{
+    max-height:300px!important;
+    width:100%!important;
+}
+
+#MyMenu {
+    margin-bottom:0px!important;
+}
+#MyMenu a {
+    color: #cccccc!important;
+}
+#MyMenu a:hover {
+    color: #fff!important;
+}
+.derslerDropdown a:hover {
+    background: #cccccc!important;
+}
+
+/*Anasayfa Tabpane Makaleler*/
+
+.AnasayfaTab div{
+    border: 1px solid #dadada;
+    padding: 10px;
+    background: #dfdfdf;
+}
+
+.AnasayfaTab div:hover{
+    background: #fdfdfd;
+}
+
+.AnasayfaTab div h3{
+    margin-top: 5px;
+}
+.MakaleEkleyenBilgi{
+    font-size: 13px;
+    color: #636363;
+}
+.MakaleEkleyenBilgi a{
+    font-size: 14px;
+    color: orange;
+    font-weight: bold;
+}
+.AnasayfaMakaleResimLink img:hover{
+    border:1px solid #959595;
+}
+.FooterTextLink a:hover{
+    color:#FFF;
+    text-decoration:none!important;
+}
+
+/* Content hover */
+.contenthover { padding:20px 20px 10px 20px; }
+.contenthover, .contenthover h3, contenthover a { color:#fff; }
+.contenthover h3, .contenthover p { margin:0 0 10px 0; line-height:1.4em; padding:0; }
+.contenthover a.mybutton { display:block; float:left; padding:5px 10px; background:#3c9632; color:#fff; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
+.contenthover a.mybutton:hover { background:#34742d }
+
+
+/* Yönetici Listeleme*/
+.BilgiList{
+    margin: 3px 0!important;
+    padding: 2px 10px!important;
+    color: #666666;
+}
+.BilgiList a{
+    margin: 3px 0!important;
+    padding: 2px 10px!important;
+    color: #666666;
+}
+.BilgiList h3{
+    margin: 0 0 3px 0!important;
+    border-bottom: 1px #eaeaea solid;
+    padding: 2px 0px!important;
+    font-size: 20px;
+}
+.BilgiList:hover{
+    color: #e38d13;
+    cursor: pointer;
+}
+
+/* Makale listeleri*/
+.BorderHover{
+    border-bottom: 2px #ddd solid!important;
+}
+.BorderHover:hover, .BorderHover:hover .MakalelistImg  {
+    border-color: #e38d13!important;
+}
+
+.limitedText{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   line-height: 2;        /* fallback */
+   max-height: 6;
+}
+
+/*
+.BorderHover:hover .MakaleListTitle{
+    background: #e38d13!important;
+}
+*/

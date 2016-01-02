@@ -1,0 +1,151 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28.Kas.2015, 21:59:17
+    Author     : gultekin
+*/
+
+.Margin_0{
+    margin: 0!important;
+}
+.MarginTop_0{
+    margin-top: 0!important;
+}
+.MarginBottom_0{
+    margin-bottom: 0px!important;
+}
+.MarginBottom_10{
+    margin-bottom: 10px!important;
+}
+.MarginTop_10{
+    margin-top: 10px!important;
+}
+.MarginTop_20{
+    margin-top: 20px!important;
+}
+.MarginLeft_5{
+    margin-left: 5px!important;
+}
+.MarginRight_5{
+    margin-right: 5px!important;
+}
+
+
+.Padding_0{
+    padding: 0!important;
+}
+.Padding_10{
+    padding: 10px!important;
+}
+.Padding_5{
+    padding: 5px!important;
+}
+.PaddingTop_0{
+    padding-top: 0!important;
+}
+.PaddingBottom_0{
+    padding-bottom: 0!important;
+}.PaddingBottom_20{
+    padding-bottom: 20px!important;
+}
+.PaddingTop_10{
+    padding-top: 10px!important;
+}
+.PaddingBottom_10{
+    padding-bottom: 10px!important;
+}
+.PaddingTop_20{
+    padding-top: 20px!important;
+}
+.PaddingBottom_20{
+    padding-bottom: 20px!important;
+}
+.PaddingLeft_0{
+    padding-left: 0px!important;
+}
+.PaddingLeft_10{
+    padding-left: 10px!important;
+}
+.PaddingRight_0{
+    padding-right: 0px!important;
+}
+.PaddingRight_10{
+    padding-right:10px!important;
+}
+
+/* yükseklikler */
+
+.BlokMaxHeight_250 {
+    max-height: 250px!important;
+    width: 100%!important;
+}
+
+.BlokMaxHeight_450 {
+    max-height: 450px!important;
+    width: 100%!important;
+}
+
+/* Arkaplan renkleri */
+.BgWhite {
+    background-color: #FFF;
+}
+
+.BgWhiteGri {
+    background-color: #efefef;
+}
+
+.BgWhiteDark {
+    background-color: #aaa;
+}
+
+/*Yazı renkleri*/
+.Color_1{
+    color: #e38d13!important;
+}
+
+.BlokYap {
+    display: block;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.Blok {
+    display: block!important;
+}
+
+.Pointer{
+    cursor: pointer;
+}
+
+/* Font Boyutları*/
+.FontSize_13{
+    font-size: 13px!important;
+}
+.FontSize_14{
+    font-size: 14px!important;
+}
+.FontSize_15{
+    font-size: 15px!important;
+}
+.FontSize_16{
+    font-size: 16px!important;
+}
+.FontSize_17{
+    font-size: 17px!important;
+}
+.FontSize_18{
+    font-size: 18px!important;
+}
+.FontSize_19{
+    font-size: 19px!important;
+}
+.FontSize_20{
+    font-size: 20px!important;
+}
+
+/*Borderlar*/
+.BorderBottom_0{border-bottom: none!important;}
+.Border_0{border: none!important;}

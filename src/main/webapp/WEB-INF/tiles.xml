@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <!-- Master -->
+    <definition name="master.page" template="/public/template/master.jsp">
+        <put-attribute name="header" value="/public/template/header.jsp"/>
+        <put-attribute name="footer" value="/public/template/footer.jsp"/>
+    </definition>
+
+    <!-- Master2 -->
+    <definition name="master2.page" template="/public/template/master2.jsp">
+        <put-attribute name="header2" value="/public/template/header2.jsp"/>
+        <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
+    </definition>
+
+    <!--  Pages -->
+    <definition name="welcomePage" extends="master.page">
+        <put-attribute name="body" value="/protected/welcomePage.jsp"/>
+    </definition>
+    
+    <definition name="articleList" extends="master.page">
+        <put-attribute name="body" value="/protected/articles/articles.jsp"/>
+    </definition>
+    
+    <definition name="contactsList" extends="master.page">
+        <put-attribute name="body" value="/protected/contacts/contacts.jsp"/>
+    </definition>
+    
+    <definition name="login" extends="master.page">
+        <put-attribute name="header" value=""/>
+        <put-attribute name="footer" value=""/>
+        <put-attribute name="body" value="/public/login.jsp"/>
+    </definition>
+    
+    <definition name="mainPage" extends="master2.page">
+      <put-attribute name="header2" value="/public/template/header2.jsp"/>
+        <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
+        <put-attribute name="body2" value="/public/mainPage.jsp"/>
+    </definition>
+    
+     <definition name="aboutme" extends="master2.page">
+      <put-attribute name="header2" value="/public/template/header2.jsp"/>
+        <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
+        <put-attribute name="body2" value="/public/aboutme.jsp"/>
+    </definition>
+    
+     <definition name="contactme" extends="master2.page">
+      <put-attribute name="header2" value="/public/template/header2.jsp"/>
+        <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
+        <put-attribute name="body2" value="/public/contactme.jsp"/>
+    </definition>
+    
+    
+     <definition name="articledetail" extends="master2.page">
+      <put-attribute name="header2" value="/public/template/header2.jsp"/>
+        <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
+        <put-attribute name="body2" value="/public/article-detail.jsp"/>
+    </definition>
+    
+    
+</tiles-definitions>
