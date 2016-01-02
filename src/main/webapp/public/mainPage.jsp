@@ -17,7 +17,7 @@
                         <div class="item active">
                             <img src="<c:url value="/resources/img/slide/11.jpg" />" alt="" title="" longdesc="" />
                             <div class="carousel-caption">
-                                <h2>1Bootstrap ile webpage design</h2>
+                                <h2>1 Bootstrap ile webpage design</h2>
                                 <p>1 Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile
                                     webpage design</p>
                             </div>
