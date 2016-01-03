@@ -15,35 +15,31 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img src="<c:url value="/resources/img/slide/11.jpg" />" alt="" title="" longdesc="" />
+                            <img src="<c:url value="/resources/img/slide/earhtSurface2.jpg" />" alt="" title="" longdesc="" />
                             <div class="carousel-caption">
-                                <h2>1 Bootstrap ile webpage design</h2>
-                                <p>1 Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile
-                                    webpage design</p>
+                                <h2>1 Welcome to GltknBtn Blog</h2>
+                                <p>1 Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.</p>
                             </div>
                         </div>
                         <div class="item">
                             <img src="<c:url value="/resources/img/slide/22.png" />" alt="" title="" longdesc="" />
                             <div class="carousel-caption">
-                                <h2>2 Bootstrap ile webpage design</h2>
-                                <p>2 Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile
-                                    webpage design</p>
+                                <h2>2 Welcome to GltknBtn Blog</h2>
+                                <p>2 Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.</p>
                             </div>
                         </div>
                         <div class="item">
                             <img src="<c:url value="/resources/img/slide/33.jpg" />" alt="" title="" longdesc="" />
                             <div class="carousel-caption">
-                                <h2>3 Bootstrap ile webpage design</h2>
-                                <p>3 Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile
-                                    webpage design</p>
+                                <h2>3 Welcome to GltknBtn Blog</h2>
+                                <p>3 Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.</p>
                             </div>
                         </div>
                         <div class="item">
                             <img src="<c:url value="/resources/img/slide/44.png" />" alt="" title="" longdesc="" />
                             <div class="carousel-caption">
-                                <h2>4 Bootstrap ile webpage design</h2>
-                                <p>4 Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile webpage design.Bootstrap ile
-                                    webpage design</p>
+                                <h2>4 Welcome to GltknBtn Blog</h2>
+                                <p>4 Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.Welcome to GltknBtn Blog.</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +60,7 @@
 						<spring:message code='mainPage.description' />
 					</p>
 					
-					<div ng-repeat="article in articles">
+					<div ng-repeat="article in page.source">
 	                    <div class="panel panel-default BorderHover ">
 	                        <div class="panel-heading MakaleListTitle">
 	                            <h3 class="panel-title">
@@ -90,6 +86,38 @@
 	
 	                    </div>
                     </div>
+                    
+                    <div class="text-center PaddingBottom_20">
+		                <button href="#" class="btn btn-default"
+		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
+		                        ng-click="changePage(0)"
+		                        title='<spring:message code="pagination.first"/>'
+		                        >
+		                     <span class=" glyphicon glyphicon-fast-backward MarginRight_5" aria-hidden="true"></span><spring:message code="pagination.first"/>
+		                </button>
+		                <button href="#"
+		                        class="btn btn-default glyphicon glyphicon-backward"
+		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
+		                        ng-click="changePage(page.currentPage - 1)"
+		                        title='<spring:message code="pagination.back"/>'
+		                        ></button>
+		                <span>{{page.currentPage + 1}} <spring:message code="pagination.of"/> {{page.pagesCount}}</span>
+		                <button href="#"
+		                        class="btn btn-default glyphicon glyphicon-forward"
+		                        ng-class="{'btn btn-default': page.pagesCount - 1 != page.currentPage, 'btn btn-default disabled': page.pagesCount - 1 == page.currentPage}"
+		                        ng-click="changePage(page.currentPage + 1)"
+		                        title='<spring:message code="pagination.next"/>'
+		                        ></button>
+		                <button href="#"
+		                        class="btn btn-default"
+		                        ng-class="{'btn btn-default': page.pagesCount - 1 != page.currentPage, 'btn btn-default disabled': page.pagesCount - 1 == page.currentPage}"
+		                        ng-click="changePage(page.pagesCount - 1)"
+		                        title='<spring:message code="pagination.last"/>'
+		                        role="button"
+		                        >
+		                     <spring:message code="pagination.last"/><span class="glyphicon glyphicon-fast-forward MarginLeft_5" aria-hidden="true"></span>          
+		                </button>
+            	 </div>
 					
 			</div>
 </div>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.service.MainPageService;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
