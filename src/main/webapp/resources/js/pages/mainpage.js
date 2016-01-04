@@ -1,9 +1,11 @@
 	
-	function mainpageController($scope, $http) {
+
+function mainpageController($scope, $http) {
 		
-		$scope.message = "mainpage controllerdan mesaj geldi";
+		$scope.message2 = "mainpage controllerdan mesaj geldi";
 
 	    $scope.articlesurl = "/gltknbtnBlog/mainpage/";
+	    $scope.url = "/gltknbtnBlog/articledetail/";
 	    
 	    $scope.pageToGet = 0;
 
@@ -31,6 +33,8 @@
 	        $scope.pageToGet = page;
 	        $scope.getArticleList();
 	    };
+	    
+  
 
 	}
 	

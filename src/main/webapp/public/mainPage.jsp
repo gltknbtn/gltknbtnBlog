@@ -75,12 +75,12 @@
 	                            {{article.description}}
 	                        </div>
 	
-	                        <div class="panel-footer">
+	                        <div class="panel-footer" ng-controller="articledetailController">
 	                            <ol class="breadcrumb col-lg-9 col-md-9 col-sm-8 col-xs-8 hidden-xs  Margin_0 Padding_0">
 	                                <li><a href="#">Home</a></li>
 	                                <li><a href="#">Library</a></li>
 	                            </ol>
-	                            <a href="articledetail" class="col-lg-2 col-md-3 col-sm-4 pull-right text-right"><em>Devamını oku..</em></a>
+	                            <a href="articledetail/{{article.id}}" class="col-lg-2 col-md-3 col-sm-4 pull-right text-right"><em>Devamını oku.. {{article.id}}</em></a>
 	                            <div class="clearfix"></div>
 	                        </div>
 	
@@ -123,3 +123,4 @@
 </div>
 
 <script src="<c:url value="/resources/js/pages/mainpage.js" />"></script>
+<script src="<c:url value="/resources/js/pages/articledetail.js" />"></script>

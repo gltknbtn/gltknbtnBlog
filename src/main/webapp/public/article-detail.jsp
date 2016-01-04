@@ -45,7 +45,6 @@
 
         <div class="container MarginTop_0" ng-controller="articledetailController">
         
-       for what:  {{message}}
             <div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
                 <div class="Padding_0">
                     <a href="<c:url value="/resources/img/slide/1.jpg" />" title="" class="Blok img-thumbnail galeriAc">
@@ -53,16 +52,13 @@
                     </a>
 
                     <p class="text-left MarginTop_10">
-                        <span class="tooltipAc" style="color: #265a88;" data-toggle="tooltip" title="Java import is importante">Java Import İşlemi</span> Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import
-                        İşlemiJava Import İşlemi Java Import İşlemi Java Import ava Import ava Import ava Import ava Import ava Import 
-                        ava Import ava Import ava Import ava Import ava Import ava Import ava Import java Import ava Import ava Import 
-                        ava Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi.
+                    
+                    {{message}}
+                    
                     </p>
                     <p class="text-left MarginTop_10">
-                        <span class="tooltipAc" style="color: #265a88;" data-toggle="tooltip" title="Java import is importante">Java Import İşlemi</span> Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import
-                        İşlemiJava Import İşlemi Java Import İşlemi Java Import ava Import ava Import ava Import ava Import ava Import 
-                        ava Import ava Import ava Import ava Import ava Import ava Import ava Import java Import ava Import ava Import 
-                        ava Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi.
+                    
+                    
                     </p>
 
                     <div class="panel-group " id="accordion">

@@ -1,6 +1,7 @@
-function articledetailController($scope, $http) {
+
+function articledetailController($scope, $http, $location) {
 	
-	$scope.message = "controllerdan mesaj geldii";
+	$scope.message = "article controllerdan mesaj geldii";
 	
     $scope.pageToGet = 0;
 
@@ -11,7 +12,7 @@ function articledetailController($scope, $http) {
     $scope.url = "/gltknbtnBlog/articledetail/";
 
     $scope.comment = {}
-
+    
     $scope.createComment = function (newCommentForm) {
 
         $scope.lastAction = 'create';
@@ -34,5 +35,43 @@ function articledetailController($scope, $http) {
             	$scope.responseMessage = "Yorum Başarısız!!!"
             });
     };
+    
+    $scope.changeLocation = function(url, forceReload) {
+    	  $scope = $scope || angular.element(document).scope();
+    	  if(forceReload || $scope.$$phase) {
+    	    window.location = url;
+    	  }
+    	  else {
+    	    //only use this if you want to replace the history stack
+    	    //$location.path(url).replace();
+
+    	    //this this if you want to change the URL and add it to the history stack
+    	    $location.path(url);
+    	    $scope.$apply();
+    	  }
+    	};
+    
+    $scope.getSelectedArticle = function (selectedArticleId) {
+        var url = $scope.url+selectedArticleId;
+
+        $http.get(url)
+            .success(function (data) {
+            	//$scope.changeLocation('/gltknbtnBlog/articledetail/');
+            	
+            	$scope.selectedArticle = data;
+            	alert($scope.selectedArticle.title);
+            	
+            	
+            })
+            .error(function () {
+              alert("Error occured while fetching selected article: " + selectedArticleId);
+            });
+    }
+    
+    
+    $scope.getArticleDetail = function(id){
+    	alert("id: " + id);
+    	$scope.getSelectedArticle(id);
+    }
 
 }
