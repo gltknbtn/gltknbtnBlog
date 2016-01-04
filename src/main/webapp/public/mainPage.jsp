@@ -64,7 +64,7 @@
 	                    <div class="panel panel-default BorderHover ">
 	                        <div class="panel-heading MakaleListTitle">
 	                            <h3 class="panel-title">
-	                                <a href="#">{{article.title}}</a>
+	                                <a href="articledetail/{{article.id}}">{{article.title}}</a>
 	                                <span class="MakaleEkleyenBilgi pull-right hidden-xs"><a href="" title="">12.05.2015</a> tarihinde <a href="" title="">{{article.owner}}</a> tarafından Eklendi </span>
 	                            </h3>
 	                        </div>
@@ -80,7 +80,7 @@
 	                                <li><a href="#">Home</a></li>
 	                                <li><a href="#">Library</a></li>
 	                            </ol>
-	                            <a href="articledetail/{{article.id}}" class="col-lg-2 col-md-3 col-sm-4 pull-right text-right"><em>Devamını oku.. {{article.id}}</em></a>
+	                            <a href="articledetail/{{article.id}}" class="col-lg-2 col-md-3 col-sm-4 pull-right text-right"><em>Devamını oku.. </em></a>
 	                            <div class="clearfix"></div>
 	                        </div>
 	

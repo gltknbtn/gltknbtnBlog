@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,20 +35,17 @@ public class ArticleDetailController {
 
 	@Autowired
 	private MessageSource messageSource;
-	
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView welcome() {
-        return new ModelAndView("articledetail");
-    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView fetchArticleById(@PathVariable("id") int articleId,
+    public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
                                     Locale locale) {
         if (articleId == 0) {
-        	return new ModelAndView("/articledetail");
+        	return new ModelAndView("articledetail");
         }else{
         	Article selectedArticle = articleService.findById(articleId);
-        	return new ModelAndView("/articledetail");
+        	
+        	model.addAttribute("selectedArticle", selectedArticle);
+        	return new ModelAndView("articledetail");
         }
 
     }

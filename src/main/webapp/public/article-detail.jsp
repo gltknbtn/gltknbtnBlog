@@ -51,13 +51,12 @@
                         <img src="<c:url value="/resources/img/slide/11.jpg" />" class="img-responsive BlokMaxHeight_250" alt="" title="" longdesc=""/>
                     </a>
 
-                    <p class="text-left MarginTop_10">
+                    <div class="page-header text-left Margin_0 Padding_0">
+	                    <h2>${selectedArticle.title}</h2>
+                    </div>
+                    <p class="text-left">
                     
-                    {{message}}
-                    
-                    </p>
-                    <p class="text-left MarginTop_10">
-                    
+                    ${selectedArticle.description}
                     
                     </p>
 
