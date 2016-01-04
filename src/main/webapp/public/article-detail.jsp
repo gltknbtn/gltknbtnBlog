@@ -154,7 +154,7 @@
                                     <div class="form-group">
                                         <textarea class="form-control" required ng-model="comment.commentDesc" name="commentDesc" placeholder="Açıklama giriniz"></textarea>
                                     </div>
-                                    <input type="submit" class="btn btn-default" ng-click="createComment(newCommentForm);" value='<spring:message code="create"/>'/>
+                                    <input type="submit" class="btn btn-default" ng-click="createComment(newCommentForm,'${selectedArticle.id}');" value='<spring:message code="create"/>'/>
                                     {{responseMessage}}
                                 </form>
                             </div>

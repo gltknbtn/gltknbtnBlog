@@ -50,9 +50,10 @@ public class ArticleDetailController {
 
     }
     
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> create(@ModelAttribute("comment") Comment comment) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<?> create(@PathVariable("id") int articleId, @ModelAttribute("comment") Comment comment) {
     	
+    	System.out.println("selected article id: " + articleId);
     	System.out.println("Commenter name: " + comment.getName());
     	System.out.println("Commenter mail: " + comment.getMail());
     	System.out.println("Commenter description: " + comment.getCommentDesc());
@@ -72,7 +73,7 @@ public class ArticleDetailController {
     	gltknData.setMail(comment.getMail());
     	gltknData.setDesc(comment.getCommentDesc());
     	
-    	Article selectedArticle = articleService.findById(3);
+    	Article selectedArticle = articleService.findById(articleId);
     	comment.setArticle(selectedArticle);
     	
     	commentService.save(comment);
