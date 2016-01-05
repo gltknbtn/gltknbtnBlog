@@ -1,12 +1,39 @@
 
 function articledetailController($scope, $http, $location) {
 	
+	
+	  $scope.init = function(selectedArticleId)
+	  {
+		  
+	   var urlComments = "/gltknbtnBlog/comments/" + selectedArticleId ;
+	   
+	    
+	    $http.get(urlComments)
+        .success(function (data) {
+        	$scope.commentList = data;
+        })
+        .error(function () {
+            $scope.state = 'error';
+            alert("init error in articledetail.js");
+        });
+	    
+	    
+	    //Based on passed argument you can make a call to resource
+	    //and initialize more objects
+	    //$resource.getMeBond(007)
+	  };
+	  
+	  
+	  
+	 
+	
 	$scope.message = "article controllerdan mesaj geldii";
 	
     $scope.pageToGet = 0;
 
     $scope.state = 'busy';
-
+    
+    
     $scope.lastAction = '';
 
     $scope.url = "/gltknbtnBlog/articledetail/";

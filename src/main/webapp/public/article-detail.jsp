@@ -51,17 +51,7 @@
                         <img src="<c:url value="/resources/img/slide/11.jpg" />" class="img-responsive BlokMaxHeight_250" alt="" title="" longdesc=""/>
                     </a>
                     
-                    <div ng-repeat ="comment in '${selectedArticle.comments}'">
-                    	comment.commentDesc
-                    </div>
                     
-                 <%--    ${selectedArticle.comments[0].commentDesc} --%>
-                    
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
 
                     <div class="page-header text-left Margin_0 Padding_0">
 	                    <h2>${selectedArticle.title}</h2>
@@ -81,52 +71,29 @@
                                 </h4>
                             </div>
                             <div id="collapseOne" class="list-group collapseList in Padding_10">
-                                <div class="media list-group-item BorderBottom_0">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">GltknBtn <span class="pull-right">09.12.2015</span></h4>
-                                        Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemiJava Import İşlemi Java Import İşlemi 
-                                        <div  class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="...">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Media Heading 2</h4>
-                                                MJava Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemiJava Import İşlemi Java Import İşlemi 
-                                                ...
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media list-group-item BorderBottom_0">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Media Heading</h4>
-                                        Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemiJava Import İşlemi Java Import İşlemi 
-                                        <div  class="media bg-warning">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="...">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Media Heading 2</h4>
-                                                MJava Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemi Java Import İşlemiJava Import İşlemi Java Import İşlemi 
-                                                ...
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            
+                            
+                            <div ng-init="init('${selectedArticle.id}')">
+
+								<div ng-repeat="comment in commentList">
+
+									<div class="media list-group-item BorderBottom_0">
+										<div class="media-left">
+											<a href="#"> <img class="media-object"
+												src="<c:url value="/resources/img/img1.png" />" alt="...">
+											</a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">{{comment.name}} -
+												{{comment.mail}} - {{comment.createdDate}}</h4>
+											{{comment.commentDesc}}
+										</div>
+									</div>
+
+								</div>
+
+							</div>
                             </div>
 
                         </div>
