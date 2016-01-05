@@ -1,5 +1,6 @@
 package gltknbtn.gltknbtnBlog.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class ArticleDetailController {
         	return new ModelAndView("articledetail");
         }else{
         	Article selectedArticle = articleService.findById(articleId);
+        	for (int i = 0; i < selectedArticle.getComments().size(); i++) {
+        		System.out.println("selectedArticle.getComments().get(i).getCommentDesc(): " + selectedArticle.getComments().get(i).getCommentDesc());
+				
+			}
+        	
+        	//List<Comment> list = commentService.findCommentsByArticleId(articleId);
         	
         	model.addAttribute("selectedArticle", selectedArticle);
         	return new ModelAndView("articledetail");

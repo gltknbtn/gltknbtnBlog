@@ -50,6 +50,18 @@
                     <a href="<c:url value="/resources/img/slide/1.jpg" />" title="" class="Blok img-thumbnail galeriAc">
                         <img src="<c:url value="/resources/img/slide/11.jpg" />" class="img-responsive BlokMaxHeight_250" alt="" title="" longdesc=""/>
                     </a>
+                    
+                    <div ng-repeat ="comment in '${selectedArticle.comments}'">
+                    	comment.commentDesc
+                    </div>
+                    
+                 <%--    ${selectedArticle.comments[0].commentDesc} --%>
+                    
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
 
                     <div class="page-header text-left Margin_0 Padding_0">
 	                    <h2>${selectedArticle.title}</h2>

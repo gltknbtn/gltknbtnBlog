@@ -1,5 +1,7 @@
 package gltknbtn.gltknbtnBlog.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -56,10 +58,16 @@ public class CommentService {
         return isUserAfterOrOnLastPage(page, result) && hasDataInDataBase(result);
     }
 
-    private Page<Comment> executeQueryFindAll(int page, int maxResults) {
-        final PageRequest pageRequest = new PageRequest(page, maxResults, sortByNameASC());
+    @Transactional(readOnly = true)
+    public List<Comment> findCommentsByArticleId(int articleId) {
 
-        return commentRepository.findAll(pageRequest);
+        return commentRepository.findCommentsByArticleId(articleId);
+    }
+    
+    private Page<Comment> executeQueryFindAll(int page, int maxResults) {
+    	final PageRequest pageRequest = new PageRequest(page, maxResults, sortByNameASC());
+    	
+    	return commentRepository.findAll(pageRequest);
     }
 
     private Sort sortByNameASC() {
