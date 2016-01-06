@@ -70,13 +70,13 @@
                                     <a class="pull-right tooltipAc text-center" data-toggle="tooltip" title="Dersler 1" href="#"></a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="list-group collapseList in Padding_10">
+                            <div id="collapseOne" class="list-group collapseList Padding_10">
                             
                             
                             
                             <div ng-init="init('${selectedArticle.id}')">
 
-								<div ng-repeat="comment in commentList">
+								<div ng-repeat="comment in commentList" class="BorderBottom_1">
 
 									<div class="media list-group-item BorderBottom_0">
 										<div class="media-left">
@@ -105,7 +105,7 @@
                                     <a class="pull-right tooltipAc text-center" data-toggle="tooltip" title="Dersler 1" href="#"></a>
                                 </h4>
                             </div>
-                            <div id="addArticleDetailComment" class="list-group collapseList  Padding_10">
+                            <div id="addArticleDetailComment" class="list-group collapseList in Padding_10">
                                 <form role="form" name="newCommentForm" novalidate>
 
                                     <div class="col-lg-12 hidden-xs Padding_10">

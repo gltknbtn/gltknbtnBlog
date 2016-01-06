@@ -33,7 +33,6 @@ function articledetailController($scope, $http, $location) {
 
     $scope.state = 'busy';
     
-    
     $scope.lastAction = '';
 
     $scope.url = "/gltknbtnBlog/articledetail/";
@@ -42,7 +41,6 @@ function articledetailController($scope, $http, $location) {
     
     $scope.createComment = function (newCommentForm, articleId) {
     	
-    	alert("article Id: " + articleId);
 
         $scope.lastAction = 'create';
 
@@ -55,9 +53,9 @@ function articledetailController($scope, $http, $location) {
             	
                 $scope.responseMessage = "Comment successfully created !!";
                 
-                alert("name: " + data.name + "\n" +
-                		"mail: " + data.mail +"\n"+
-                		"desc: " + data.desc);
+                $scope.init(articleId);
+                
+                
             })
             .error(function(data, status, headers, config) {
             	alert("Error");

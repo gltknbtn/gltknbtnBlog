@@ -1,5 +1,7 @@
 package gltknbtn.gltknbtnBlog.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -53,8 +55,8 @@ public class ArticleDetailController {
 
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> create(@PathVariable("id") int articleId, @ModelAttribute("comment") Comment comment) {
+    @RequestMapping(value = "/{articleId}", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<?> create(@PathVariable("articleId") int articleId, @ModelAttribute("comment") Comment comment) {
     	
     	System.out.println("selected article id: " + articleId);
     	System.out.println("Commenter name: " + comment.getName());
@@ -78,6 +80,10 @@ public class ArticleDetailController {
     	
     	Article selectedArticle = articleService.findById(articleId);
     	comment.setArticle(selectedArticle);
+    	
+    	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+    	
+    	comment.setCreatedDate(createdDate);
     	
     	commentService.save(comment);
 
