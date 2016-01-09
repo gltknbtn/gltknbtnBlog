@@ -12,6 +12,6 @@ import gltknbtn.gltknbtnBlog.model.Comment;
 public interface CommentRepository extends PagingAndSortingRepository<Comment, Integer> {
     Page<Comment> findByCommentDescLike(Pageable pageable, String name);
     
-    List<Comment> findCommentsByArticleId(int articleId);
+    Page<Comment> findCommentsByArticleId(Pageable pageable, int articleId);
     
 }

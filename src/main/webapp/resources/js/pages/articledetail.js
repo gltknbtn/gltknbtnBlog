@@ -1,33 +1,36 @@
 
 function articledetailController($scope, $http, $location) {
 	
+	$scope.pageToGet = 0;
 	
 	  $scope.init = function(selectedArticleId)
 	  {
-		  
+		  $scope.selectedArtclId = selectedArticleId;
 	   var urlComments = "/gltknbtnBlog/comments/" + selectedArticleId ;
 	   
-	    
-	    $http.get(urlComments)
+	   var config = {params: {page: $scope.pageToGet}};
+	    $http.get(urlComments, config)
         .success(function (data) {
         	$scope.commentList = data;
+        	$scope.page = {source: data.comments, currentPage: $scope.pageToGet, pagesCount: data.pagesCount, totalArticleComments : data.totalComments};
+        	
+        	if($scope.page.pagesCount <= $scope.page.currentPage){
+                $scope.pageToGet = $scope.page.pagesCount - 1;
+                $scope.page.currentPage = $scope.page.pagesCount - 1;
+            }
         })
         .error(function () {
             $scope.state = 'error';
             alert("init error in articledetail.js");
         });
 	    
-	    
-	    //Based on passed argument you can make a call to resource
-	    //and initialize more objects
-	    //$resource.getMeBond(007)
 	  };
 	  
+	    $scope.changePage = function (page) {
+	        $scope.pageToGet = page;
+	        $scope.init($scope.selectedArtclId);
+	    };
 	  
-	  
-	 
-	
-	$scope.message = "article controllerdan mesaj geldii";
 	
     $scope.pageToGet = 0;
 
@@ -52,9 +55,10 @@ function articledetailController($scope, $http, $location) {
             .success(function (data) {
             	
                 $scope.responseMessage = "Comment successfully created !!";
-                
+                $scope.pageToGet = 0;
                 $scope.init(articleId);
                 
+                $scope.resetCommentInputs();
                 
             })
             .error(function(data, status, headers, config) {
@@ -62,6 +66,13 @@ function articledetailController($scope, $http, $location) {
             	$scope.responseMessage = "Yorum Başarısız!!!"
             });
     };
+    
+    $scope.resetCommentInputs = function(){
+    	$scope.comment.name = "";
+    	$scope.comment.mail = "";
+    	$scope.comment.commentDesc = "";
+    }
+    
     
 //    $scope.changeLocation = function(url, forceReload) {
 //    	  $scope = $scope || angular.element(document).scope();

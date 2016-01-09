@@ -76,7 +76,7 @@
                             
                             <div ng-init="init('${selectedArticle.id}')">
 
-								<div ng-repeat="comment in commentList" class="BorderBottom_1">
+								<div ng-repeat="comment in page.source" class="BorderBottom_1">
 
 									<div class="media list-group-item BorderBottom_0">
 										<div class="media-left">
@@ -92,6 +92,36 @@
 									</div>
 
 								</div>
+								
+								<!-- pagination starting -->
+
+								<div class="text-center MarginTop_5" ng-class="{'hidden': page.pagesCount <= 1}"> 
+									<button href="#" class="btn btn-default glyphicon glyphicon-fast-backward btn-xs"
+										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
+										ng-click="changePage(0)"
+										title='<spring:message code="pagination.first"/>'>
+									</button>
+									<button href="#"
+										class="btn btn-default btn-xs glyphicon glyphicon-backward"
+										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
+										ng-click="changePage(page.currentPage - 1)"
+										title='<spring:message code="pagination.back"/>'></button>
+									<span>{{page.currentPage + 1}} <spring:message code="pagination.of" /> {{page.pagesCount}}</span>
+									<button href="#"
+										class="btn btn-default btn-xs glyphicon glyphicon-forward"
+										ng-class="{'btn btn-default btn-xs': page.pagesCount - 1 != page.currentPage, 'btn btn-default btn-xs disabled': page.pagesCount - 1 == page.currentPage}"
+										ng-click="changePage(page.currentPage + 1)"
+										title='<spring:message code="pagination.next"/>'></button>
+									<button href="#" class="btn btn-default btn-xs glyphicon glyphicon-fast-forward"
+										ng-class="{'btn btn-default btn-xs': page.pagesCount - 1 != page.currentPage, 'btn btn-default btn-xs disabled': page.pagesCount - 1 == page.currentPage}"
+										ng-click="changePage(page.pagesCount - 1)"
+										title='<spring:message code="pagination.last"/>' role="button">
+									</button>
+									<div class="clearfix"></div>
+								</div>
+
+								<!-- pagination ending-->
+								
 
 							</div>
                             </div>
@@ -134,7 +164,9 @@
                                         <textarea class="form-control" required ng-model="comment.commentDesc" name="commentDesc" placeholder="Açıklama giriniz"></textarea>
                                     </div>
                                     <input type="submit" class="btn btn-default" ng-click="createComment(newCommentForm,'${selectedArticle.id}');" value='<spring:message code="create"/>'/>
-                                    {{responseMessage}}
+
+									{{responseMessage}}
+
                                 </form>
                             </div>
                         </div>

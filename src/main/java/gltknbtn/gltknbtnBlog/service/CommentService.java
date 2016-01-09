@@ -1,7 +1,5 @@
 package gltknbtn.gltknbtnBlog.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -59,12 +57,19 @@ public class CommentService {
     }
 
     @Transactional(readOnly = true)
-    public List<Comment> findCommentsByArticleId(int articleId) {
+    public CommentListVO findCommentsByArticleId(int page, int maxResults, int articleId) {
 
-        return commentRepository.findCommentsByArticleId(articleId);
+    	 Page<Comment> result = executeQueryFindCommentsByArticleId(page, maxResults, articleId);
+
+         if(shouldExecuteSameQueryInLastPage(page, result)){
+             int lastPage = result.getTotalPages() - 1;
+             result = executeQueryFindCommentsByArticleId(lastPage, maxResults, articleId);
+         }
+
+         return buildResult(result);
     }
-    
-    private Page<Comment> executeQueryFindAll(int page, int maxResults) {
+
+	private Page<Comment> executeQueryFindAll(int page, int maxResults) {
     	final PageRequest pageRequest = new PageRequest(page, maxResults, sortByNameASC());
     	
     	return commentRepository.findAll(pageRequest);
@@ -73,11 +78,22 @@ public class CommentService {
     private Sort sortByNameASC() {
         return new Sort(Sort.Direction.ASC, "name");
     }
+    
+    private Sort sortByIdDesc() {
+    	return new Sort(Sort.Direction.DESC, "id");
+    }
 
     private CommentListVO buildResult(Page<Comment> result) {
         return new CommentListVO(result.getTotalPages(), result.getTotalElements(), result.getContent());
     }
 
+    
+    private Page<Comment> executeQueryFindCommentsByArticleId(int page, int maxResults, int articleId) {
+    	  final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDesc());
+
+          return commentRepository.findCommentsByArticleId(pageRequest, articleId);
+	}
+    
     private Page<Comment> executeQueryFindByCommentDesc(int page, int maxResults, String name) {
         final PageRequest pageRequest = new PageRequest(page, maxResults, sortByNameASC());
 

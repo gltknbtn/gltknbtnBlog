@@ -25,7 +25,7 @@
                         </div>
                         <!--Jumbotron bitti-->
 
-                        <div class="container">
+                        <div class="container" ng-controller="contactFormController">
                             <div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
 
                                 <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
@@ -47,48 +47,48 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                    <form role="form" class="form-horizontal ">
+                                     <form class="form-horizontal " role="form" name="newContactForm" novalidate>
                                         <h3 class="page-header MarginTop_0 Color_1">İletişim  Formu</h3>
 
                                         <div class="form-group">
                                             <label for="adSoyad" class="col-lg-2 col-md-3 col-sm-3 control-label">Ad ve Soyad</label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <input type="text" class="form-control" id="adSoyad" name="adSoyad" placeholder="Gerekli alan"/>
+                                                <input type="text" class="form-control" id="adSoyad" ng-model="contactForm.name" name="name" name="adSoyad" placeholder="Gerekli alan"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="adSoyad" class="col-lg-2 col-md-3 col-sm-3 control-label">Email</label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <input type="text" class="form-control" id="email" name="email" placeholder="Gerekli alan"/>
+                                                <input type="text" class="form-control" id="email" ng-model="contactForm.email" name="email" placeholder="Gerekli alan"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="adSoyad" class="col-lg-2 col-md-3 col-sm-3 control-label">Telefon</label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <input type="text" class="form-control" id="tel" name="tel" placeholder="Gerekli alan"/>
+                                                <input type="text" class="form-control" id="tel" ng-model="contactForm.phone" name="phone" placeholder="Gerekli alan"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="adSoyad" class="col-lg-2 col-md-3 col-sm-3 control-label">Konu</label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <input type="text" class="form-control" id="konu" name="konu" placeholder="Opsiyonel alan"/>
+                                                <input type="text" class="form-control" id="konu" ng-model="contactForm.title" name="title" placeholder="Opsiyonel alan"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="adSoyad" class="col-lg-2 col-md-3 col-sm-3 control-label">Mesaj</label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <textarea class="form-control" placeholder="Gerekli alan"></textarea>
+                                                <textarea class="form-control" ng-model="contactForm.message" placeholder="Gerekli alan"></textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
                                             <div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-                                                <input type="submit" class="btn btn-default pull-right" value="Gönder"/>
+                                                <input type="submit" ng-click="createContactForm()" class="btn btn-default pull-right" value="Gönder"/>
                                             </div>
                                         </div>
 
@@ -106,3 +106,5 @@
 				
 				</div>
 </div>
+
+<script src="<c:url value="/resources/js/pages/contactForm.js" />"></script>

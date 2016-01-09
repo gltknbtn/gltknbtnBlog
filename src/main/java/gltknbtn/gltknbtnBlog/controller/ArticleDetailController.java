@@ -47,8 +47,6 @@ public class ArticleDetailController {
         }else{
         	Article selectedArticle = articleService.findById(articleId);
         	
-        	//List<Comment> list = commentService.findCommentsByArticleId(articleId);
-        	
         	model.addAttribute("selectedArticle", selectedArticle);
         	return new ModelAndView("articledetail");
         }
