@@ -15,6 +15,12 @@
         <put-attribute name="footer2" value="/public/template/footer2.jsp"/>
     </definition>
 
+    <!-- Master Admin -->
+    <definition name="master-admin.page" template="/public/template/master-admin.jsp">
+        <put-attribute name="header-admin" value="/public/template/header-admin.jsp"/>
+        <put-attribute name="footer-admin" value="/public/template/footer-admin.jsp"/>
+    </definition>
+
     <!--  Pages -->
     <definition name="welcomePage" extends="master.page">
         <put-attribute name="body" value="/protected/welcomePage.jsp"/>
@@ -22,6 +28,10 @@
     
     <definition name="articleList" extends="master.page">
         <put-attribute name="body" value="/protected/articles/articles.jsp"/>
+    </definition>
+    
+    <definition name="articlecreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-create.jsp"/>
     </definition>
     
     <definition name="contactsList" extends="master.page">

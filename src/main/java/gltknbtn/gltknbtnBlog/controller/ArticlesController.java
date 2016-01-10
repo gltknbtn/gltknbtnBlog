@@ -41,6 +41,11 @@ public class ArticlesController {
     public ModelAndView welcome() {
         return new ModelAndView("articleList");
     }
+    
+    @RequestMapping(value = "/articlecreate", method = RequestMethod.GET)
+    public ModelAndView articleCreate() {
+    	return new ModelAndView("articlecreate");
+    }
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> listAll(@RequestParam int page, Locale locale) {
