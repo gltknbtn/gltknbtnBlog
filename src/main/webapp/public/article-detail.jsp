@@ -95,7 +95,7 @@
 								
 								<!-- pagination starting -->
 
-								<div class="text-center MarginTop_5" ng-class="{'hidden': page.pagesCount <= 1}"> 
+								<div class="pull-right MarginTop_5" ng-class="{'hidden': page.pagesCount <= 1}"> 
 									<button href="#" class="btn btn-default glyphicon glyphicon-fast-backward btn-xs"
 										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
 										ng-click="changePage(0)"
@@ -117,8 +117,8 @@
 										ng-click="changePage(page.pagesCount - 1)"
 										title='<spring:message code="pagination.last"/>' role="button">
 									</button>
-									<div class="clearfix"></div>
 								</div>
+									<div class="clearfix"></div>
 
 								<!-- pagination ending-->
 								

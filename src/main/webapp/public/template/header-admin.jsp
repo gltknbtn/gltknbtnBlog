@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">GltknBtn Admin</a>
+                <a class="navbar-brand" href="<c:url value="/"/>">GltknBtn Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -113,17 +113,42 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<c:url value='/logout' />"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <ul class="nav navbar-nav side-nav" ng-controller="LocationController">
+                    <li ng-class="{'active': activeURL == 'home', '': activeURL != 'home'}">
+                        <a href="<c:url value="/"/>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+                    
+                     <li ng-class="{'active': activeURL == 'articlecreate'||activeURL == 'articles', '': activeURL != 'articlecreate'||activeURL != 'articlecreate'}">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Articles <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="<c:url value='/protected/articles'/>">All Articles</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value='/protected/articles/articlecreate'/>">New Article</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#userTab"><i class="glyphicon glyphicon-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="userTab" class="collapse">
+                            <li>
+                                <a href="#">All Users</a>
+                            </li>
+                            <li>
+                                <a href="#">New User</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
@@ -139,18 +164,8 @@
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Articles <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="<c:url value='/protected/articles'/>">All Articles</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value='/protected/articles/articlecreate'/>">New Article</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="active">
+               
+                    <li class="">
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                     <li>

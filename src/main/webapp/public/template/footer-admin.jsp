@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<script src="<c:url value='/resources/js/pages/header2.js' />"></script>
+<script src="<c:url value='/resources/js/pages/header-admin.js' />"></script>
 
 <!-- Footer alani basladi-->
 <div class="navbar navbar-default navbar-inverse navbar-fixed-bottom" >

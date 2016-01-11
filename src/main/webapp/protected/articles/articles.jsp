@@ -90,14 +90,14 @@
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="article"/>"
                                class="btn btn-inverse" data-toggle="modal">
-                                <i class="icon-pencil"></i>
+                                <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a href="#deleteArticlesModal"
                                ng-click="selectedArticle(article);"
                                role="button"
                                title="<spring:message code="delete"/>&nbsp;<spring:message code="article"/>"
                                class="btn btn-inverse" data-toggle="modal">
-                                <i class="icon-minus"></i>
+                                <i class="glyphicon glyphicon-minus"></i>
                             </a>
                         </div>
                     </td>

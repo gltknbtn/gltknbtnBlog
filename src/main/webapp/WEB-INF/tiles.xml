@@ -22,12 +22,12 @@
     </definition>
 
     <!--  Pages -->
-    <definition name="welcomePage" extends="master.page">
-        <put-attribute name="body" value="/protected/welcomePage.jsp"/>
+    <definition name="welcomePage" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/welcomePage.jsp"/>
     </definition>
     
-    <definition name="articleList" extends="master.page">
-        <put-attribute name="body" value="/protected/articles/articles.jsp"/>
+    <definition name="articleList" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles.jsp"/>
     </definition>
     
     <definition name="articlecreate" extends="master-admin.page">
