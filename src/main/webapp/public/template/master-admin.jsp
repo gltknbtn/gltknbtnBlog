@@ -19,7 +19,9 @@
 		
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="<c:url value='/resources/js/3js/bootstrap.js' />"></script>
-		<script src="<c:url value='/resources/js/3js/editor.js' />"></script>
+		
+		<script src="<c:url value='/resources/ckeditor/ckeditor.js' />"></script>
+		
 		<script src="<c:url value='/resources/js/3js/jquery.lightbox-0.5.js' />"></script>
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
 		
@@ -30,12 +32,6 @@
 
     <!-- Morris Charts CSS -->
     <link href="<c:url value='/resources/3css/morris.css'/>"rel="stylesheet" />
-		
-		<script>
-			$(document).ready(function() {
-				$("#txtEditor").Editor();
-			});
-		</script>
 		
 		<!--[if lt IE 9]>
 		                                <script src="js/html5shiv.js"></script>

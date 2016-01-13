@@ -27,7 +27,7 @@
 
 			<div class="container">
 
-				<div class="container" ng-controller="contactFormController">
+				<div class="container" ng-controller="articlesController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
 						<div>
 							<form class="form-horizontal " role="form" name="newArticleForm"
@@ -48,8 +48,7 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Description</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<div class="nopadding Border_1" >
-											<textarea id="txtEditor" id="description"
-											ng-model="article.description" name="description"></textarea>
+											<textarea id="editor1" name="editor1" ></textarea>
 										</div>
 									</div>
 								</div>
@@ -67,7 +66,7 @@
 								<div class="form-group">
 									<label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="submit" ng-click="createArticleForm()"
+										<input type="submit" ng-click="createArticle(newArticleForm)"
 											class="btn btn-default pull-right" value="Gönder" />
 									</div>
 								</div>
@@ -91,3 +90,6 @@
 
 </div>
 <script src="<c:url value="/resources/js/pages/articles.js" />"></script>
+ <script>
+            CKEDITOR.replace( 'editor1' );
+ </script>

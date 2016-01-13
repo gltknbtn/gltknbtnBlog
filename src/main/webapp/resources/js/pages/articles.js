@@ -1,4 +1,7 @@
+
 function articlesController($scope, $http) {
+	
+	
     $scope.pageToGet = 0;
 
     $scope.state = 'busy';
@@ -141,6 +144,14 @@ function articlesController($scope, $http) {
     };
 
     $scope.createArticle = function (newArticleForm) {
+    	
+    	$scope.article.description = CKEDITOR.instances.editor1.getData();
+    	
+    	
+    	alert("title: " + $scope.article.title +"\n" +
+    			"description: " + $scope.article.description +"\n" +
+    			"owner: " + $scope.article.owner);
+    	
         if (!newArticleForm.$valid) {
             $scope.displayValidationError = true;
             return;
