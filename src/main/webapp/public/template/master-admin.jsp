@@ -14,16 +14,18 @@
 		<link href="<c:url value='/resources/3css/bootstrap.css'/>"rel="stylesheet" />
 		<link href="<c:url value='/resources/3css/bootstrap-theme.css'/>"rel="stylesheet" />
 		<link href="<c:url value='/resources/3css/sb-admin.css'/>"rel="stylesheet" />
-		<link href="<c:url value='/resources/3css/editor.css'/>"rel="stylesheet" />
 		<link href="<c:url value='/resources/font-awesome/css/font-awesome.min.css'/>"rel="stylesheet" />
+		
 		
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="<c:url value='/resources/js/3js/bootstrap.js' />"></script>
 		
-		<script src="<c:url value='/resources/ckeditor/ckeditor.js' />"></script>
 		
 		<script src="<c:url value='/resources/js/3js/jquery.lightbox-0.5.js' />"></script>
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
+		
+			<link href="<c:url value='/resources/3css/editor.css'/>"rel="stylesheet" />
+		<script src="<c:url value='/resources/js/3js/editor.js' />"></script>
 		
 		   <!-- Morris Charts JavaScript -->
 		<script src="<c:url value='/resources/js/3js/plugins/morris/raphael.min.js' />"></script>
@@ -32,7 +34,12 @@
 
     <!-- Morris Charts CSS -->
     <link href="<c:url value='/resources/3css/morris.css'/>"rel="stylesheet" />
-		
+    
+   	<script>
+			$(document).ready(function() {
+				$("#txtEditor").Editor();
+			});
+		</script>
 		<!--[if lt IE 9]>
 		                                <script src="js/html5shiv.js"></script>
 		                                <script src="js/respond.min.js"></script>

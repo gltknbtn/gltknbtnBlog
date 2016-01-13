@@ -48,7 +48,7 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Description</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<div class="nopadding Border_1" >
-											<textarea id="editor1" name="editor1" ></textarea>
+											<textarea id="txtEditor" name="txtEditor"></textarea>
 										</div>
 									</div>
 								</div>
@@ -89,7 +89,6 @@
 	<!-- /.container-fluid -->
 
 </div>
+
 <script src="<c:url value="/resources/js/pages/articles.js" />"></script>
- <script>
-            CKEDITOR.replace( 'editor1' );
- </script>
+

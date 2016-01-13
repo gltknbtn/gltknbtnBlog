@@ -145,8 +145,7 @@ function articlesController($scope, $http) {
 
     $scope.createArticle = function (newArticleForm) {
     	
-    	$scope.article.description = CKEDITOR.instances.editor1.getData();
-    	
+    	$scope.article.description = $("#txtEditor").Editor("getText");
     	
     	alert("title: " + $scope.article.title +"\n" +
     			"description: " + $scope.article.description +"\n" +
