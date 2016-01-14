@@ -1,5 +1,7 @@
 package gltknbtn.gltknbtnBlog.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,6 +60,9 @@ public class ArticlesController {
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
+    	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+    	article.setCreatedDate(createdDate);
+    	
         articleService.save(article);
 
         if (isSearchActivated(searchFor)) {
@@ -84,6 +90,20 @@ public class ArticlesController {
 
         return createListAllResponse(page, locale, "message.update.success");
     }
+    
+    
+    @RequestMapping(value = "/articleedit/{id}", method = RequestMethod.GET)
+    public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
+                                    Locale locale) {
+    	Article selectedArticle = articleService.findById(articleId);
+    	
+    	model.addAttribute("selectedArticle", selectedArticle);
+    	
+        return new ModelAndView("articleedit");
+
+    }
+    
+    
 
     @RequestMapping(value = "/{articleId}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity<?> delete(@PathVariable("articleId") int articleId,

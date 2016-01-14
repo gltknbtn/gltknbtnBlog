@@ -32,9 +32,7 @@
 						<div>
 							<form class="form-horizontal " role="form" name="newArticleForm"
 								novalidate>
-								
-
-								
+								{{test}}fdf
 								<div ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
 									<label for="title"
 										class="col-lg-2 col-md-3 col-sm-3 control-label"></label>

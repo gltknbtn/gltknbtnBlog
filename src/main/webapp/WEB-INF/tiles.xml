@@ -34,6 +34,10 @@
         <put-attribute name="body-admin" value="/protected/articles/articles-create.jsp"/>
     </definition>
     
+    <definition name="articleedit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-edit.jsp"/>
+    </definition>
+    
     <definition name="contactsList" extends="master.page">
         <put-attribute name="body" value="/protected/contacts/contacts.jsp"/>
     </definition>

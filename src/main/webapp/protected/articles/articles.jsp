@@ -85,7 +85,7 @@
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{article.id}}"/>
-                            <a href="#updateArticlesModal"
+                            <a href="articleedit/{{article.id}}"
                                ng-click="selectedArticle(article);"
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="article"/>"

@@ -17,6 +17,8 @@ function articlesController($scope, $http) {
     $scope.displaySearchMessage = false;
     $scope.displaySearchButton = false;
     $scope.displayCreateArticleButton = false;
+    
+    $scope.dataActionMessageCreateArticle ="";
 
     $scope.article = {}
 
@@ -147,10 +149,6 @@ function articlesController($scope, $http) {
     	
     	$scope.article.description = $("#txtEditor").Editor("getText");
     	
-    	alert("title: " + $scope.article.title +"\n" +
-    			"description: " + $scope.article.description +"\n" +
-    			"owner: " + $scope.article.owner);
-    	
         if (!newArticleForm.$valid) {
             $scope.displayValidationError = true;
             return;
@@ -164,20 +162,27 @@ function articlesController($scope, $http) {
 
         $scope.addSearchParametersIfNeeded(config, false);
 
-        $scope.startDialogAjaxRequest();
-
         $http.post(url, $.param($scope.article), config)
             .success(function (data) {
-                $scope.finishAjaxCallOnSuccess(data, "#addArticlesModal", false);
+            	$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
             })
             .error(function(data, status, headers, config) {
-                $scope.handleErrorInDialogs(status);
+            	alert("error status: " + status);
             });
     };
 
     $scope.selectedArticle = function (article) {
+    	alert("test");
+    	
+    	$scope.test = "fdsaf";
+    	
         var selectedArticle = angular.copy(article);
+        
+        alert("selectedArticle.title: " + selectedArticle.title);
+        
         $scope.article = selectedArticle;
+        
+        
     }
 
     $scope.updateArticle = function (updateArticleForm) {
