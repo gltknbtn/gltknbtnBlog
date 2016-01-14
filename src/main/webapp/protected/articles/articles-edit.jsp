@@ -29,10 +29,9 @@
 
 				<div class="container" ng-controller="articlesController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
-						<div>
+						<div ng-init="selectArticle('${selectedArticleId}')">
 							<form class="form-horizontal " role="form" name="newArticleForm"
 								novalidate>
-								{{test}}fdf
 								<div ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
 									<label for="title"
 										class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
@@ -47,7 +46,7 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Title</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="text" class="form-control" id="title"
-											ng-model="article.title" name="title" placeholder="Required" />
+											ng-model="selectedArticle.title" name="title" placeholder="Required" />
 									</div>
 								</div>
 
@@ -67,7 +66,7 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Owner</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="text" class="form-control" id="tel"
-											ng-model="article.owner" name="owner"
+											ng-model="selectedArticle.owner" name="owner"
 											placeholder="Required" />
 									</div>
 								</div>

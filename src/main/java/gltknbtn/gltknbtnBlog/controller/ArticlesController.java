@@ -95,9 +95,8 @@ public class ArticlesController {
     @RequestMapping(value = "/articleedit/{id}", method = RequestMethod.GET)
     public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
                                     Locale locale) {
-    	Article selectedArticle = articleService.findById(articleId);
     	
-    	model.addAttribute("selectedArticle", selectedArticle);
+    	model.addAttribute("selectedArticleId", articleId);
     	
         return new ModelAndView("articleedit");
 
@@ -125,11 +124,19 @@ public class ArticlesController {
         return createListAllResponse(page, locale, "message.delete.success");
     }
 
+    @RequestMapping(value = "/findById/{selectedArticleId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getArticleById(@PathVariable("selectedArticleId") int selectedArticleId,
+                                    Locale locale) {
+    	Article article = articleService.findById(selectedArticleId);
+    	
+    	 return new ResponseEntity<Article>(article, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/{title}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> search(@PathVariable("title") String title,
-                                    @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
-                                    Locale locale) {
-        return search(title, page, locale, null);
+    		@RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
+    		Locale locale) {
+    	return search(title, page, locale, null);
     }
 
     private ResponseEntity<?> search(String title, int page, Locale locale, String actionMessageKey) {

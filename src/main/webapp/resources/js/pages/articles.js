@@ -1,7 +1,6 @@
 
 function articlesController($scope, $http) {
 	
-	
     $scope.pageToGet = 0;
 
     $scope.state = 'busy';
@@ -171,18 +170,20 @@ function articlesController($scope, $http) {
             });
     };
 
-    $scope.selectedArticle = function (article) {
-    	alert("test");
+    $scope.selectArticle = function (selectedArticleId) {
     	
-    	$scope.test = "fdsaf";
-    	
-        var selectedArticle = angular.copy(article);
+        var urlGetArticle = "/gltknbtnBlog/protected/articles/findById/"+ selectedArticleId;
         
-        alert("selectedArticle.title: " + selectedArticle.title);
-        
-        $scope.article = selectedArticle;
-        
-        
+        $http.get(urlGetArticle)
+            .success(function (data) {
+            	
+            	$scope.selectedArticle = data;
+            	$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
+            	
+            })
+            .error(function () {
+                alert("error");
+            });
     }
 
     $scope.updateArticle = function (updateArticleForm) {
