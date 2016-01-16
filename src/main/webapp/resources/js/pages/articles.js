@@ -18,6 +18,7 @@ function articlesController($scope, $http) {
     $scope.displayCreateArticleButton = false;
     
     $scope.dataActionMessageCreateArticle ="";
+    $scope.dataActionMessageUpdateArticle ="";
 
     $scope.article = {}
 
@@ -187,28 +188,28 @@ function articlesController($scope, $http) {
     }
 
     $scope.updateArticle = function (updateArticleForm) {
-        if (!updateArticleForm.$valid) {
-            $scope.displayValidationError = true;
-            return;
-        }
 
-        $scope.lastAction = 'update';
-
-        var url = $scope.url + $scope.article.id;
-
-        $scope.startDialogAjaxRequest();
+        var url = $scope.url +"articleedit/"+ $scope.selectedArticle.id;
+        
+        $scope.selectedArticle.description = $("#txtEditor").Editor("getText");
 
         var config = {}
 
-        $scope.addSearchParametersIfNeeded(config, false);
-
-        $http.put(url, $scope.article, config)
+        $http.post(url, $scope.selectedArticle, config)
             .success(function (data) {
-                $scope.finishAjaxCallOnSuccess(data, "#updateArticlesModal", false);
+            	$scope.dataActionMessageUpdateArticle = data.actionMessage +" : " + $scope.selectedArticle.title;
+            	alert($scope.dataActionMessageUpdateArticle);
             })
             .error(function(data, status, headers, config) {
-                $scope.handleErrorInDialogs(status);
+            	alert("error update article");
             });
+    };
+    
+    $scope.resetMessage = function () {
+    	
+    	alert("resetMessage");
+    	$scope.dataActionMessageUpdateArticle = "";
+    	
     };
 
     $scope.searchArticle = function (searchArticleForm, isPagination) {

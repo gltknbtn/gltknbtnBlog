@@ -30,17 +30,8 @@
 				<div class="container" ng-controller="articlesController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
 						<div ng-init="selectArticle('${selectedArticleId}')">
-							<form class="form-horizontal " role="form" name="newArticleForm"
+							<form class="form-horizontal " role="form" name="updateArticleForm"
 								novalidate>
-								<div ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
-									<label for="title"
-										class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
-									<div class="alert alert-success col-lg-9 col-md-9 col-sm-9">
-										<a href="#" class="close" data-dismiss="alert"
-												aria-label="close">&times;</a> <strong>{{dataActionMessageCreateArticle}}</strong>
-											
-									</div>
-								</div>
 								<div class="form-group">
 									<label for="title"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Title</label>
@@ -74,7 +65,7 @@
 								<div class="form-group">
 									<label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="submit" ng-click="createArticle(newArticleForm)"
+										<input type="submit" ng-click="updateArticle(updateArticleForm)"
 											class="btn btn-default pull-right" value="Gönder" />
 									</div>
 								</div>

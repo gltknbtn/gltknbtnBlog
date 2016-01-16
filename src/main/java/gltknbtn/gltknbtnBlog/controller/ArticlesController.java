@@ -72,10 +72,9 @@ public class ArticlesController {
         return createListAllResponse(page, locale, "message.create.success");
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "articleedit/{id}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int articleId,
                                     @RequestBody Article article,
-                                    @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
         if (articleId != article.getId()) {
@@ -83,10 +82,6 @@ public class ArticlesController {
         }
 
         articleService.save(article);
-
-        if (isSearchActivated(searchFor)) {
-            return search(searchFor, page, locale, "message.update.success");
-        }
 
         return createListAllResponse(page, locale, "message.update.success");
     }
