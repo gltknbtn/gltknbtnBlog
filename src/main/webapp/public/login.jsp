@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row-fluid">
-    <div class="span4 offset4 well" ng-controller="loginController">
+    <div class="container well" style="max-width: 20%" ng-controller="loginController">
         <legend><spring:message code="login.header" /></legend>
         <div class="alert alert-error" ng-class="{'': displayLoginError == true, 'none': displayLoginError == false}">
             <spring:message code="login.error" />
