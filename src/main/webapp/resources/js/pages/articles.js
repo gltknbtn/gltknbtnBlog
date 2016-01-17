@@ -88,7 +88,7 @@ function articlesController($scope, $http) {
     $scope.exit = function (modalId) {
         $(modalId).modal('hide');
 
-        $scope.article = {};
+        $scope.selectedArticle = {};
         $scope.errorOnSubmit = false;
         $scope.errorIllegalAccess = false;
         $scope.displayValidationError = false;
@@ -195,7 +195,7 @@ function articlesController($scope, $http) {
 
         var config = {}
 
-        $http.post(url, $scope.selectedArticle, config)
+        $http.put(url, $scope.selectedArticle, config)
             .success(function (data) {
             	$scope.dataActionMessageUpdateArticle = data.actionMessage +" : " + $scope.selectedArticle.title;
             	alert($scope.dataActionMessageUpdateArticle);
@@ -243,9 +243,7 @@ function articlesController($scope, $http) {
     $scope.deleteArticle = function () {
         $scope.lastAction = 'delete';
 
-        var url = $scope.url + $scope.article.id;
-
-        $scope.startDialogAjaxRequest();
+        var url = $scope.url + $scope.selectedArticle.id;
 
         var params = {searchFor: $scope.searchFor, page: $scope.pageToGet};
 

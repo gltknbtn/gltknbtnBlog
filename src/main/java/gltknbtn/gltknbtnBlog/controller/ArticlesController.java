@@ -72,7 +72,7 @@ public class ArticlesController {
         return createListAllResponse(page, locale, "message.create.success");
     }
 
-    @RequestMapping(value = "articleedit/{id}", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "articleedit/{id}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int articleId,
                                     @RequestBody Article article,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,

@@ -231,40 +231,42 @@
     </span>
 </div>
 
-<div id="deleteArticlesModal"
-     class="modal hide fade in centering"
-     role="dialog"
-     aria-labelledby="searchArticlesModalLabel"
-     aria-hidden="true">
-    <div class="modal-header">
-        <h3 id="deleteArticlesModalLabel" class="displayInLine">
+
+<div class="modal fade" id="deleteArticlesModal" tabindex="-1" role="dialog" aria-labelledby="deleteArticlesModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       <h3 id="deleteArticlesModalLabel" class="displayInLine">
             <spring:message code="delete"/>&nbsp;<spring:message code="article"/>
         </h3>
-    </div>
-    <div class="modal-body">
-        <form name="deleteArticleForm" novalidate>
-            <p><spring:message code="delete.confirm"/>:&nbsp;{{article.title}}?</p>
+      </div>
+      <div class="modal-body">
+            <form name="deleteArticleForm" novalidate>
+            <p><spring:message code="delete.confirm"/>:&nbsp;{{selectedArticle.title}}?</p>
 
             <input type="submit"
-                   class="btn btn-inverse"
+                   class="btn btn-primary"
                    ng-click="deleteArticle();"
                    value='<spring:message code="delete"/>'/>
-            <button class="btn btn-inverse"
+            <button class="btn btn-default"
                     data-dismiss="modal"
                     ng-click="exit('#deleteArticlesModal');"
                     aria-hidden="true">
                 <spring:message code="cancel"/>
             </button>
         </form>
-    </div>
-    <span class="alert alert-error dialogErrorMessage"
-          ng-show="errorOnSubmit">
-        <spring:message code="request.error"/>
-    </span>
-    <span class="alert alert-error dialogErrorMessage"
-          ng-show="errorIllegalAccess">
-        <spring:message code="request.illegal.access"/>
-    </span>
+      </div>
+			<div class="modal-footer">
+				<span class="alert alert-error dialogErrorMessage"
+					ng-show="errorOnSubmit"> <spring:message
+						code="request.error" />
+				</span> <span class="alert alert-error dialogErrorMessage"
+					ng-show="errorIllegalAccess"> <spring:message
+						code="request.illegal.access" />
+				</span>
+			</div>
+		</div>
+  </div>
 </div>
 
 <div id="searchArticlesModal"
