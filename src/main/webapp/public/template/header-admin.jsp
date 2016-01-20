@@ -141,10 +141,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#userTab"><i class="glyphicon glyphicon-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="userTab" class="collapse">
                             <li>
-                                <a href="#">All Users</a>
+                                <a href="<c:url value='/protected/users'/>">All Users</a>
                             </li>
                             <li>
-                                <a href="#">New User</a>
+                                <a href="<c:url value='/protected/articles/usercreate'/>">New User</a>
                             </li>
                         </ul>
                     </li>

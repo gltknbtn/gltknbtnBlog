@@ -30,6 +30,18 @@
         <put-attribute name="body-admin" value="/protected/articles/articles.jsp"/>
     </definition>
     
+    <definition name="users" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/users.jsp"/>
+    </definition>
+    
+    <definition name="usercreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/user-create.jsp"/>
+    </definition>
+    
+    <definition name="useredit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/users-edit.jsp"/>
+    </definition>
+    
     <definition name="articlecreate" extends="master-admin.page">
         <put-attribute name="body-admin" value="/protected/articles/articles-create.jsp"/>
     </definition>
