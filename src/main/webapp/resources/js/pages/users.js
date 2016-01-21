@@ -23,6 +23,7 @@ function usersController($scope, $http) {
     $scope.user = {}
 
     $scope.searchFor = ""
+    	
 
     $scope.getUserList = function () {
         var url = $scope.url;
@@ -126,20 +127,21 @@ function usersController($scope, $http) {
 
     $scope.createUser = function (newUserForm) {
     	
-        if (!newUserForm.$valid) {
-            $scope.displayValidationError = true;
-            return;
-        }
-
-        $scope.lastAction = 'create';
-
-        var url = $scope.url;
+    	
+    	alert("user name: " +  $scope.user.name + "\n" +
+    		  "email: " +  $scope.user.email + "\n" +
+    		  "enabled : " +  $scope.user.enabled + "\n" +
+    		  "password: " +  $scope.user.password + "\n" + 
+    		  "repassword: " +  $scope.user.repassword + "\n");
+    	
+        var url = $scope.url+"usercreate";
+        alert(url);
 
         var config = {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}};
 
         $http.post(url, $.param($scope.user), config)
             .success(function (data) {
-            	$scope.dataActionMessageCreateUser = data.actionMessage +" : " + $scope.user.name;
+            	alert(data.actionMessage +" : " + $scope.user.name);
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);

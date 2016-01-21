@@ -55,8 +55,9 @@ public class UserController {
         return createListAllResponse(page, locale);
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/usercreate", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> create(@ModelAttribute("user") User user,
+    								@ModelAttribute("repassword") String repassword,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {

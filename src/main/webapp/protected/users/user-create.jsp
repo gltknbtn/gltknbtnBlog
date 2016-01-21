@@ -30,52 +30,68 @@
 				<div class="container" ng-controller="usersController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
 						<div>
-							<form class="form-horizontal " role="form" name="newArticleForm"
+							<form class="form-horizontal " role="form" name="newUserForm"
 								novalidate>
 								
-								<div ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
-									<label for="title"
-										class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
-									<div class="alert alert-success col-lg-9 col-md-9 col-sm-9">
-										<a href="#" class="close" data-dismiss="alert"
-												aria-label="close">&times;</a> <strong>{{dataActionMessageCreateArticle}}</strong>
-									</div>
-								</div>
 								<div class="form-group">
-									<label for="title"
-										class="col-lg-2 col-md-3 col-sm-3 control-label">Title</label>
+									<label for="name"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">User Name</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="title"
-											ng-model="article.title" name="title" placeholder="Required" />
+										<input type="text" class="form-control" id="name"
+											ng-model="user.name" name="name" placeholder="Required" />
 									</div>
 								</div>
-
 								
 								<div class="form-group">
-								<label for="adSoyad"
-										class="col-lg-2 col-md-3 col-sm-3 control-label">Description</label>
+									<label for="email"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Email</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<div class="nopadding Border_1" >
-											<textarea id="txtEditor" name="txtEditor"></textarea>
-										</div>
+										<input type="text" class="form-control" id="email"
+											ng-model="user.email" name="email" placeholder="Required" />
 									</div>
 								</div>
-
+								
 								<div class="form-group">
-									<label for="adSoyad"
-										class="col-lg-2 col-md-3 col-sm-3 control-label">Owner</label>
+									<label for="enabled"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Enabled</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="tel"
-											ng-model="article.owner" name="owner"
-											placeholder="Required" />
+										<input type="text" class="form-control" id="enabled"
+											ng-model="user.enabled" name="email" placeholder="Required" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="password"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Password</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<input type="password" class="form-control" id="enabled"
+											ng-model="user.password" name="password" placeholder="Required" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="repassword"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Re-Password</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<input type="password" class="form-control" id="repassword"
+											ng-model="user.repassword" name="repassword" placeholder="Required" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="role"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Role</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<input type="text" class="form-control" id="role"
+											ng-model="user.role" name="role" placeholder="Required" />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="submit" ng-click="createArticle(newArticleForm)"
-											class="btn btn-default pull-right" value="Gönder" />
+										<input type="submit" ng-click="createUser(newUserForm)"
+											class="btn btn-default pull-right" value="Create" />
 									</div>
 								</div>
 
@@ -97,10 +113,5 @@
 	<!-- /.container-fluid -->
 
 </div>
- 	<script>
-			$(document).ready(function() {
-				$("#txtEditor").Editor();
-			});
-		</script>
 <script src="<c:url value="/resources/js/pages/users.js" />"></script>
 
