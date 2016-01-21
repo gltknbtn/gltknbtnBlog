@@ -82,8 +82,10 @@
 									<label for="role"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Role</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="role"
-											ng-model="user.role" name="role" placeholder="Required" />
+										<select name="roleSelect" id="roleSelect"
+											ng-init="selectedRole = roledata.availableRoles[0]"
+											ng-options="role.name for role in roledata.availableRoles"
+											ng-model="selectedRole"></select>
 									</div>
 								</div>
 

@@ -127,12 +127,13 @@ function usersController($scope, $http) {
 
     $scope.createUser = function (newUserForm) {
     	
-    	
+    	$scope.user.role = $scope.selectedRole.id;
     	alert("user name: " +  $scope.user.name + "\n" +
     		  "email: " +  $scope.user.email + "\n" +
     		  "enabled : " +  $scope.user.enabled + "\n" +
     		  "password: " +  $scope.user.password + "\n" + 
-    		  "repassword: " +  $scope.user.repassword + "\n");
+    		  "repassword: " +  $scope.user.repassword + "\n"+
+    	"role: " +  $scope.user.role+ "\n" ); 
     	
         var url = $scope.url+"usercreate";
         alert(url);
@@ -147,7 +148,14 @@ function usersController($scope, $http) {
             	alert("error status: " + status);
             });
     };
-
+    
+    $scope.roledata = {
+    	    availableRoles: [
+    	      {id: 'ROLE_ADMIN', name: 'Admin'},
+    	      {id: 'ROLE_USER', name: 'User'}
+    	    ]
+    	    };
+    
     $scope.selectUser = function (selectedUserId) {
     	
         var urlGetUser = "/gltknbtnBlog/protected/users/findById/"+ selectedUserId;
