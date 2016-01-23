@@ -48,7 +48,7 @@ public class ArticleDetailController {
         	Article selectedArticle = articleService.findById(articleId);
         	
         	model.addAttribute("selectedArticle", selectedArticle);
-        	return new ModelAndView("articledetail");
+        	return new ModelAndView("articledetailclean");
         }
 
     }

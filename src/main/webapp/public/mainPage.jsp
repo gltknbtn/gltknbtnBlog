@@ -96,7 +96,7 @@
 		                     <span class=" glyphicon glyphicon-fast-backward MarginRight_5" aria-hidden="true"></span><spring:message code="pagination.first"/>
 		                </button>
 		                <button href="#"
-		                        class="btn btn-default glyphicon glyphicon-backward"
+		                        class="btn btn-default glyphicon glyphicon-arrow-left"
 		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
 		                        ng-click="changePage(page.currentPage - 1)"
 		                        title='<spring:message code="pagination.back"/>'
