@@ -34,7 +34,7 @@ public class MainPageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView welcome() {
-        return new ModelAndView("mainPageClean");
+        return new ModelAndView("mainpageclean");
     }
     
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")

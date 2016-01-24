@@ -44,11 +44,9 @@
 		
 	<body style="padding-top: 0!important;">
 	
-	<div id="wrapper">
 		<tiles:insertAttribute name="header-admin" />
         
         <tiles:insertAttribute name="body-admin" />
-	</div>        
         
         <tiles:insertAttribute name="footer-admin" />
 	
