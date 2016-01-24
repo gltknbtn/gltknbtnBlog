@@ -11,6 +11,6 @@ public class AboutmeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView welcome() {
-        return new ModelAndView("aboutme");
+        return new ModelAndView("aboutmeclean");
     }
 }

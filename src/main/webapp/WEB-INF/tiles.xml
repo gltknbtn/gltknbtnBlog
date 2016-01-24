@@ -78,8 +78,17 @@
         <put-attribute name="body_clean" value="/public/mainPage_clean.jsp"/>
     </definition>
     
+    <definition name="aboutmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/aboutme_clean.jsp"/>
+    </definition>
     
-    
+    <definition name="contactmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/contactme_clean.jsp"/>
+    </definition>
     
     
      <definition name="aboutme" extends="master2.page">

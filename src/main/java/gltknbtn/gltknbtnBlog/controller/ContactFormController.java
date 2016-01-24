@@ -34,7 +34,7 @@ public class ContactFormController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView welcome() {
-        return new ModelAndView("contactme");
+        return new ModelAndView("contactmeclean");
     }
 
 

@@ -28,10 +28,7 @@
                     <li ng-class="{'active': activeURL == 'contactme', '': activeURL != 'contactme'}">
                         <a href="/gltknbtnBlog/contactme">Contact</a>
                     </li>
-                    <li ng-class="{'active': activeURL == 'home', '': activeURL != 'home'}">
-                        <a href="<c:url value="/"/>">Admin Home</a>
-                    </li>
-                    <li><a href="login" title=""><i class="glyphicon glyphicon-log-in"></i></a></li>
+                    <li><a href="<c:url value="/login"/>" title=""><i class="glyphicon glyphicon-log-in"></i></a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

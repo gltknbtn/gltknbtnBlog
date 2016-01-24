@@ -6,7 +6,7 @@
 <div ng-controller="articledetailController">
   <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('<c:url value="/resources/img/post-bg.jpg" />')">
+    <header class="intro-header" style="background-image: url('<c:url value="/resources/img/post-bg.jpg" />'); margin: 0; padding :0;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -35,6 +35,81 @@
                     
                 </div>
             </div>
+             
+             <hr/>
+            
+            <div class="row" ng-init="init('${selectedArticle.id}')">
+            	    <!-- Blog Post Content Column -->
+	            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	                <!-- Comments Form -->
+	                <div class="well">
+	                    <h4>Leave a Comment:</h4>
+	                    <form role="form" name="newCommentForm" novalidate>
+	                    
+	                    	<div class="form-group">
+								<input type="text" class="form-control" required ng-model="comment.name" name="name" placeholder="Name"/>
+						    </div>
+                            <div class="form-group">
+                            	<input type="text" class="form-control" required ng-model="comment.mail" name="mail" placeholder="<spring:message code='sample.email'/> "/>
+                            </div>
+	                        <div class="form-group">
+	                            <textarea class="form-control" required ng-model="comment.commentDesc" name="commentDesc" rows="3"></textarea>
+	                        </div>
+	                        <button type="submit" class="btn btn-primary" ng-click="createComment(newCommentForm,'${selectedArticle.id}');">Submit</button>
+	                    </form>
+	                </div>
+	
+	                <hr>
+	
+	                <!-- Posted Comments -->
+	
+	                <!-- Comment -->
+	                <div class="media" ng-repeat="comment in page.source" >
+	                    <a class="pull-left" href="#">
+	                        <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="">
+	                    </a>
+	                    <div class="media-body">
+	                        <h4 class="media-heading">{{comment.name}}
+	                            <small>{{comment.createdDate}}</small>
+	                        </h4>
+	                        {{comment.commentDesc}}
+	                    </div>
+	                </div>
+	                <hr/>
+	                <!-- pagination starting -->
+
+								<div class="pull-right MarginTop_5" ng-class="{'hidden': page.pagesCount <= 1}"> 
+									<button href="#" class="btn btn-default"
+										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
+										ng-click="changePage(0)"
+										title='<spring:message code="pagination.first"/>'>
+										<spring:message code="pagination.first"/>
+									</button>
+									<button href="#"
+										class="btn btn-default"
+										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
+										ng-click="changePage(page.currentPage - 1)"
+										title='<spring:message code="pagination.back"/>'>&larr;</button>
+									<span>{{page.currentPage + 1}} <spring:message code="pagination.of" /> {{page.pagesCount}}</span>
+									<button href="#"
+										class="btn btn-default"
+										ng-class="{'btn btn-default btn-xs': page.pagesCount - 1 != page.currentPage, 'btn btn-default btn-xs disabled': page.pagesCount - 1 == page.currentPage}"
+										ng-click="changePage(page.currentPage + 1)"
+										title='<spring:message code="pagination.next"/>'>&rarr;</button>
+									<button href="#" class="btn btn-default"
+										ng-class="{'btn btn-default btn-xs': page.pagesCount - 1 != page.currentPage, 'btn btn-default btn-xs disabled': page.pagesCount - 1 == page.currentPage}"
+										ng-click="changePage(page.pagesCount - 1)"
+										title='<spring:message code="pagination.last"/>' role="button">
+										<spring:message code="pagination.last"/>
+									</button>
+								</div>
+									<div class="clearfix"></div>
+
+								<!-- pagination ending-->
+	                
+	            </div>
+            </div>
+            
         </div>
     </article>
 
