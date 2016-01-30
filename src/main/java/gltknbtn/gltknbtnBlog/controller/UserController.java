@@ -69,6 +69,7 @@ public class UserController {
     @RequestMapping(value = "useredit/{id}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int userId,
                                     @RequestBody User user,
+                                    @RequestParam String repassword,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
         if (userId != user.getId()) {

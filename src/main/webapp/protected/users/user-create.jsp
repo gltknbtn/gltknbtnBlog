@@ -9,10 +9,10 @@
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
-		<div class="row">
+		<div class="container row-fluid">
 			<div class="col-lg-12 Margin_0 Padding_0">
 				<h1 class="page-header">
-					Article Creating 
+					User Creating 
 				</h1>
 				<ol class="breadcrumb">
 					<li><i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
@@ -24,8 +24,6 @@
 		<!-- /.row -->
 
 		<div class="row-fluid">
-
-			<div class="container">
 
 				<div class="container" ng-controller="usersController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
@@ -104,10 +102,6 @@
 					</div>
 				</div>
 				
-				
-		
-
-			</div>
 		</div>
 
 

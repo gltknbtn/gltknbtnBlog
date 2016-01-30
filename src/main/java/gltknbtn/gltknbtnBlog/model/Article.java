@@ -18,6 +18,7 @@ public class Article {
     @GeneratedValue
     private int id;
 	private String title;
+	private String summary;
 	private String description;
 	private String owner;
 	private String createdDate;
@@ -29,9 +30,10 @@ public class Article {
 		
 	}
 	
-	public Article(String title, String description, String owner, String createdDate, int id) {
+	public Article(String title, String summary, String description, String owner, String createdDate, int id) {
 		super();
 		this.title= title;
+		this.summary= summary;
 		this.description = description;
 		this.owner = owner;
 		this.createdDate = createdDate;
@@ -50,6 +52,13 @@ public class Article {
 	}
     public void setTitle(String title) {
 		this.title = title;
+	}
+    
+    public String getSummary() {
+		return summary;
+	}
+    public void setSummary(String summary) {
+		this.summary = summary;
 	}
     
     public String getDescription() {

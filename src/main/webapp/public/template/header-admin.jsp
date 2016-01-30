@@ -144,7 +144,7 @@
                                 <a href="<c:url value='/protected/users'/>">All Users</a>
                             </li>
                             <li>
-                                <a href="<c:url value='/protected/articles/usercreate'/>">New User</a>
+                                <a href="<c:url value='/protected/users/usercreate'/>">New User</a>
                             </li>
                         </ul>
                     </li>

@@ -32,6 +32,7 @@ function mainpageController($scope, $http) {
 	    $scope.changePage = function (page) {
 	        $scope.pageToGet = page;
 	        $scope.getArticleList();
+	        scroll(0,0);
 	    };
 	    
   

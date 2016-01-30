@@ -30,7 +30,7 @@
                 <thead>
                 <tr>
                     <th scope="col"><spring:message code="articles.title"/></th>
-                    <th scope="col"><spring:message code="articles.description"/></th>
+                    <%-- <th scope="col"><spring:message code="articles.description"/></th> --%>
                     <th scope="col"><spring:message code="articles.owner"/></th>
                     <th scope="col"><spring:message code="articles.createdDate"/></th>
                     <th scope="col"></th>

@@ -30,7 +30,7 @@
                             {{article.title}}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{article.description}}
+                            {{article.summary}}
                         </h3>
                     </a>
                     <p class="post-meta">Posted by <a href="#">{{article.owner}}</a> on September 24, 2014</p>

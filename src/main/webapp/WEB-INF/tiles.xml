@@ -34,7 +34,7 @@
     </definition>
     
     <definition name="useredit" extends="master-admin.page">
-        <put-attribute name="body-admin" value="/protected/users/users-edit.jsp"/>
+        <put-attribute name="body-admin" value="/protected/users/user-edit.jsp"/>
     </definition>
     
     <definition name="articlecreate" extends="master-admin.page">

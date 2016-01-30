@@ -4,7 +4,7 @@ function usersController($scope, $http) {
     $scope.pageToGet = 0;
 
     $scope.state = 'busy';
-
+    
     $scope.lastAction = '';
 
     $scope.url = "/gltknbtnBlog/protected/users/";
@@ -23,8 +23,7 @@ function usersController($scope, $http) {
     $scope.user = {}
 
     $scope.searchFor = ""
-    	
-
+    
     $scope.getUserList = function () {
         var url = $scope.url;
         $scope.lastAction = 'list';
@@ -128,12 +127,6 @@ function usersController($scope, $http) {
     $scope.createUser = function (newUserForm) {
     	
     	$scope.user.role = $scope.selectedRole.id;
-    	alert("user name: " +  $scope.user.name + "\n" +
-    		  "email: " +  $scope.user.email + "\n" +
-    		  "enabled : " +  $scope.user.enabled + "\n" +
-    		  "password: " +  $scope.user.password + "\n" + 
-    		  "repassword: " +  $scope.user.repassword + "\n"+
-    	"role: " +  $scope.user.role+ "\n" ); 
     	
         var url = $scope.url+"usercreate";
         alert(url);
@@ -165,6 +158,12 @@ function usersController($scope, $http) {
             	
             	$scope.selectedUser = data;
             	
+            	if ($scope.selectedUser.role == "ROLE_USER") {
+            		$scope.editingUserRole= $scope.roledata.availableRoles[1];
+				}else if($scope.selectedUser.role == "ROLE_ADMIN"){
+					$scope.editingUserRole= $scope.roledata.availableRoles[0];
+				}
+            	
             })
             .error(function () {
                 alert("error");
@@ -172,15 +171,16 @@ function usersController($scope, $http) {
     }
 
     $scope.updateUser = function (updateUserForm) {
+    	
+    	$scope.selectedUser.role = $scope.editingUserRole.id;
 
         var url = $scope.url +"useredit/"+ $scope.selectedUser.id;
         
-        var config = {}
-
+        var config = {params: {repassword: $scope.repassword}};
+        
         $http.put(url, $scope.selectedUser, config)
             .success(function (data) {
-            	$scope.dataActionMessageUpdateUser = data.actionMessage +" : " + $scope.selectedUser.name;
-            	alert($scope.dataActionMessageUpdateUser);
+            	alert(data.actionMessage +" : " + $scope.selectedUser.name);
             })
             .error(function(data, status, headers, config) {
             	alert("error update user");

@@ -9,7 +9,7 @@
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
-		<div class="row">
+		<div class="row-fluid container">
 			<div class="col-lg-12 Margin_0 Padding_0">
 				<h1 class="page-header">
 					Article Creating 
@@ -24,8 +24,6 @@
 		<!-- /.row -->
 
 		<div class="row-fluid">
-
-			<div class="container">
 
 				<div class="container" ng-controller="articlesController">
 					<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
@@ -44,6 +42,7 @@
 											
 									</div>
 								</div>
+								
 								<div class="form-group">
 									<label for="title"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Title</label>
@@ -52,7 +51,16 @@
 											ng-model="article.title" name="title" placeholder="Required" />
 									</div>
 								</div>
-
+								
+								<div class="form-group">
+									<label for="summary"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Summary</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<div class="nopadding Padding_0 Margin_0" >
+											<textarea class="Padding_0 Margin_0" style="min-width: 100%" ng-model="article.summary" id="summary" name="summary"></textarea>
+										</div>
+									</div>
+								</div>
 								
 								<div class="form-group">
 								<label for="adSoyad"
@@ -89,10 +97,6 @@
 					</div>
 				</div>
 				
-				
-		
-
-			</div>
 		</div>
 
 
