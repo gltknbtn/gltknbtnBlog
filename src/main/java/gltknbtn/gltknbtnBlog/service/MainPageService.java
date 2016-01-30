@@ -47,13 +47,17 @@ public class MainPageService {
 	}
 
 	private Page<Article> executeQueryFindAll(int page, int maxResults) {
-		final PageRequest pageRequest = new PageRequest(page, maxResults, sortByTitleASC());
+		final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
 
 		return mainPageRepository.findAll(pageRequest);
 	}
 
 	private Sort sortByTitleASC() {
 		return new Sort(Sort.Direction.ASC, "title");
+	}
+	
+	private Sort sortByIdDESC() {
+		return new Sort(Sort.Direction.DESC, "id");
 	}
 
 	private ArticleListVO buildResult(Page<Article> result) {

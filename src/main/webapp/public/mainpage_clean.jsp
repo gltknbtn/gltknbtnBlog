@@ -33,7 +33,7 @@
                             {{article.summary}}
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">{{article.owner}}</a> on September 24, 2014</p>
+                    <p class="post-meta">Posted by <a href="#">{{article.owner}}</a> on {{article.createdDate}}</p>
                 </div>
                 <hr>
             </div>

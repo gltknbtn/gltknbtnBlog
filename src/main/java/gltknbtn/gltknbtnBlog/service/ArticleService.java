@@ -62,13 +62,17 @@ public class ArticleService {
     }
 
     private Page<Article> executeQueryFindAll(int page, int maxResults) {
-        final PageRequest pageRequest = new PageRequest(page, maxResults, sortByTitleASC());
+        final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
 
         return articleRepository.findAll(pageRequest);
     }
 
+    private Sort sortByIdDESC() {
+        return new Sort(Sort.Direction.DESC, "id");
+    }
+    
     private Sort sortByTitleASC() {
-        return new Sort(Sort.Direction.ASC, "title");
+    	return new Sort(Sort.Direction.ASC, "title");
     }
 
     private ArticleListVO buildResult(Page<Article> result) {
@@ -76,7 +80,7 @@ public class ArticleService {
     }
 
     private Page<Article> executeQueryFindByTitle(int page, int maxResults, String title) {
-        final PageRequest pageRequest = new PageRequest(page, maxResults, sortByTitleASC());
+        final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
 
         return articleRepository.findByTitleLike(pageRequest, "%" + title+ "%");
     }

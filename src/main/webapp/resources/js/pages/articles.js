@@ -165,6 +165,7 @@ function articlesController($scope, $http) {
         $http.post(url, $.param($scope.article), config)
             .success(function (data) {
             	$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
+            	alert(data.actionMessage +" : " + $scope.article.title);
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);
