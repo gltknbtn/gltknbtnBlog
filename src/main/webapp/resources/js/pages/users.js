@@ -126,16 +126,26 @@ function usersController($scope, $http) {
 
     $scope.createUser = function (newUserForm) {
     	
+    	var password = $scope.user.password;
+    	var repassword = $scope.user.repassword;
+    	
+    	 if (!newUserForm.$valid) {
+             $scope.displayValidationError = true;
+             return;
+         }else if (password != repassword) {
+        	 alert("Password and Repassword not matched");
+        	 return;
+		}
+    	
     	$scope.user.role = $scope.selectedRole.id;
     	
         var url = $scope.url+"usercreate";
-        alert(url);
 
         var config = {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}};
 
         $http.post(url, $.param($scope.user), config)
             .success(function (data) {
-            	alert(data.actionMessage +" : " + $scope.user.name);
+            	alert(data.actionMessage);
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);

@@ -57,16 +57,31 @@ public class UserController {
 
     @RequestMapping(value = "/usercreate", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> create(@ModelAttribute("user") User user,
-    								@ModelAttribute("repassword") String repassword,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
-        userService.save(user);
-
-        return createListAllResponse(page, locale, "message.create.success");
+    	
+    	boolean isUserExists = checkUserEmailExist(user);
+    	if (!isUserExists) {
+    		userService.save(user);
+    		return createListAllResponse(page, locale, "message.create.success");
+		}else{
+			return createListAllResponse(page, locale, "message.user.exists");
+		}
+    	
     }
 
-    @RequestMapping(value = "useredit/{id}", method = RequestMethod.PUT, produces = "application/json")
+    private boolean checkUserEmailExist(User user) {
+    	boolean isUserExists = false;
+    	User tmpUser = userService.findByEmail(user.getEmail());
+    	if (tmpUser != null) {
+			return isUserExists = true;
+		}else
+		return isUserExists;
+	}
+
+
+	@RequestMapping(value = "useredit/{id}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int userId,
                                     @RequestBody User user,
                                     @RequestParam String repassword,
