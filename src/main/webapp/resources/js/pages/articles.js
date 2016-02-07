@@ -148,6 +148,7 @@ function articlesController($scope, $http) {
     $scope.createArticle = function (newArticleForm) {
     	
     	$scope.article.description = $("#txtEditor").Editor("getText");
+    	$scope.article.owner = $("#owner").val();
     	
         if (!newArticleForm.$valid) {
             $scope.displayValidationError = true;

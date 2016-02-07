@@ -76,8 +76,8 @@
 									<label for="adSoyad"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Owner</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="tel"
-											ng-model="article.owner" name="owner"
+										<input type="text" class="form-control" id="owner" disabled="disabled"
+											value="${user.name}" name="owner"
 											placeholder="Required" />
 									</div>
 								</div>
