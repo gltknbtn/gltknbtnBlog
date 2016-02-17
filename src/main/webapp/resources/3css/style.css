@@ -17,7 +17,8 @@ a:hover{
 }
 
 body{
-   background:url(../img/mathBg.gif) top left repeat;
+  /*  background:url(../img/mathBg.gif) top left repeat; */
+  background-color: #e8e8e8!important;
    padding-bottom: 40px; 
 }
 
