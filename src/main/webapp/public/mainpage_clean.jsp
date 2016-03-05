@@ -20,10 +20,28 @@
         </div>
     </header>
 
+<!-- Category -->
+	<div class="col-lg-2 col-lg-offset-2 col-md-4 MarginTop_20" >
+		<div class="list-group">
+			<a href="#" class="list-group-item">item1 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item active">item2 <span
+				class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item3 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item4 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item5 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item6 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item7 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item8 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item9 <span class="badge">15</span>
+			</a> <a href="#" class="list-group-item">item10 <span class="badge">15</span>
+			</a>
+		</div>
+	</div>
+
     <!-- Main Content -->
-    <div class="container">
+    <div class="col-lg-8 col-md-8">
         <div class="row" ng-repeat="article in page.source">
-            <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-lg-8 col-md-10">
                 <div class="post-preview">
                     <a href="articledetail/{{article.id}}">
                         <h2 class="post-title">
@@ -39,6 +57,7 @@
             </div>
         </div>
         
+        <!-- Pagination -->
           <div class="text-center PaddingBottom_20">
 		                <button href="#" class="btn btn-default"
 		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
@@ -70,7 +89,8 @@
 		                     <spring:message code="pagination.last"/>          
 		                </button>
             	 </div>
-    </div>
+
+	</div>
 
     <hr>
     </div>
