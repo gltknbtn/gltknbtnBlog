@@ -13,7 +13,7 @@
                     <div class="post-heading">
                         <h1>${selectedArticle.title}</h1>
                         <h2 class="subheading">${selectedArticle.title} 22</h2>
-                        <span class="meta">Posted by <a href="#">${selectedArticle.owner}</a> on August 24, 2014</span>
+                    <span class="meta">Posted by <a href="#">${selectedArticle.user.name}</a> on August 24, 2014</span>
                     </div>
                 </div>
             </div>

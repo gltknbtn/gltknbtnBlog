@@ -31,7 +31,7 @@
                 <tr>
                     <th scope="col"><spring:message code="articles.title"/></th>
                     <%-- <th scope="col"><spring:message code="articles.description"/></th> --%>
-                    <th scope="col"><spring:message code="articles.owner"/></th>
+                    <th scope="col"><spring:message code="articles.user"/></th>
                     <th scope="col"><spring:message code="articles.createdDate"/></th>
                     <th scope="col"></th>
                 </tr>
@@ -40,7 +40,7 @@
                 <tr ng-repeat="article in page.source">
                     <td class="tdContactsCentered">{{article.title}}</td>
                     <!-- <td class="tdContactsCentered">{{article.description}}</td> -->
-                    <td class="tdContactsCentered">{{article.owner}}</td>
+                    <td class="tdContactsCentered">{{article.userName}}</td>
                     <td class="tdContactsCentered">{{article.createdDate}}</td>
                     <td class="width15">
                         <div class="text-center">

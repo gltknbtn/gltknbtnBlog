@@ -12,12 +12,12 @@ public class ArticleListVO {
     private String actionMessage;
     private String searchMessage;
 
-    private List<Article> articles;
+    private List<ArticleDTO> articles;
 
     public ArticleListVO() {
     }
 
-    public ArticleListVO(int pages, long totalArticles, List<Article> articles) {
+    public ArticleListVO(int pages, long totalArticles, List<ArticleDTO> articles) {
         this.pagesCount = pages;
         this.articles = articles;
         this.totalArticles = totalArticles;
@@ -31,11 +31,11 @@ public class ArticleListVO {
         this.pagesCount = pagesCount;
     }
 
-    public List<Article> getArticles() {
+    public List<ArticleDTO> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(List<ArticleDTO> articles) {
         this.articles = articles;
     }
 

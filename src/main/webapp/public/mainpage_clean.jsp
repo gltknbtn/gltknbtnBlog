@@ -51,7 +51,7 @@
                             {{article.summary}}
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">{{article.owner}}</a> on {{article.createdDate}}</p>
+                    <p class="post-meta">Posted by <a href="#">{{article.userName}}</a> on {{article.createdDate}}</p>
                 </div>
                 <hr>
             </div>

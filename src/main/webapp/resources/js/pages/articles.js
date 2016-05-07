@@ -27,7 +27,6 @@ function articlesController($scope, $http) {
     $scope.getArticleList = function () {
         var url = $scope.url;
         $scope.lastAction = 'list';
-        
         $scope.startDialogAjaxRequest();
 
         var config = {params: {page: $scope.pageToGet}};
@@ -36,7 +35,8 @@ function articlesController($scope, $http) {
             	
                 $scope.finishAjaxCallOnSuccess(data, null, false);
             })
-            .error(function () {
+            .error(function (b) {
+            	alert(b);
                 $scope.state = 'error';
                 alert("error");
                 $scope.displayCreateArticleButton = false;
@@ -46,9 +46,8 @@ function articlesController($scope, $http) {
     $scope.populateTable = function (data) {
         if (data.pagesCount > 0) {
             $scope.state = 'list';
-
             $scope.page = {source: data.articles, currentPage: $scope.pageToGet, pagesCount: data.pagesCount, totalArticles : data.totalArticles};
-
+            
             if($scope.page.pagesCount <= $scope.page.currentPage){
                 $scope.pageToGet = $scope.page.pagesCount - 1;
                 $scope.page.currentPage = $scope.page.pagesCount - 1;

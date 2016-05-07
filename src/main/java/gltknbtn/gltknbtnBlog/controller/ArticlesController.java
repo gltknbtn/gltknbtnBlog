@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import gltknbtn.gltknbtnBlog.model.Article;
+import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
@@ -42,26 +46,38 @@ public class ArticlesController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView welcome() {
+    	
         return new ModelAndView("articleList");
     }
     
-    @RequestMapping(value = "/articlecreate", method = RequestMethod.GET)
-    public ModelAndView articleCreate() {
-    	return new ModelAndView("articlecreate");
-    }
-
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> listAll(@RequestParam int page, Locale locale) {
-        return createListAllResponse(page, locale);
+    	return createListAllResponse(page, locale);
+    }
+    
+    @RequestMapping(value = "/articlecreate", method = RequestMethod.GET)
+    public ModelAndView articleCreate(HttpServletRequest request) {
+    	
+    	ModelAndView modelAndView = new ModelAndView("articlecreate");
+    	HttpSession httpsession = request.getSession();
+    	User user = (User)httpsession.getAttribute("user");
+    	modelAndView.addObject("userName", user.getName());
+    	
+    	return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> create(@ModelAttribute("article") Article article,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
+                                    HttpServletRequest request,
                                     Locale locale) {
     	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
     	article.setCreatedDate(createdDate);
+    	HttpSession httpsession = request.getSession();
+    	User user = (User)httpsession.getAttribute("user");
+    	
+    	article.setUser(user);
     	
         articleService.save(article);
 

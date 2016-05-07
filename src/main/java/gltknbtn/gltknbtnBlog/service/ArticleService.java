@@ -1,5 +1,8 @@
 package gltknbtn.gltknbtnBlog.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import gltknbtn.gltknbtnBlog.model.Article;
+import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.repository.ArticleRepository;
+import gltknbtn.gltknbtnBlog.repository.UserRepository;
+import gltknbtn.gltknbtnBlog.vo.ArticleDTO;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
 @Service
@@ -18,6 +24,9 @@ public class ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional(readOnly = true)
     public ArticleListVO findAll(int page, int maxResults) {
@@ -63,7 +72,6 @@ public class ArticleService {
 
     private Page<Article> executeQueryFindAll(int page, int maxResults) {
         final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
-
         return articleRepository.findAll(pageRequest);
     }
 
@@ -76,7 +84,24 @@ public class ArticleService {
     }
 
     private ArticleListVO buildResult(Page<Article> result) {
-        return new ArticleListVO(result.getTotalPages(), result.getTotalElements(), result.getContent());
+    	List<Article> articleList = result.getContent();
+    	List<ArticleDTO> articleDTOList = new ArrayList<ArticleDTO>();
+    	for (int i = 0; i < articleList.size(); i++) {
+    		Article article = articleList.get(i);
+    		ArticleDTO articleDTO  = new ArticleDTO();
+    		articleDTO.setCreatedDate(article.getCreatedDate());
+    		articleDTO.setDescription(article.getDescription());
+    		articleDTO.setId(article.getId());
+    		articleDTO.setSummary(article.getSummary());
+    		articleDTO.setTitle(article.getTitle());
+    		
+    		User user = userRepository.findById(article.getUser().getId());
+    		articleDTO.setUserName(user.getName());
+    		
+			articleDTOList.add(articleDTO);
+		}
+    	
+        return new ArticleListVO(result.getTotalPages(), result.getTotalElements(), articleDTOList);
     }
 
     private Page<Article> executeQueryFindByTitle(int page, int maxResults, String title) {
