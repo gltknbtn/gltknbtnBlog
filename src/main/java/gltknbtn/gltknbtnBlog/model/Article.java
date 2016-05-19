@@ -17,6 +17,7 @@ public class Article {
 	private String summary;
 	private String description;
 	private String createdDate;
+	private String status;
 	
 	@ManyToOne
 	private User user;
@@ -25,13 +26,14 @@ public class Article {
 		
 	}
 	
-	public Article(String title, String summary, String description, String createdDate, int id, User user) {
+	public Article(String title, String summary, String description, String createdDate, int id, User user, String status) {
 		super();
 		this.title= title;
 		this.summary= summary;
 		this.description = description;
 		this.createdDate = createdDate;
 		this.user = user;
+		this.status = status;
 	}
 
     public int getId() {
@@ -77,6 +79,14 @@ public class Article {
     
     public void setUser(User user) {
 		this.user = user;
+	}
+    
+    public String getStatus() {
+		return status;
+	}
+    
+    public void setStatus(String status) {
+		this.status = status;
 	}
 
     @Override

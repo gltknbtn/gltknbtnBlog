@@ -9,4 +9,6 @@ import gltknbtn.gltknbtnBlog.model.Comment;
 
 public interface MainPageRepository extends PagingAndSortingRepository<Article, Integer> {
     Page<Article> findByTitleLike(Pageable pageable, String title);
+    Page<Article> findByStatus(Pageable pageable, String status);
+    
 }

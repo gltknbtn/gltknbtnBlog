@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import gltknbtn.gltknbtnBlog.model.Article;
 import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
+import gltknbtn.gltknbtnBlog.vo.ArticleDTO;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
 @Controller
@@ -37,7 +38,7 @@ public class ArticlesController {
 
     @Autowired
     private ArticleService articleService;
-
+    
     @Autowired
     private MessageSource messageSource;
 
@@ -90,14 +91,27 @@ public class ArticlesController {
 
     @RequestMapping(value = "articleedit/{id}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int articleId,
-                                    @RequestBody Article article,
+                                    @RequestBody ArticleDTO articleDto,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
-        if (articleId != article.getId()) {
+        if (articleId != articleDto.getId()) {
             return new ResponseEntity<String>("Bad Request", HttpStatus.BAD_REQUEST);
         }
 
+        Article article = new Article();
+        article.setId(articleId);
+        article.setCreatedDate(articleDto.getCreatedDate());
+        article.setDescription(articleDto.getDescription());
+        article.setSummary(articleDto.getSummary());
+        article.setTitle(articleDto.getTitle());
+        article.setStatus(articleDto.getStatus());
+        
+        User user = articleService.findById(articleId).getUser();
+        article.setUser(user);
+        
         articleService.save(article);
+        
+        
 
         return createListAllResponse(page, locale, "message.update.success");
     }
@@ -140,7 +154,16 @@ public class ArticlesController {
                                     Locale locale) {
     	Article article = articleService.findById(selectedArticleId);
     	
-    	 return new ResponseEntity<Article>(article, HttpStatus.OK);
+    	ArticleDTO articleDTO = new ArticleDTO();
+    	articleDTO.setCreatedDate(article.getCreatedDate());
+    	articleDTO.setDescription(article.getDescription());
+    	articleDTO.setId(article.getId());
+    	articleDTO.setSummary(article.getSummary());
+    	articleDTO.setTitle(article.getTitle());
+    	articleDTO.setUserName(article.getUser().getName());
+    	articleDTO.setStatus(article.getStatus());
+    	
+    	 return new ResponseEntity<ArticleDTO>(articleDTO, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/{title}", method = RequestMethod.GET, produces = "application/json")

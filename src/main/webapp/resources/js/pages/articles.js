@@ -143,11 +143,22 @@ function articlesController($scope, $http) {
     $scope.resetArticle = function(){
         $scope.article = {};
     };
+    
+    $scope.statusdata = {
+    	    availableStatus: [
+    	      {id: 'enable', name: 'Enable'},
+    	      {id: 'disable', name: 'Disable'}
+    	    ]
+    	    };
 
     $scope.createArticle = function (newArticleForm) {
     	
     	$scope.article.description = $("#txtEditor").Editor("getText");
     	$scope.article.owner = $("#owner").val();
+    	
+    	$scope.article.status = $scope.selectedStatus.id;
+    	
+    	alert("$scope.article.status: " + $scope.article.status);
     	
         if (!newArticleForm.$valid) {
             $scope.displayValidationError = true;
@@ -180,6 +191,13 @@ function articlesController($scope, $http) {
             .success(function (data) {
             	
             	$scope.selectedArticle = data;
+            	
+            	if ($scope.selectedArticle.status == "enable") {
+            		$scope.editingArticleStatus= $scope.statusdata.availableStatus[0];
+				}else if($scope.selectedArticle.status == "disable"){
+					$scope.editingArticleStatus= $scope.statusdata.availableStatus[1];
+				}
+            	
             	$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
             	
             })
@@ -191,6 +209,8 @@ function articlesController($scope, $http) {
     $scope.updateArticle = function (updateArticleForm) {
 
         var url = $scope.url +"articleedit/"+ $scope.selectedArticle.id;
+        
+        $scope.selectedArticle.status = $scope.editingArticleStatus.id;
         
         $scope.selectedArticle.description = $("#txtEditor").Editor("getText");
 

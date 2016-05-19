@@ -31,8 +31,6 @@
 							<form class="form-horizontal " role="form" name="newArticleForm"
 								novalidate>
 								
-
-								
 								<div ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
 									<label for="title"
 										class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
@@ -63,7 +61,7 @@
 								</div>
 								
 								<div class="form-group">
-								<label for="adSoyad"
+								<label for="description"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Description</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<div class="nopadding Border_1" >
@@ -71,9 +69,20 @@
 										</div>
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label for="status"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Status</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<select name="statusSelect" id="statusSelect"
+											ng-init="selectedStatus = statusdata.availableStatus[0]"
+											ng-options="status.name for status in statusdata.availableStatus"
+											ng-model="selectedStatus"></select>
+									</div>
+								</div>
 
 								<div class="form-group">
-									<label for="adSoyad"
+									<label for="author"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Author</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="text" class="form-control" id="author" disabled="disabled"

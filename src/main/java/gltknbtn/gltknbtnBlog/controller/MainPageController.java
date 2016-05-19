@@ -38,20 +38,20 @@ public class MainPageController {
     }
     
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> listAll(@RequestParam int page, Locale locale) {
-        return createListAllResponse(page, locale);
+    public ResponseEntity<?> listAllActiveArticles(@RequestParam int page, Locale locale) {
+        return createListAllActiveArticlesResponse(page, locale);
     }
     
-    private ResponseEntity<?> createListAllResponse(int page, Locale locale) {
-        return createListAllResponse(page, locale, null);
+    private ResponseEntity<?> createListAllActiveArticlesResponse(int page, Locale locale) {
+        return createListAllActiveArticlesResponse(page, locale, null);
     }
     
-    private ArticleListVO listAll(int page) {
-        return mainPageService.findAll(page, maxResults);
+    private ArticleListVO listAllActiveArticles(int page) {
+        return mainPageService.findAllActiveArticles(page, maxResults);
     }
 
-    private ResponseEntity<?> createListAllResponse(int page, Locale locale, String messageKey) {
-        ArticleListVO articleListVO = listAll(page);
+    private ResponseEntity<?> createListAllActiveArticlesResponse(int page, Locale locale, String messageKey) {
+        ArticleListVO articleListVO = listAllActiveArticles(page);
 
         addActionMessageToVO(articleListVO, locale, messageKey, null);
 

@@ -33,7 +33,8 @@
                     <%-- <th scope="col"><spring:message code="articles.description"/></th> --%>
                     <th scope="col"><spring:message code="articles.user"/></th>
                     <th scope="col"><spring:message code="articles.createdDate"/></th>
-                    <th scope="col"></th>
+                    <th scope="col"><spring:message code="articles.status"/></th>
+                    <th scope="col"><spring:message code="articles.editing"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,7 @@
                     <!-- <td class="tdContactsCentered">{{article.description}}</td> -->
                     <td class="tdContactsCentered">{{article.userName}}</td>
                     <td class="tdContactsCentered">{{article.createdDate}}</td>
+                    <td class="tdContactsCentered">{{article.status}}</td>
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{article.id}}"/>
@@ -51,12 +53,13 @@
                                class="btn btn-default" data-toggle="modal">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <button type ="button"
+                            
+                           <%--  <button type ="button"
                                title="<spring:message code="delete"/>&nbsp;<spring:message code="article"/>"
                                class="btn btn-default" data-toggle="modal" data-target="#deleteArticlesModal"
                                ng-click="selectArticle(article.id)">
                                 <i class="glyphicon glyphicon-minus"></i>
-                            </button>
+                            </button> --%>
                         </div>
                     </td>
                 </tr>

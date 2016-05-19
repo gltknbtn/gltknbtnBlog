@@ -28,12 +28,12 @@ public class MainPageService {
     private UserRepository userRepository;
 
 	@Transactional(readOnly = true)
-	public ArticleListVO findAll(int page, int maxResults) {
-		Page<Article> result = executeQueryFindAll(page, maxResults);
+	public ArticleListVO findAllActiveArticles(int page, int maxResults) {
+		Page<Article> result = executeQueryFindAllActiveArticles(page, maxResults);
 
 		if (shouldExecuteSameQueryInLastPage(page, result)) {
 			int lastPage = result.getTotalPages() - 1;
-			result = executeQueryFindAll(lastPage, maxResults);
+			result = executeQueryFindAllActiveArticles(lastPage, maxResults);
 		}
 
 		return buildResult(result);
@@ -55,10 +55,10 @@ public class MainPageService {
 		return isUserAfterOrOnLastPage(page, result) && hasDataInDataBase(result);
 	}
 
-	private Page<Article> executeQueryFindAll(int page, int maxResults) {
+	private Page<Article> executeQueryFindAllActiveArticles(int page, int maxResults) {
 		final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
 
-		return mainPageRepository.findAll(pageRequest);
+		return mainPageRepository.findByStatus(pageRequest, "enable");
 	}
 
 	private Sort sortByTitleASC() {

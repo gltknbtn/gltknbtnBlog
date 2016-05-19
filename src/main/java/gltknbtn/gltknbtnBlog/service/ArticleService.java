@@ -97,6 +97,7 @@ public class ArticleService {
     		
     		User user = userRepository.findById(article.getUser().getId());
     		articleDTO.setUserName(user.getName());
+    		articleDTO.setStatus(article.getStatus());
     		
 			articleDTOList.add(articleDTO);
 		}

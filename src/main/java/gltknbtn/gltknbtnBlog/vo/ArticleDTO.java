@@ -7,6 +7,7 @@ public class ArticleDTO {
 		private String description;
 		private String createdDate;
 		private String userName;
+		private String status;
 		
 		
 		public int getId() {
@@ -44,6 +45,12 @@ public class ArticleDTO {
 		}
 		public void setUserName(String userName) {
 			this.userName = userName;
+		}
+		public String getStatus() {
+			return status;
+		}
+		public void setStatus(String status) {
+			this.status = status;
 		}
 		
 }

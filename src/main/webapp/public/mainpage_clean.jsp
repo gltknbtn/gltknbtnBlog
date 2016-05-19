@@ -23,17 +23,14 @@
 <!-- Category -->
 	<div class="col-lg-2 col-lg-offset-2 col-md-4 MarginTop_20" >
 		<div class="list-group">
-			<a href="#" class="list-group-item">item1 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item active">item2 <span
-				class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item3 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item4 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item5 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item6 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item7 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item8 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item9 <span class="badge">15</span>
-			</a> <a href="#" class="list-group-item">item10 <span class="badge">15</span>
+			<a href="#" class="list-group-item active">All Category <span class="badge">17</span>
+			</a> <a href="#" class="list-group-item">Object Oriented Programming <span class="badge">3</span>
+			</a> <a href="#" class="list-group-item">Continous Integration <span class="badge">2</span>
+			</a> <a href="#" class="list-group-item">Machine Learning <span class="badge">3</span>
+			</a> <a href="#" class="list-group-item">Image Processing <span class="badge">4</span>
+			</a> <a href="#" class="list-group-item">Software Testing <span class="badge">2</span>
+			</a> <a href="#" class="list-group-item">Life <span class="badge">1</span>
+			</a> <a href="#" class="list-group-item">Fun <span class="badge">2</span>
 			</a>
 		</div>
 	</div>

@@ -12,12 +12,12 @@
 		<div class="row-fluid container">
 			<div class="col-lg-12 Margin_0 Padding_0">
 				<h1 class="page-header">
-					Article Creating 
+					Article Editing 
 				</h1>
 				<ol class="breadcrumb">
 					<li><i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
 					</li>
-					<li class="active"><i class="fa fa-file"></i> Article Creating</li>
+					<li class="active"><i class="fa fa-file"></i> Article Editing</li>
 				</ol>
 			</div>
 		</div>
@@ -59,13 +59,23 @@
 										</div>
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label for="status"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Status</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<select name="statusSelect" id="statusSelect"
+											ng-options="status.name for status in statusdata.availableStatus"
+											ng-model="editingArticleStatus"></select>
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label for="adSoyad"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Owner</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="tel"
-											ng-model="selectedArticle.owner" name="owner"
+										<input type="text" class="form-control" id="userName" disabled="disabled"
+											ng-model="selectedArticle.userName" name="userName"
 											placeholder="Required" />
 									</div>
 								</div>
@@ -74,7 +84,7 @@
 									<label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="submit" ng-click="updateArticle(updateArticleForm)"
-											class="btn btn-default pull-right" value="Gönder" />
+											class="btn btn-default pull-right" value="Submint" />
 									</div>
 								</div>
 
