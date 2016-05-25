@@ -42,6 +42,31 @@ function articlesController($scope, $http) {
                 $scope.displayCreateArticleButton = false;
             });
     }
+    
+    $scope.getCategoryList = function (categoryName) {
+    	var url = "/gltknbtnBlog/protected/categories/";
+    	
+    	var config = {params: {page: $scope.pageToGet}};
+    	$http.get(url, config)
+    	.success(function (data) {
+    		
+    		
+    		$scope.categories = data.categories;
+    		var size = $scope.categories.length;
+    		for (var i = 0; i < size; i++) {
+				if (categoryName == $scope.categories[i].categoryName) {
+					$scope.selectedArticleCategory = $scope.categories[i];
+					break;
+				}else{
+					$scope.selectedArticleCategory = $scope.categories[0];
+				}
+			}
+    		
+    	})
+    	.error(function (b) {
+    		alert("error in getCategoryList : "+ b);
+    	});
+    }
 
     $scope.populateTable = function (data) {
         if (data.pagesCount > 0) {
@@ -156,9 +181,9 @@ function articlesController($scope, $http) {
     	$scope.article.description = $("#txtEditor").Editor("getText");
     	$scope.article.owner = $("#owner").val();
     	
-    	$scope.article.status = $scope.selectedStatus.id;
+    	$scope.article.categoryName = $scope.selectedArticleCategory.categoryName;
     	
-    	alert("$scope.article.status: " + $scope.article.status);
+    	$scope.article.status = $scope.selectedStatus.id;
     	
         if (!newArticleForm.$valid) {
             $scope.displayValidationError = true;
@@ -191,6 +216,8 @@ function articlesController($scope, $http) {
             .success(function (data) {
             	
             	$scope.selectedArticle = data;
+            	$scope.catName = $scope.selectedArticle.categoryName;
+            	$scope.getCategoryList($scope.catName);
             	
             	if ($scope.selectedArticle.status == "enable") {
             		$scope.editingArticleStatus= $scope.statusdata.availableStatus[0];
@@ -199,18 +226,20 @@ function articlesController($scope, $http) {
 				}
             	
             	$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
-            	
             })
             .error(function () {
                 alert("error");
             });
     }
+    
 
     $scope.updateArticle = function (updateArticleForm) {
 
         var url = $scope.url +"articleedit/"+ $scope.selectedArticle.id;
         
         $scope.selectedArticle.status = $scope.editingArticleStatus.id;
+        
+        $scope.selectedArticle.categoryName = $scope.selectedArticleCategory.categoryName;
         
         $scope.selectedArticle.description = $("#txtEditor").Editor("getText");
 
@@ -288,4 +317,6 @@ function articlesController($scope, $http) {
     }
 
     $scope.getArticleList();
+    $scope.getCategoryList("");
+    
 }

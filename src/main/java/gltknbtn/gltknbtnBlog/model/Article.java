@@ -20,6 +20,9 @@ public class Article {
 	private String status;
 	
 	@ManyToOne
+	private Category category;
+	
+	@ManyToOne
 	private User user;
 	
 	public Article(){
@@ -87,6 +90,14 @@ public class Article {
     
     public void setStatus(String status) {
 		this.status = status;
+	}
+    
+    @JsonBackReference
+    public Category getCategory() {
+		return category;
+	}
+    public void setCategory(Category category) {
+		this.category = category;
 	}
 
     @Override

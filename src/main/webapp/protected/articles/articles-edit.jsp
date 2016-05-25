@@ -69,6 +69,16 @@
 											ng-model="editingArticleStatus"></select>
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label for="status"
+										class="col-lg-2 col-md-3 col-sm-3 control-label">Category</label>
+									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+										<select name="category" id="category" 
+										 ng-options="category as category.categoryName for category in categories"
+											ng-model="selectedArticleCategory"></select>
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label for="adSoyad"

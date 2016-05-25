@@ -25,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import gltknbtn.gltknbtnBlog.model.Article;
+import gltknbtn.gltknbtnBlog.model.Category;
 import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
+import gltknbtn.gltknbtnBlog.service.CategoryService;
 import gltknbtn.gltknbtnBlog.vo.ArticleDTO;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
@@ -38,6 +40,9 @@ public class ArticlesController {
 
     @Autowired
     private ArticleService articleService;
+    
+    @Autowired
+    private CategoryService categoryService;
     
     @Autowired
     private MessageSource messageSource;
@@ -68,17 +73,22 @@ public class ArticlesController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> create(@ModelAttribute("article") Article article,
+    public ResponseEntity<?> create(@ModelAttribute("article") ArticleDTO articleDTO,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     HttpServletRequest request,
                                     Locale locale) {
     	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-    	article.setCreatedDate(createdDate);
+    	articleDTO.setCreatedDate(createdDate);
     	HttpSession httpsession = request.getSession();
     	User user = (User)httpsession.getAttribute("user");
     	
+    	Category category = categoryService.findByCategoryName(articleDTO.getCategoryName());
+    	
+    	Article article = getArticleByArticleDTO(articleDTO, articleDTO.getId());
+    	
     	article.setUser(user);
+    	article.setCategory(category);
     	
         articleService.save(article);
 
@@ -98,26 +108,31 @@ public class ArticlesController {
             return new ResponseEntity<String>("Bad Request", HttpStatus.BAD_REQUEST);
         }
 
-        Article article = new Article();
+        Article article = getArticleByArticleDTO(articleDto, articleId);
+        Category category = categoryService.findByCategoryName(articleDto.getCategoryName());
+        article.setCategory(category);
+        
+        User user = articleService.findById(articleId).getUser();
+        article.setUser(user);
+        
+        articleService.save(article);
+
+        return createListAllResponse(page, locale, "message.update.success");
+    }
+    
+    
+    private Article getArticleByArticleDTO(ArticleDTO articleDto, int articleId) {
+    	Article article = new Article();
         article.setId(articleId);
         article.setCreatedDate(articleDto.getCreatedDate());
         article.setDescription(articleDto.getDescription());
         article.setSummary(articleDto.getSummary());
         article.setTitle(articleDto.getTitle());
         article.setStatus(articleDto.getStatus());
-        
-        User user = articleService.findById(articleId).getUser();
-        article.setUser(user);
-        
-        articleService.save(article);
-        
-        
+		return article;
+	}
 
-        return createListAllResponse(page, locale, "message.update.success");
-    }
-    
-    
-    @RequestMapping(value = "/articleedit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/articleedit/{id}", method = RequestMethod.GET)
     public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
                                     Locale locale) {
     	
@@ -162,6 +177,7 @@ public class ArticlesController {
     	articleDTO.setTitle(article.getTitle());
     	articleDTO.setUserName(article.getUser().getName());
     	articleDTO.setStatus(article.getStatus());
+    	articleDTO.setCategoryName(article.getCategory().getCategoryName());
     	
     	 return new ResponseEntity<ArticleDTO>(articleDTO, HttpStatus.OK);
     }
