@@ -65,14 +65,10 @@
 									<label for="enabled"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Enabled</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="enabled"
-											ng-model="user.enabled" name="enabled" required="required" placeholder="Required" />
-									</div>
-									<div class="MarginTop_5">
-										 <span class="alert alert-danger Padding_5" 
-											ng-show="displayValidationError && newUserForm.enabled.$error.required">
-												<spring:message code="required" />
-										</span>
+										<select name="statusSelect" id="statusSelect"
+											ng-init="selectedStatus = statusdata.availableStatus[0]"
+											ng-options="status.name for status in statusdata.availableStatus"
+											ng-model="selectedStatus"></select>
 									</div>
 									
 								</div>

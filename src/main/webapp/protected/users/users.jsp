@@ -24,7 +24,7 @@
                     <th scope="col"><spring:message code="user.name"/></th>
                     <th scope="col"><spring:message code="user.password"/></th>
                     <th scope="col"><spring:message code="user.email"/></th>
-                    <th scope="col"></th>
+                    <th class="text-center" scope="col"><spring:message code="user.edit"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,12 +41,12 @@
                                class="btn btn-default" data-toggle="modal">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </a>
-                            <button type ="button"
+                            <%-- <button type ="button"
                                title="<spring:message code="delete"/>&nbsp;<spring:message code="user"/>"
                                class="btn btn-default" data-toggle="modal" data-target="#deleteUsersModal"
                                ng-click="selectUser(user.id)">
                                 <i class="glyphicon glyphicon-minus"></i>
-                            </button>
+                            </button> --%>
                         </div>
                     </td>
                 </tr>

@@ -136,7 +136,10 @@ function usersController($scope, $http) {
         	 alert("Password and Repassword not matched");
         	 return;
 		}
+    	 
     	
+    	$scope.user.enabled = $scope.selectedStatus.id;
+    	 
     	$scope.user.role = $scope.selectedRole.id;
     	
         var url = $scope.url+"usercreate";
@@ -151,6 +154,13 @@ function usersController($scope, $http) {
             	alert("error status: " + status);
             });
     };
+    
+    $scope.statusdata = {
+    	    availableStatus: [
+    	      {id: '1', name: 'True'},
+    	      {id: '0', name: 'False'}
+    	    ]
+    	    };
     
     $scope.roledata = {
     	    availableRoles: [
@@ -174,6 +184,12 @@ function usersController($scope, $http) {
 					$scope.editingUserRole= $scope.roledata.availableRoles[0];
 				}
             	
+            	if ($scope.selectedUser.enabled == "1") {
+            		$scope.editingUserStatus= $scope.statusdata.availableStatus[0];
+				}else if($scope.selectedUser.enabled == "0"){
+					$scope.editingUserStatus= $scope.statusdata.availableStatus[1];
+				}
+            	
             })
             .error(function () {
                 alert("error");
@@ -182,6 +198,19 @@ function usersController($scope, $http) {
 
     $scope.updateUser = function (updateUserForm) {
     	
+    	
+    	var password = $scope.selectedUser.password;
+    	var repassword = $scope.repassword;
+    	
+    	 if (!updateUserForm.$valid) {
+             $scope.displayValidationError = true;
+             return;
+         }else if (password != repassword) {
+        	 alert("Password and Repassword not matched");
+        	 return;
+		}
+    	 
+    	$scope.selectedUser.enabled = $scope.editingUserStatus.id;
     	$scope.selectedUser.role = $scope.editingUserRole.id;
 
         var url = $scope.url +"useredit/"+ $scope.selectedUser.id;

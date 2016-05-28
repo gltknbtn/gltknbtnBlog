@@ -36,8 +36,14 @@
 									<label for="name"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">User Name</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="name"
+										<input type="text" class="form-control" id="name" required="required"
 											ng-model="selectedUser.name" name="name" placeholder="Required" />
+									</div>
+									<div class="MarginTop_5">
+										 <span class="alert alert-danger Padding_5" 
+											ng-show="displayValidationError && updateUserForm.name.$error.required">
+												<spring:message code="required" />
+										</span>
 									</div>
 								</div>
 								
@@ -46,7 +52,13 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Email</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="text" class="form-control" id="email"
-											ng-model="selectedUser.email" name="email" placeholder="Required" />
+											ng-model="selectedUser.email" name="email" required="required" placeholder="Required" />
+									</div>
+									<div class="MarginTop_5">
+										 <span class="alert alert-danger Padding_5" 
+											ng-show="displayValidationError && updateUserForm.email.$error.required">
+												<spring:message code="required" />
+										</span>
 									</div>
 								</div>
 								
@@ -54,8 +66,16 @@
 									<label for="enabled"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Enabled</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="text" class="form-control" id="enabled"
-											ng-model="selectedUser.enabled" name="email" placeholder="Required" />
+										<select name="statusSelect" id="statusSelect"
+											ng-options="status.name for status in statusdata.availableStatus"
+											ng-model=editingUserStatus></select>
+									</div>
+									
+									<div class="MarginTop_5">
+										 <span class="alert alert-danger Padding_5" 
+											ng-show="displayValidationError && updateUserForm.enabled.$error.required">
+												<spring:message code="required" />
+										</span>
 									</div>
 								</div>
 								
@@ -63,8 +83,14 @@
 									<label for="password"
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Password</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-										<input type="password" class="form-control" id="enabled"
-											ng-model="selectedUser.password" name="password" placeholder="Required" />
+										<input type="password" class="form-control" id="password"
+											ng-model="selectedUser.password" name="password" required="required"  placeholder="Required" />
+									</div>
+									<div class="MarginTop_5">
+										 <span class="alert alert-danger Padding_5" 
+											ng-show="displayValidationError && updateUserForm.password.$error.required">
+												<spring:message code="required" />
+										</span>
 									</div>
 								</div>
 								
@@ -73,7 +99,13 @@
 										class="col-lg-2 col-md-3 col-sm-3 control-label">Re-Password</label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="password" class="form-control" id="repassword"
-											ng-model="repassword" name="repassword" placeholder="Required" />
+											ng-model="repassword" name="repassword" required="required" placeholder="Required" />
+									</div>
+									<div class="MarginTop_5">
+										 <span class="alert alert-danger Padding_5" 
+											ng-show="displayValidationError && updateUserForm.repassword.$error.required">
+												<spring:message code="required" />
+										</span>
 									</div>
 								</div>
 								
