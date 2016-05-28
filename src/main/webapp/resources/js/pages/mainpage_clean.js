@@ -2,7 +2,6 @@
 
 function mainpageController($scope, $http) {
 		
-		$scope.message2 = "mainpage controllerdan mesaj geldi";
 
 	    $scope.articlesurl = "/gltknbtnBlog/mainpage/";
 	    $scope.url = "/gltknbtnBlog/articledetail/";
@@ -27,7 +26,6 @@ function mainpageController($scope, $http) {
 	            });
 	    }
 	    
-	    $scope.getArticleList();
 	    
 	    $scope.changePage = function (page) {
 	        $scope.pageToGet = page;
@@ -35,6 +33,22 @@ function mainpageController($scope, $http) {
 	        scroll(0,0);
 	    };
 	    
+	    $scope.getCategoryList = function () {
+	    	var url = "/gltknbtnBlog/mainpage/categories/";
+	    	
+	    	var config = {params: {page: $scope.pageToGet}};
+	    	$http.post(url, config)
+	    	.success(function (data) {
+	    		$scope.categories = data;
+	    		
+	    	})
+	    	.error(function (b) {
+	    		alert("error in getCategoryList : "+ b);
+	    	});
+	    }
+	    
+	    $scope.getArticleList();
+	    $scope.getCategoryList();
   
 
 	}

@@ -22,16 +22,17 @@
 
 <!-- Category -->
 	<div class="col-lg-2 col-lg-offset-2 col-md-4 MarginTop_20" >
-		<div class="list-group">
-			<a href="#" class="list-group-item active">All Category <span class="badge">17</span>
-			</a> <a href="#" class="list-group-item">Object Oriented Programming <span class="badge">3</span>
-			</a> <a href="#" class="list-group-item">Continous Integration <span class="badge">2</span>
-			</a> <a href="#" class="list-group-item">Machine Learning <span class="badge">3</span>
-			</a> <a href="#" class="list-group-item">Image Processing <span class="badge">4</span>
-			</a> <a href="#" class="list-group-item">Software Testing <span class="badge">2</span>
-			</a> <a href="#" class="list-group-item">Life <span class="badge">1</span>
-			</a> <a href="#" class="list-group-item">Fun <span class="badge">2</span>
-			</a>
+		<div class="list-group"  >
+		
+			<a href="#" class="list-group-item" ng-repeat="category in categories">{{category.categoryName}} <span class="badge">{{category.articleCount}}</span></a>
+			<!-- <a href="#" class="list-group-item active">All Category <span class="badge">17</span></a> 
+			<a href="#" class="list-group-item">Object Oriented Programming <span class="badge">3</span></a> 
+			<a href="#" class="list-group-item">Continous Integration <span class="badge">2</span></a> 
+			<a href="#" class="list-group-item">Machine Learning <span class="badge">3</span></a> 
+			<a href="#" class="list-group-item">Image Processing <span class="badge">4</span></a> 
+			<a href="#" class="list-group-item">Software Testing <span class="badge">2</span></a> 
+			<a href="#" class="list-group-item">Life <span class="badge">1</span></a> 
+			<a href="#" class="list-group-item">Fun <span class="badge">2</span></a> -->
 		</div>
 	</div>
 
@@ -40,7 +41,7 @@
         <div class="row" ng-repeat="article in page.source">
             <div class="col-lg-8 col-md-10">
                 <div class="post-preview">
-                    <a href="articledetail/{{article.id}}">
+                    <a href="<c:url value="/articledetail/{{article.id}}"/>">
                         <h2 class="post-title">
                             {{article.title}}
                         </h2>

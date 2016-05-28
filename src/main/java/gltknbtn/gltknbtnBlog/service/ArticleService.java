@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import gltknbtn.gltknbtnBlog.model.Article;
+import gltknbtn.gltknbtnBlog.model.Category;
 import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.repository.ArticleRepository;
 import gltknbtn.gltknbtnBlog.repository.UserRepository;
@@ -111,6 +112,12 @@ public class ArticleService {
 
         return articleRepository.findByTitleLike(pageRequest, "%" + title+ "%");
     }
+    
+    public Page<Article> findByCategory(Category category) {
+    	final PageRequest pageRequest = new PageRequest(0, 1000);
+        return articleRepository.findByCategory(pageRequest, category);
+    } 
+    
 
     private boolean isUserAfterOrOnLastPage(int page, Page<Article> result) {
         return page >= result.getTotalPages() - 1;

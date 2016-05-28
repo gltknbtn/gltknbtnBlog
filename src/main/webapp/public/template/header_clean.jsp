@@ -20,13 +20,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{'active': activeURL == 'mainpage', '': activeURL != 'mainpage'}">
-                        <a href="/gltknbtnBlog/mainpage">Home</a>
+                        <a href="<c:url value="/mainpage"/>">Home</a>
                     </li>
                     <li ng-class="{'active': activeURL == 'aboutme', '': activeURL != 'aboutme'}">
-                        <a href="/gltknbtnBlog/aboutme">About</a>
+                        <a href="<c:url value="/aboutme"/>">About</a>
                     </li>
                     <li ng-class="{'active': activeURL == 'contactme', '': activeURL != 'contactme'}">
-                        <a href="/gltknbtnBlog/contactme">Contact</a>
+                        <a href="<c:url value="/contactme"/>">Contact</a>
                     </li>
                     <li><a href="<c:url value="/login"/>" title=""><i class="glyphicon glyphicon-log-in"></i></a></li>
                 </ul>
