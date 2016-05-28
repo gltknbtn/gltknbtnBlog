@@ -34,6 +34,7 @@
                     <th scope="col"><spring:message code="articles.user"/></th>
                     <th scope="col"><spring:message code="articles.createdDate"/></th>
                     <th scope="col"><spring:message code="articles.status"/></th>
+                    <th scope="col"><spring:message code="articles.category"/></th>
                     <th scope="col"><spring:message code="articles.editing"/></th>
                 </tr>
                 </thead>
@@ -44,6 +45,7 @@
                     <td class="tdContactsCentered">{{article.userName}}</td>
                     <td class="tdContactsCentered">{{article.createdDate}}</td>
                     <td class="tdContactsCentered">{{article.status}}</td>
+                    <td class="tdContactsCentered">{{article.categoryName}}</td>
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{article.id}}"/>

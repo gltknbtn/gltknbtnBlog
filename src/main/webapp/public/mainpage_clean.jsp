@@ -50,7 +50,7 @@
                     </a>
                     <p class="post-meta">Posted by <a href="#">{{article.userName}}</a> on {{article.createdDate}}</p>
                 </div>
-                <hr>
+                <hr class="Margin_0">
             </div>
         </div>
         

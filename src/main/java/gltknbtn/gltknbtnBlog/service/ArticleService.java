@@ -94,6 +94,7 @@ public class ArticleService {
     		articleDTO.setId(article.getId());
     		articleDTO.setSummary(article.getSummary());
     		articleDTO.setTitle(article.getTitle());
+    		articleDTO.setCategoryName(article.getCategory().getCategoryName());
     		
     		User user = userRepository.findById(article.getUser().getId());
     		articleDTO.setUserName(user.getName());
