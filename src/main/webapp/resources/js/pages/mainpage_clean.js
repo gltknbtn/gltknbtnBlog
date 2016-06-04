@@ -8,8 +8,9 @@ function mainpageController($scope, $http) {
 	    
 	    $scope.pageToGet = 0;
 
-	    $scope.getArticleList = function () {
-	        var url = $scope.articlesurl;
+	    $scope.getArticleList = function (categoryName) {
+	    	
+	        var url = $scope.articlesurl+categoryName;
 	        
 	        var config = {params: {page: $scope.pageToGet}};
 	        $http.get(url, config)
@@ -19,6 +20,7 @@ function mainpageController($scope, $http) {
 	                    $scope.pageToGet = $scope.page.pagesCount - 1;
 	                    $scope.page.currentPage = $scope.page.pagesCount - 1;
 	                }
+	            	
 	            })
 	            .error(function () {
 	                $scope.state = 'error';
@@ -27,17 +29,11 @@ function mainpageController($scope, $http) {
 	    }
 	    
 	    
-	    $scope.changePage = function (page) {
-	        $scope.pageToGet = page;
-	        $scope.getArticleList();
-	        scroll(0,0);
-	    };
-	    
 	    $scope.getCategoryList = function () {
 	    	var url = "/gltknbtnBlog/mainpage/categories/";
 	    	
 	    	var config = {params: {page: $scope.pageToGet}};
-	    	$http.post(url, config)
+	    	$http.get(url, config)
 	    	.success(function (data) {
 	    		$scope.categories = data;
 	    		
@@ -47,8 +43,32 @@ function mainpageController($scope, $http) {
 	    	});
 	    }
 	    
-	    $scope.getArticleList();
+	    $scope.changePage = function (page, categoryName) {
+	        $scope.pageToGet = page;
+	        $scope.getArticleList(categoryName);
+	        scroll(0,0);
+	    };
+	    
+	    $scope.getArticleSize = function (categoryName) {
+	    	  var url = $scope.articlesurl+categoryName;
+		        
+		        var config = {params: {page: $scope.pageToGet}};
+		        $http.get(url, config)
+		            .success(function (data) {
+		            	$scope.totalArticleSize =  data.totalArticles;
+		            })
+		            .error(function () {
+		                $scope.state = 'error';
+		                alert("getArticleSize error in mainpage.js");
+		                
+		            });
+	    	
+	    };
+	    
 	    $scope.getCategoryList();
+	    $scope.getArticleSize("AllCategory");
+	    
+	    
   
 
 	}

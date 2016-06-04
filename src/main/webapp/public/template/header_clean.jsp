@@ -13,14 +13,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/gltknbtnBlog/mainpage">GltknBtn Blog</a>
+                <a class="navbar-brand" href="/gltknbtnBlog/mainpage/AllCategory">GltknBtn Blog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{'active': activeURL == 'mainpage', '': activeURL != 'mainpage'}">
-                        <a href="<c:url value="/mainpage"/>">Home</a>
+                    <li ng-class="{'active': activeURL == 'AllCategory', '': activeURL != 'AllCategory'}">
+                        <a href="<c:url value="/mainpage/AllCategory"/>">Home</a>
                     </li>
                     <li ng-class="{'active': activeURL == 'aboutme', '': activeURL != 'aboutme'}">
                         <a href="<c:url value="/aboutme"/>">About</a>

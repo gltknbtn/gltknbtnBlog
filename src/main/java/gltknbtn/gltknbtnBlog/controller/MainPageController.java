@@ -8,19 +8,16 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import gltknbtn.gltknbtnBlog.model.Article;
 import gltknbtn.gltknbtnBlog.model.Category;
-import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.service.CategoryService;
 import gltknbtn.gltknbtnBlog.service.MainPageService;
@@ -48,37 +45,73 @@ public class MainPageController {
 	@Value("5")
     private int maxResults;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView welcome() {
-        return new ModelAndView("mainpageclean");
+    @RequestMapping(value = "/{categoryName}", method = RequestMethod.GET)
+    public ModelAndView welcome(@PathVariable("categoryName") String categoryName) {
+        
+    	ModelAndView modelAndView = new ModelAndView("mainpageclean");
+    	modelAndView.addObject("categoryName", categoryName);
+    	return modelAndView;
+        		
     }
     
+    
+    @RequestMapping(value = "/{categoryName}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getArticlesByCategoryNames(@PathVariable("categoryName") String categoryName,@RequestParam int page, Locale locale) {
+    	
+    	if (categoryName.trim().equals("AllCategory")) {
+    		return createListAllActiveArticlesResponse(page, locale);
+			
+		}else{
+			Category category = categoryService.findByCategoryName(categoryName);
+			return createListAllActiveArticlesResponseByCategory(category, page, locale);
+		}
+    	
+    }
+
+
+	/*
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> listAllActiveArticles(@RequestParam int page, Locale locale) {
         return createListAllActiveArticlesResponse(page, locale);
     }
+    */
     
-    @RequestMapping(value = "/categories", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> getAllCategories(Locale locale) {
+    @RequestMapping(value = "/categories", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getAllCategories(@RequestParam int page, Locale locale) {
     	
 		List<Category> categoryList = categoryService.findAll();
 		List<CategoryDTO> categoryDtoList = new ArrayList<CategoryDTO>();
 		
 		for (int i = 0; i < categoryList.size(); i++) {
 			Category category = categoryList.get(i);
-			Page<Article> articleBundleByCategory = articleService.findByCategory(category);
-			CategoryDTO categoryDTO = new CategoryDTO(category.getCategoryName(), articleBundleByCategory.getTotalElements());
+			ArticleListVO articleBundleByCategory = articleService.findByCategory(category, page, maxResults);
+			CategoryDTO categoryDTO = new CategoryDTO(category.getCategoryName(), articleBundleByCategory.getTotalArticles());
 			categoryDtoList.add(categoryDTO);
 		}
 		return new ResponseEntity<List<CategoryDTO>>(categoryDtoList, HttpStatus.OK);
-    	
     }
+  
     
     private ResponseEntity<?> createListAllActiveArticlesResponse(int page, Locale locale) {
         return createListAllActiveArticlesResponse(page, locale, null);
     }
     
-    private ArticleListVO listAllActiveArticles(int page) {
+    private ResponseEntity<?> createListAllActiveArticlesResponseByCategory(Category category, int page,
+			Locale locale) {
+    	ArticleListVO articleListVO = listAllActiveArticlesByCategory(category, page);
+
+        return returnListToUser(articleListVO);
+	}
+    
+    private ArticleListVO listAllActiveArticlesByCategory(Category category, int page) {
+    	
+    	
+    	return articleService.findAllActiveArticlesByCategory(category, page, maxResults);
+    	
+	}
+
+
+	private ArticleListVO listAllActiveArticles(int page) {
         return mainPageService.findAllActiveArticles(page, maxResults);
     }
 

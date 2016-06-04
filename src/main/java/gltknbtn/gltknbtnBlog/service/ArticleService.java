@@ -113,9 +113,9 @@ public class ArticleService {
         return articleRepository.findByTitleLike(pageRequest, "%" + title+ "%");
     }
     
-    public Page<Article> findByCategory(Category category) {
-    	final PageRequest pageRequest = new PageRequest(0, 1000);
-        return articleRepository.findByCategory(pageRequest, category);
+    public ArticleListVO findByCategory(Category category, int page, int maxResults) {
+    	
+    	return findAllActiveArticlesByCategory(category, page, maxResults);
     } 
     
 
@@ -126,4 +126,20 @@ public class ArticleService {
     private boolean hasDataInDataBase(Page<Article> result) {
         return result.getTotalElements() > 0;
     }
+
+	public ArticleListVO findAllActiveArticlesByCategory(Category category, int page, int maxResults) {
+		Page<Article> result = executeQueryFindAllActiveArticlesByCategory(category, page, maxResults);
+
+		if (shouldExecuteSameQueryInLastPage(page, result)) {
+			int lastPage = result.getTotalPages() - 1;
+			result = executeQueryFindAllActiveArticlesByCategory(category, lastPage, maxResults);
+		}
+
+		return buildResult(result);
+	}
+	
+	private Page<Article> executeQueryFindAllActiveArticlesByCategory(Category category, int page, int maxResults) {
+		final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDESC());
+		return articleRepository.findByCategory(pageRequest, category, "enable");
+	}
 }
