@@ -24,8 +24,8 @@
 	<div class="col-lg-2 col-lg-offset-2 col-md-4 MarginTop_20" >
 		<div class="list-group">
 		
-			<a href="<c:url value="/mainpage/AllCategory"/>" class="list-group-item" ng-class="{'active': urlLastWord == 'AllCategory', '': urlLastWord != 'AllCategory'}">All Category <span class="badge">{{totalArticleSize}}</span></a> 
-			<a href="<c:url value="/mainpage/{{category.categoryName}}"/>" class="list-group-item" ng-class="{'active': urlLastWord == category.categoryName, '': urlLastWord != category.categoryName}" ng-repeat="category in categories">{{category.categoryName}} <span class="badge">{{category.articleCount}}</span></a>
+			<a href="#" ng-click="getArticleListFirstPageByCategoryName('AllCategory')" class="list-group-item" ng-class="{'active': selectedCategoryName == 'AllCategory', '': selectedCategoryName != 'AllCategory'}">All Category <span class="badge">{{totalArticleSize}}</span></a> 
+			<a href="#" ng-click="getArticleListFirstPageByCategoryName(category.categoryName)" class="list-group-item" ng-class="{'active': selectedCategoryName == category.categoryName, '': selectedCategoryName != category.categoryName}" ng-repeat="category in categories">{{category.categoryName}} <span class="badge">{{category.articleCount}}</span></a>
 			<!-- <a href="#" class="list-group-item active">All Category <span class="badge">17</span></a> 
 			<a href="#" class="list-group-item">Object Oriented Programming <span class="badge">3</span></a> 
 			<a href="#" class="list-group-item">Continous Integration <span class="badge">2</span></a> 
@@ -38,7 +38,7 @@
 	</div>
 
     <!-- Main Content -->
-    <div class="col-lg-8 col-md-8" ng-init="getArticleList('${categoryName}')">
+    <div class="col-lg-8 col-md-8">
         <div class="row" ng-repeat="article in page.source">
             <div class="col-lg-8 col-md-10">
                 <div class="post-preview">
@@ -60,7 +60,7 @@
           <div class="text-center PaddingBottom_20">
 		                <button href="#" class="btn btn-default"
 		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
-		                        ng-click="changePage(0, '${categoryName}')"
+		                        ng-click="changePage(0, selectedCategoryName)"
 		                        title='<spring:message code="pagination.first"/>'
 		                        >
 		                     <spring:message code="pagination.first"/>
@@ -68,20 +68,20 @@
 		                <button href="#"
 		                        class="btn btn-default"
 		                        ng-class="{'btn btn-default': page.currentPage != 0, 'btn btn-default disabled': page.currentPage == 0}"
-		                        ng-click="changePage(page.currentPage - 1, '${categoryName}')"
+		                        ng-click="changePage(page.currentPage - 1, selectedCategoryName)"
 		                        title='<spring:message code="pagination.back"/>'
 		                        >&larr;</button>
 		                <span>{{page.currentPage + 1}} <spring:message code="pagination.of"/> {{page.pagesCount}}</span>
 		                <button href="#"
 		                        class="btn btn-default"
 		                        ng-class="{'btn btn-default': page.pagesCount - 1 != page.currentPage, 'btn btn-default disabled': page.pagesCount - 1 == page.currentPage}"
-		                        ng-click="changePage(page.currentPage + 1, '${categoryName}')"
+		                        ng-click="changePage(page.currentPage + 1, selectedCategoryName)"
 		                        title='<spring:message code="pagination.next"/>'
 		                        >&rarr;</button>
 		                <button href="#"
 		                        class="btn btn-default"
 		                        ng-class="{'btn btn-default': page.pagesCount - 1 != page.currentPage, 'btn btn-default disabled': page.pagesCount - 1 == page.currentPage}"
-		                        ng-click="changePage(page.pagesCount - 1, '${categoryName}')"
+		                        ng-click="changePage(page.pagesCount - 1, selectedCategoryName)"
 		                        title='<spring:message code="pagination.last"/>'
 		                        role="button"
 		                        >

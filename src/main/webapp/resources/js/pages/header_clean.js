@@ -8,5 +8,8 @@ function LocationController($scope, $location) {
 	else if($location.$$absUrl.lastIndexOf('/home') > 0){
 		$scope.activeURL = 'home';
 	} 
+	else if($location.$$absUrl.lastIndexOf('/mainpage') > 0){
+		$scope.activeURL = 'mainpage';
+	} 
     
 }

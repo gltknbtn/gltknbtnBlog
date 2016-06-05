@@ -45,11 +45,10 @@ public class MainPageController {
 	@Value("5")
     private int maxResults;
 
-    @RequestMapping(value = "/{categoryName}", method = RequestMethod.GET)
-    public ModelAndView welcome(@PathVariable("categoryName") String categoryName) {
+    @RequestMapping( method = RequestMethod.GET)
+    public ModelAndView welcome() {
         
     	ModelAndView modelAndView = new ModelAndView("mainpageclean");
-    	modelAndView.addObject("categoryName", categoryName);
     	return modelAndView;
         		
     }
@@ -69,13 +68,6 @@ public class MainPageController {
     }
 
 
-	/*
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> listAllActiveArticles(@RequestParam int page, Locale locale) {
-        return createListAllActiveArticlesResponse(page, locale);
-    }
-    */
-    
     @RequestMapping(value = "/categories", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getAllCategories(@RequestParam int page, Locale locale) {
     	
