@@ -22,9 +22,9 @@
 
 <!-- Category -->
 	<div class="col-lg-2 col-lg-offset-2 col-md-4 MarginTop_20" >
-		<div class="list-group"  ng-controller="LocationController">
+		<div class="list-group">
 		
-			<a href="<c:url value="/mainpage/AllCategory"/>" class="list-group-item" ng-class="{'active': activeURL == 'AllCategory', '': activeURL != 'AllCategory'}">All Category <span class="badge">{{totalArticleSize}}</span></a> 
+			<a href="<c:url value="/mainpage/AllCategory"/>" class="list-group-item" ng-class="{'active': urlLastWord == 'AllCategory', '': urlLastWord != 'AllCategory'}">All Category <span class="badge">{{totalArticleSize}}</span></a> 
 			<a href="<c:url value="/mainpage/{{category.categoryName}}"/>" class="list-group-item" ng-class="{'active': urlLastWord == category.categoryName, '': urlLastWord != category.categoryName}" ng-repeat="category in categories">{{category.categoryName}} <span class="badge">{{category.articleCount}}</span></a>
 			<!-- <a href="#" class="list-group-item active">All Category <span class="badge">17</span></a> 
 			<a href="#" class="list-group-item">Object Oriented Programming <span class="badge">3</span></a> 

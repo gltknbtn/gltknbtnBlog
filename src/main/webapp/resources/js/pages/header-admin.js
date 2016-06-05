@@ -10,6 +10,9 @@ function LocationController($scope, $location) {
 	else if($location.$$absUrl.lastIndexOf('/articlecreate') > 0){
 		$scope.activeURL = 'articlecreate';
 	} 
+	else if($location.$$absUrl.lastIndexOf('/users') > 0){
+		$scope.activeURL = 'users';
+	} 
     else{
         $scope.activeURL = 'mainpage';
     }

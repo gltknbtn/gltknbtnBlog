@@ -1,6 +1,6 @@
 	
 
-function mainpageController($scope, $http) {
+function mainpageController($scope, $http, $location) {
 		
 
 	    $scope.articlesurl = "/gltknbtnBlog/mainpage/";
@@ -65,6 +65,21 @@ function mainpageController($scope, $http) {
 	    	
 	    };
 	    
+	    $scope.getLastWordOfUrl = function () {
+	    	
+	    	var url = $location.$$absUrl;
+	 		var lastIndexOfSlash = url.lastIndexOf('/');
+	 		var lastWord = url.substr(lastIndexOfSlash+1);
+	 		var urlLastWord = lastWord;
+	 		
+	 		if (lastWord.indexOf("%")>0) {
+	 			urlLastWord = lastWord.split("%20").join(" ");
+	 		}
+	 		return urlLastWord;
+	    	
+	    };
+	    
+	    $scope.urlLastWord = $scope.getLastWordOfUrl();
 	    $scope.getCategoryList();
 	    $scope.getArticleSize("AllCategory");
 	    

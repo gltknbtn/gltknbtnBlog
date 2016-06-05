@@ -137,7 +137,7 @@
                         </ul>
                     </li>
                     
-                     <li>
+                    <li ng-class="{'active': activeURL == 'users', '': activeURL != 'users'}">
                         <a href="javascript:;" data-toggle="collapse" data-target="#userTab"><i class="glyphicon glyphicon-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="userTab" class="collapse">
                             <li>
@@ -145,6 +145,18 @@
                             </li>
                             <li>
                                 <a href="<c:url value='/protected/users/usercreate'/>">New User</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li ng-class="{'active': activeURL == 'categories', '': activeURL != 'categories'}">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#categoryTab"><i class="glyphicon glyphicon-user"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="categoryTab" class="collapse">
+                            <li>
+                                <a href="<c:url value='/protected/categories'/>">All Categories</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value='/protected/categories/categorycreate'/>">New Category</a>
                             </li>
                         </ul>
                     </li>
