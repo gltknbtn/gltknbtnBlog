@@ -8,6 +8,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import gltknbtn.gltknbtnBlog.model.Article;
 import gltknbtn.gltknbtnBlog.model.Comment;
 import gltknbtn.gltknbtnBlog.repository.CommentRepository;
 import gltknbtn.gltknbtnBlog.vo.CommentListVO;
@@ -30,6 +31,18 @@ public class CommentService {
 
         return buildResult(result);
     }
+    
+    @Transactional(readOnly = true)
+	public CommentListVO findAllCommentsByEnabled(String enabled, int page, int maxResults) {
+    	Page<Comment> result = executeQueryFindAllCommentsByEnabled(enabled, page, maxResults);
+
+        if(shouldExecuteSameQueryInLastPage(page, result)){
+            int lastPage = result.getTotalPages() - 1;
+            result = executeQueryFindAllCommentsByEnabled(enabled, lastPage, maxResults);
+        }
+
+        return buildResult(result);
+	}
 
     public void save(Comment comment) {
         commentRepository.save(comment);
@@ -57,13 +70,13 @@ public class CommentService {
     }
 
     @Transactional(readOnly = true)
-    public CommentListVO findCommentsByArticleId(int page, int maxResults, int articleId) {
+    public CommentListVO findCommentsByArticle(int page, int maxResults, Article selectedArticle, String commentStatus) {
 
-    	 Page<Comment> result = executeQueryFindCommentsByArticleId(page, maxResults, articleId);
+    	 Page<Comment> result = executeQueryFindCommentsByArticle(page, maxResults, selectedArticle, commentStatus);
 
          if(shouldExecuteSameQueryInLastPage(page, result)){
              int lastPage = result.getTotalPages() - 1;
-             result = executeQueryFindCommentsByArticleId(lastPage, maxResults, articleId);
+             result = executeQueryFindCommentsByArticle(lastPage, maxResults, selectedArticle, commentStatus);
          }
 
          return buildResult(result);
@@ -74,6 +87,16 @@ public class CommentService {
     	
     	return commentRepository.findAll(pageRequest);
     }
+	
+	private Page<Comment> executeQueryFindAllCommentsByEnabled(String enabled, int page, int maxResults) {
+		final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDesc());
+		return commentRepository.findByEnabled(enabled, pageRequest);
+	}
+	
+	public Comment findById(int commentId) {
+		
+		return commentRepository.findOne(commentId);
+	}
 
     private Sort sortByNameASC() {
         return new Sort(Sort.Direction.ASC, "name");
@@ -88,10 +111,10 @@ public class CommentService {
     }
 
     
-    private Page<Comment> executeQueryFindCommentsByArticleId(int page, int maxResults, int articleId) {
+    private Page<Comment> executeQueryFindCommentsByArticle(int page, int maxResults, Article selectedArticle, String commentStatus) {
     	  final PageRequest pageRequest = new PageRequest(page, maxResults, sortByIdDesc());
 
-          return commentRepository.findCommentsByArticleId(pageRequest, articleId);
+          return commentRepository.findCommentsByArticle(pageRequest, selectedArticle, commentStatus);
 	}
     
     private Page<Comment> executeQueryFindByCommentDesc(int page, int maxResults, String name) {
@@ -107,4 +130,5 @@ public class CommentService {
     private boolean hasDataInDataBase(Page<Comment> result) {
         return result.getTotalElements() > 0;
     }
+
 }

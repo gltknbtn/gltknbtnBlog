@@ -1,10 +1,10 @@
 package gltknbtn.gltknbtnBlog.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.scheduling.annotation.Async;
 
 import gltknbtn.gltknbtnBlog.model.Article;
 import gltknbtn.gltknbtnBlog.model.Comment;
@@ -12,6 +12,10 @@ import gltknbtn.gltknbtnBlog.model.Comment;
 public interface CommentRepository extends PagingAndSortingRepository<Comment, Integer> {
     Page<Comment> findByCommentDescLike(Pageable pageable, String name);
     
-    Page<Comment> findCommentsByArticleId(Pageable pageable, int articleId);
+    @Async
+    @Query("SELECT t FROM Comment t where t.article = ?1 AND t.enabled = ?2")
+    Page<Comment> findCommentsByArticle(Pageable pageable, Article selectedArticle, String commentStatus);
+
+	Page<Comment> findByEnabled(String enabled, Pageable pageable);
     
 }

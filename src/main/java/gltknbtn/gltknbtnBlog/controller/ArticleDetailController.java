@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import gltknbtn.gltknbtnBlog.model.Comment;
 import gltknbtn.gltknbtnBlog.model.Contact;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.service.CommentService;
+import gltknbtn.gltknbtnBlog.vo.CommentListVO;
 import gltknbtn.gltknbtnBlog.vo.ContactListVO;
 
 @Controller
@@ -38,6 +40,9 @@ public class ArticleDetailController {
 
 	@Autowired
 	private MessageSource messageSource;
+	
+	 @Value("5")
+	 private int maxResults;
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
@@ -56,35 +61,29 @@ public class ArticleDetailController {
     @RequestMapping(value = "/{articleId}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> create(@PathVariable("articleId") int articleId, @ModelAttribute("comment") Comment comment) {
     	
-    	System.out.println("selected article id: " + articleId);
-    	System.out.println("Commenter name: " + comment.getName());
-    	System.out.println("Commenter mail: " + comment.getMail());
-    	System.out.println("Commenter description: " + comment.getCommentDesc());
-    	
-    	/*
-        contactService.save(contact);
-
-        if (isSearchActivated(searchFor)) {
-            return search(searchFor, page, locale, "message.create.success");
-        }
-
-        return createListAllResponse(page, locale, "message.create.success");
-        */
-    	
-    	GltknData gltknData = new GltknData();
-    	gltknData.setName(comment.getName());
-    	gltknData.setMail(comment.getMail());
-    	gltknData.setDesc(comment.getCommentDesc());
-    	
     	Article selectedArticle = articleService.findById(articleId);
     	comment.setArticle(selectedArticle);
     	
     	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-    	
     	comment.setCreatedDate(createdDate);
+    	
+    	comment.setEnabled("0");
     	
     	commentService.save(comment);
 
-    	return new ResponseEntity<GltknData>(gltknData, HttpStatus.OK);
+    	return new ResponseEntity<Comment>(comment, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/comments/{articleId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> search(@PathVariable("articleId") int articleId,
+                                    Locale locale,
+                                    @RequestParam int page) {
+    	
+    	Article selectedArticle = articleService.findById(articleId);
+    			
+    	String commentStatus = "1";	
+    	CommentListVO articleComments = commentService.findCommentsByArticle(page, maxResults, selectedArticle, commentStatus);
+    	
+    	return new ResponseEntity<CommentListVO>(articleComments, HttpStatus.OK);
     }
 }

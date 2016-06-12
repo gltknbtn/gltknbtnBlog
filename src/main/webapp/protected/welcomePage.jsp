@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="adminhomeController">
 
                 <!-- Page Heading -->
                 <div class="container row-fluid">
@@ -29,12 +27,12 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
+                                        <div class="huge">{{newCommentCount}}</div>
                                         <div>New Comments!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="<c:url value='/protected/comments'/>">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -267,4 +265,5 @@
             <!-- /.container-fluid -->
 
 
+<script src="<c:url value="/resources/js/pages/adminhome.js" />"></script>
 <script src="../resources/js/pages/sampledata.js"></script>

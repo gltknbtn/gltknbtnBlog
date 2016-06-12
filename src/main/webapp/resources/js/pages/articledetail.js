@@ -6,7 +6,7 @@ function articledetailController($scope, $http, $location) {
 	  $scope.init = function(selectedArticleId)
 	  {
 		  $scope.selectedArtclId = selectedArticleId;
-	   var urlComments = "/gltknbtnBlog/comments/" + selectedArticleId ;
+	   var urlComments = "/gltknbtnBlog/articledetail/comments/" + selectedArticleId ;
 	   
 	   var config = {params: {page: $scope.pageToGet}};
 	    $http.get(urlComments, config)
@@ -54,11 +54,13 @@ function articledetailController($scope, $http, $location) {
         $http.post(url, $.param($scope.comment), config)
             .success(function (data) {
             	
+            	
                 $scope.responseMessage = "Comment successfully created !!";
                 $scope.pageToGet = 0;
                 $scope.init(articleId);
                 
                 $scope.resetCommentInputs();
+                alert("Your comment sent successfully will be showed after check");
                 
             })
             .error(function(data, status, headers, config) {

@@ -18,6 +18,8 @@ public class Comment {
 	private String commentDesc;
 	private String mail;
 	private String createdDate;
+	private String enabled;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "article_id")
@@ -27,12 +29,13 @@ public class Comment {
 		
 	}
 	
-	public Comment(String name, String commentDesc, String mail, String createdDate, int id) {
+	public Comment(String name, String commentDesc, String mail, String createdDate, int id, String enabled) {
 		super();
 		this.name= name;
 		this.commentDesc = commentDesc;
 		this.mail = mail;
 		this.createdDate = createdDate;
+		this.enabled = enabled;
 	}
 
     public int getId() {
@@ -95,4 +98,12 @@ public class Comment {
     public int hashCode() {
         return id;
     }
+
+	public String getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
 }

@@ -64,6 +64,10 @@
         <put-attribute name="body-admin" value="/protected/articles/articles-edit.jsp"/>
     </definition>
     
+    <definition name="newComments" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/comments/comments.jsp"/>
+    </definition>
+    
     
     <definition name="login" extends="master-admin.page">
         <put-attribute name="header-admin" value=""/>

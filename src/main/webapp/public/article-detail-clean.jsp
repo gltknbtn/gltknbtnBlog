@@ -65,20 +65,22 @@
 	
 	                <!-- Comment -->
 	                <div class="media" ng-repeat="comment in page.source" >
-	                    <a class="pull-left" href="#">
-	                        <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="">
-	                    </a>
-	                    <div class="media-body">
-	                        <h4 class="media-heading">{{comment.name}}
-	                            <small>{{comment.createdDate}}</small>
-	                        </h4>
-	                        {{comment.commentDesc}}
+	                    <div ng-class="{'hidden': comment.enabled != 1}">
+	                    	<a class="pull-left" href="#">
+	                       		 <img class="media-object" src="<c:url value="/resources/img/img1.png" />" alt="">
+	                    	</a>
+	                   		 <div class="media-body">
+		                        <h4 class="media-heading">{{comment.name}}
+		                            <small>{{comment.createdDate}}</small>
+		                        </h4>
+	                        		{{comment.commentDesc}}
+	                   		 </div>
 	                    </div>
 	                </div>
 	                <hr/>
 	                <!-- pagination starting -->
 
-								<div class="pull-right MarginTop_5" ng-class="{'hidden': page.pagesCount <= 1}"> 
+								<div class="pull-right MarginTop_5"> 
 									<button href="#" class="btn btn-default"
 										ng-class="{'btn btn-default btn-xs': page.currentPage != 0, 'btn btn-default btn-xs disabled': page.currentPage == 0}"
 										ng-click="changePage(0)"
