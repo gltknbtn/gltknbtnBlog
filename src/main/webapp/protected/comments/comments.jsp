@@ -52,7 +52,7 @@
                         <div class="text-center">
                             <input type="hidden" value="{{comment.id}}"/>
                             <button type ="button"
-                               title="<spring:message code="delete"/>&nbsp;<spring:message code="comment"/>"
+                               title="<spring:message code="reject"/>&nbsp;<spring:message code="comment"/>"
                                class="btn btn-default" data-toggle="modal" data-target="#rejectCommentModal"
                                ng-click="selectComment(comment.id)">
                                 <i class="glyphicon glyphicon-minus"></i>

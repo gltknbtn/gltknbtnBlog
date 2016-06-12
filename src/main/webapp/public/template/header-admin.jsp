@@ -150,7 +150,7 @@
                     </li>
                     
                     <li ng-class="{'active': activeURL == 'categories', '': activeURL != 'categories'}">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#categoryTab"><i class="glyphicon glyphicon-user"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#categoryTab"><i class="glyphicon glyphicon-tasks"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="categoryTab" class="collapse">
                             <li>
                                 <a href="<c:url value='/protected/categories'/>">All Categories</a>
