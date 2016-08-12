@@ -7,7 +7,7 @@ function categoriesController($scope, $http) {
     
     $scope.lastAction = '';
 
-    $scope.url = "/fadlarec/protected/categories/";
+    $scope.url = "/gltknbtnBlog/protected/categories/";
 
     $scope.errorOnSubmit = false;
     $scope.errorIllegalAccess = false;
@@ -147,7 +147,7 @@ function categoriesController($scope, $http) {
     
     $scope.selectCategory = function (selectedCategoryId) {
     	
-        var urlGetCategory = "/fadlarec/protected/categories/findCategoryById/"+ selectedCategoryId;
+        var urlGetCategory = "/gltknbtnBlog/protected/categories/findCategoryById/"+ selectedCategoryId;
         
         $http.get(urlGetCategory)
             .success(function (data) {

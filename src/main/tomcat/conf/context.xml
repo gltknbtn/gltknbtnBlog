@@ -21,6 +21,6 @@
             numTestsPerEvictionRun="5"
             timeBetweenEvictionRunsMillis="30000"
             minEvictableIdleTimeMillis="60000"
-            url="jdbc:mysql://localhost:3306/fadlarec" />
+            url="jdbc:mysql://localhost:3306/gltknbtnBlog" />
 
 </Context>

@@ -10,11 +10,10 @@
         <put-attribute name="footer-admin" value="/public/template/footer-admin.jsp"/>
     </definition>
 
-
-    <!-- Master Fadlarec -->
-    <definition name="master_fadlarec.page" template="/public/template/master_fadlarec.jsp">
-        <put-attribute name="header_fadlarec" value="/public/template/header_fadlarec.jsp"/>
-        <put-attribute name="footer_fadlarec" value="/public/template/footer_fadlarec.jsp"/>
+    <!-- Master Clean -->
+    <definition name="master_clean.page" template="/public/template/master_clean.jsp">
+        <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
     </definition>
 
     <!--  Pages -->
@@ -40,6 +39,8 @@
     </definition>
     
     
+    
+    
     <definition name="categories" extends="master-admin.page">
         <put-attribute name="body-admin" value="/protected/categories/categories.jsp"/>
     </definition>
@@ -53,16 +54,49 @@
     </definition>
     
     
+    
+    
+    <definition name="articlecreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-create.jsp"/>
+    </definition>
+    
+    <definition name="articleedit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-edit.jsp"/>
+    </definition>
+    
+    <definition name="newComments" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/comments/comments.jsp"/>
+    </definition>
+    
+    
     <definition name="login" extends="master-admin.page">
         <put-attribute name="header-admin" value=""/>
         <put-attribute name="footer-admin" value=""/>
         <put-attribute name="body-admin" value="/public/login.jsp"/>
     </definition>
     
-     <definition name="fadlarecmain" extends="master_fadlarec.page">
-      <put-attribute name="header_fadlarec" value="/public/template/header_fadlarec.jsp"/>
-        <put-attribute name="footer_fadlarec" value="/public/template/footer_fadlarec.jsp"/>
-        <put-attribute name="body_fadlarec" value="/public/mainpage_fadlarec.jsp"/>
+    <definition name="mainpageclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/mainpage_clean.jsp"/>
+    </definition>
+    
+    <definition name="aboutmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/aboutme_clean.jsp"/>
+    </definition>
+    
+    <definition name="contactmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/contactme_clean.jsp"/>
+    </definition>
+    
+     <definition name="articledetailclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/article-detail-clean.jsp"/>
     </definition>
     
     

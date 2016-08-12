@@ -7,7 +7,7 @@ function usersController($scope, $http) {
     
     $scope.lastAction = '';
 
-    $scope.url = "/fadlarec/protected/users/";
+    $scope.url = "/gltknbtnBlog/protected/users/";
 
     $scope.errorOnSubmit = false;
     $scope.errorIllegalAccess = false;
@@ -171,7 +171,7 @@ function usersController($scope, $http) {
     
     $scope.selectUser = function (selectedUserId) {
     	
-        var urlGetUser = "/fadlarec/protected/users/findById/"+ selectedUserId;
+        var urlGetUser = "/gltknbtnBlog/protected/users/findById/"+ selectedUserId;
         
         $http.get(urlGetUser)
             .success(function (data) {

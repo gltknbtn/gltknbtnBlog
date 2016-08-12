@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<c:url value="/"/>">FADLAREC ADMIN</a>
+                <a class="navbar-brand" href="<c:url value="/"/>">GltknBtn Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -123,6 +123,18 @@
                 <ul class="nav navbar-nav side-nav" ng-controller="LocationController">
                     <li ng-class="{'active': activeURL == 'home', '': activeURL != 'home'}">
                         <a href="<c:url value="/"/>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    
+                     <li ng-class="{'active': activeURL == 'articlecreate'||activeURL == 'articles', '': activeURL != 'articlecreate'||activeURL != 'articlecreate'}">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Articles <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="<c:url value='/protected/articles'/>">All Articles</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value='/protected/articles/articlecreate'/>">New Article</a>
+                            </li>
+                        </ul>
                     </li>
                     
                     <li ng-class="{'active': activeURL == 'users', '': activeURL != 'users'}">
