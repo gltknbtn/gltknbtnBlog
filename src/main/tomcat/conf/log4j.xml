@@ -18,7 +18,7 @@
 		<level value="INFO" />
 	</logger>
 
-	<logger name="gltknbtn.gltknbtnBlog.controller">
+	<logger name="fgik.fadlarec.controller">
 		<level value="INFO" />
 	</logger>
 

@@ -11,7 +11,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/protected/**"/>
-            <bean class="gltknbtn.gltknbtnBlog.interceptor.LoginInterceptor"/>
+            <bean class="fgik.fadlarec.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
         <!-- workaround to fix IE8 problem -->
         <bean id="webContentInterceptor"

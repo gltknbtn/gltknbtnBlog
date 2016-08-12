@@ -5,46 +5,10 @@ function adminhomeController($scope, $http, $location) {
 	 $scope.state = 'busy';
 	 $scope.lastAction = '';
 
-    $scope.getNewCommentList = function () {
-    	$scope.url = "/gltknbtnBlog/protected/comments/";
-        var url = $scope.url;
-        $scope.lastAction = 'list';
-        var config = {params: {page: $scope.pageToGet}};
-        $http.get(url, config)
-            .success(function (data) {
-            	
-            	$scope.page = {source: data.comments, currentPage: $scope.pageToGet, pagesCount: data.pagesCount, totalComments : data.totalComments};
-            	 $scope.newCommentCount = $scope.page.totalComments;
-            	
-            })
-            .error(function (b) {
-            	alert(b);
-                $scope.state = 'error';
-                alert("error");
-                return 0;
-            });
-    }
     
-    $scope.getArticleList = function () {
-    	$scope.url = "/gltknbtnBlog/protected/articles/";
-        var url = $scope.url;
-
-        var config = {params: {page: $scope.pageToGet}};
-        $http.get(url, config)
-            .success(function (data) {
-            	
-            	$scope.page = {source: data.articles, currentPage: $scope.pageToGet, pagesCount: data.pagesCount, totalArticles : data.totalArticles};
-            	$scope.articleCount = $scope.page.totalArticles;
-                
-            })
-            .error(function (b) {
-                $scope.state = 'error';
-                alert("error in getArticleList");
-            });
-    }
     
     $scope.getUserList = function () {
-    	$scope.url = "/gltknbtnBlog/protected/users/";
+    	$scope.url = "/fadlarec/protected/users/";
     	
         var url = $scope.url;
         $scope.lastAction = 'list';
@@ -66,7 +30,7 @@ function adminhomeController($scope, $http, $location) {
     }
     
     $scope.getCategoryList = function () {
-    	$scope.url = "/gltknbtnBlog/protected/categories/";
+    	$scope.url = "/fadlarec/protected/categories/";
         var url = $scope.url;
         
         var params = {page: $scope.pageToGet};
@@ -84,8 +48,6 @@ function adminhomeController($scope, $http, $location) {
             });
     }
     
-    $scope.getNewCommentList();
-    $scope.getArticleList();
     $scope.getUserList();
     $scope.getCategoryList();
 

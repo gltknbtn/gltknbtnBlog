@@ -8,10 +8,10 @@
     <!-- Basic Configurations -->
     <context:annotation-config/>
 
-    <context:component-scan base-package="gltknbtn.gltknbtnBlog.model"/>
-    <context:component-scan base-package="gltknbtn.gltknbtnBlog.repository"/>
-    <context:component-scan base-package="gltknbtn.gltknbtnBlog.service"/>
-    <context:component-scan base-package="gltknbtn.gltknbtnBlog.controller"/>
+    <context:component-scan base-package="fgik.fadlarec.model"/>
+    <context:component-scan base-package="fgik.fadlarec.repository"/>
+    <context:component-scan base-package="fgik.fadlarec.service"/>
+    <context:component-scan base-package="fgik.fadlarec.controller"/>
 
     <!-- SpringMVC -->
     <import resource="spring-mvc.xml"/>
