@@ -12,15 +12,18 @@
             maxIdle="3"
             minIdle="1"
             maxWait="5000"
-            username="root"
+            username="postgres"
             password="3113327"
-            driverClassName="com.mysql.jdbc.Driver"
+            driverClassName="org.postgresql.Driver"
             validationQuery="SELECT 'OK'"
             testWhileIdle="true"
             testOnBorrow="true"
             numTestsPerEvictionRun="5"
             timeBetweenEvictionRunsMillis="30000"
             minEvictableIdleTimeMillis="60000"
-            url="jdbc:mysql://localhost:3306/gltknbtnBlog" />
+            url="jdbc:postgresql://localhost:5432/gltknbtnBlog" />
+<!--             driverClassName="com.mysql.jdbc.Driver" -->
+<!--             url="jdbc:mysql://localhost:3306/fadlarec" /> -->
 
 </Context>
+
