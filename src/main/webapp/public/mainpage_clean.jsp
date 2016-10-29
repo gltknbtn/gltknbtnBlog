@@ -91,8 +91,6 @@
 
 	</div>
 
-    <hr>
     </div>
 
 <script src="<c:url value="/resources/js/pages/mainpage_clean.js" />"></script>
-<script src="<c:url value="/resources/js/pages/articledetail.js" />"></script>

@@ -1,5 +1,9 @@
 
-function articlesController($scope, $http) {
+// create the module and name it
+var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin', ['ngRoute']);
+
+// create the controller and inject Angular's $scope
+gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $http) {
 	
     $scope.pageToGet = 0;
 
@@ -319,4 +323,6 @@ function articlesController($scope, $http) {
     $scope.getArticleList();
     $scope.getCategoryList("");
     
-}
+});
+
+
