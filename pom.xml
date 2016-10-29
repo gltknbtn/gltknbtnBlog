@@ -90,17 +90,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -125,17 +125,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.3.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -151,6 +151,18 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>1.7.0</version>
+		</dependency>
+		
+				<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 
 		<!-- JSon -->
@@ -225,6 +237,12 @@
 			<artifactId>guava</artifactId>
 			<version>10.0.1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version> <!-- makesure correct version here -->
+		</dependency>
 
 		<!-- Log -->
 		<dependency>
@@ -239,6 +257,14 @@
 			<version>1.2.16</version>
 			<scope>provided</scope>
 		</dependency>
+		
+				<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+		
 		<dependency>
 			<artifactId>commons-logging</artifactId>
 			<groupId>commons-logging</groupId>
@@ -254,5 +280,31 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.1</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		
 	</dependencies>
 </project>

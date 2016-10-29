@@ -124,7 +124,7 @@ function categoriesController($scope, $http) {
     };
 
     $scope.createCategory = function (newCategoryForm) {
-    	
+    	alert("createCategory");
     	 if (!newCategoryForm.$valid) {
              $scope.displayValidationError = true;
              return;
