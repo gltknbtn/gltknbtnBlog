@@ -10,11 +10,6 @@
 		<put-attribute name="footer-admin" value="/public/template/footer-admin.jsp" />
 	</definition>
 
-	<!-- Master Clean -->
-	<definition name="master_clean2.page" template="/public/template/master_clean2.jsp">
-		<put-attribute name="header_clean" value="/public/template/header_clean.jsp" />
-		<put-attribute name="footer_clean" value="/public/template/footer_clean.jsp" />
-	</definition>
 
 	<!-- Pages -->
 	<definition name="welcomePage" extends="master-admin.page">
@@ -37,7 +32,6 @@
 	<definition name="useredit" extends="master-admin.page">
 		<put-attribute name="body-admin" value="/protected/users/user-edit.jsp" />
 	</definition>
-
 
 
 
@@ -85,12 +79,6 @@
 	<definition name="mainpageclean" template="/public/template/master_clean.jsp">
 	</definition>
 
-
-	<definition name="articledetailclean" extends="master_clean2.page">
-		<put-attribute name="header_clean" value="/public/template/header_clean.jsp" />
-		<put-attribute name="footer_clean" value="/public/template/footer_clean.jsp" />
-		<put-attribute name="body_clean" value="/public/article-detail-clean.jsp" />
-	</definition>
 
 
 </tiles-definitions>

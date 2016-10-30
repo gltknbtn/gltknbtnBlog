@@ -45,9 +45,6 @@ public class ArticleDetailController {
                                     Locale locale) {
         	Article selectedArticle = articleService.findById(articleId);
         	
-        //	model.addAttribute("selectedArticle", selectedArticle);
-        	//return new ModelAndView("articledetailclean");
-//        	return new ModelAndView("articledetailclean");
         return new ResponseEntity<Article>(selectedArticle, HttpStatus.OK);
 
     }
