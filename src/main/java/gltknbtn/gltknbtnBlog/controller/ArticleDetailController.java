@@ -41,16 +41,14 @@ public class ArticleDetailController {
 	 private int maxResults;
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
+    public ResponseEntity<?> fetchArticleById(@PathVariable("id") int articleId,
                                     Locale locale) {
-        if (articleId == 0) {
-        	return new ModelAndView("articledetail");
-        }else{
         	Article selectedArticle = articleService.findById(articleId);
         	
-        	model.addAttribute("selectedArticle", selectedArticle);
-        	return new ModelAndView("articledetailclean");
-        }
+        //	model.addAttribute("selectedArticle", selectedArticle);
+        	//return new ModelAndView("articledetailclean");
+//        	return new ModelAndView("articledetailclean");
+        return new ResponseEntity<Article>(selectedArticle, HttpStatus.OK);
 
     }
     

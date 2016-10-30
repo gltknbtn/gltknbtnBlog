@@ -46,8 +46,9 @@ public class MainPageController {
     private int maxResults;
 
     @RequestMapping( method = RequestMethod.GET)
-    public ModelAndView welcome() {
+    public ModelAndView welcome(Locale locale) {
         
+//    	ModelAndView modelAndView = new ModelAndView("mainpageclean");
     	ModelAndView modelAndView = new ModelAndView("mainpageclean");
     	return modelAndView;
         		

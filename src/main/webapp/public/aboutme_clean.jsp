@@ -29,4 +29,4 @@
         </div>
     </div>
 
-    <script src="<c:url value="/resources/js/pages/aboutme.js" />"></script>
+ 
