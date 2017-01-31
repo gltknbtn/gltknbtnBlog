@@ -3,7 +3,7 @@
 var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin', ['ngRoute']);
 
 // create the controller and inject Angular's $scope
-gltknbtnBlogAdmin.controller('categoriesController', function($scope, $location, $http) {
+gltknbtnBlogAdmin.controller('categoriesController', function($scope, $location, $http, $window) {
 	
     $scope.pageToGet = 0;
 
@@ -128,7 +128,6 @@ gltknbtnBlogAdmin.controller('categoriesController', function($scope, $location,
     };
 
     $scope.createCategory = function (newCategoryForm) {
-    	alert("createCategory");
     	 if (!newCategoryForm.$valid) {
              $scope.displayValidationError = true;
              return;
@@ -141,6 +140,7 @@ gltknbtnBlogAdmin.controller('categoriesController', function($scope, $location,
         $http.post(url, $.param($scope.category), config)
             .success(function (data) {
             	alert(data.actionMessage);
+            	$window.location.href = '/gltknbtnBlog/protected/categories/';
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);
@@ -175,6 +175,7 @@ gltknbtnBlogAdmin.controller('categoriesController', function($scope, $location,
         $http.put(url, $scope.selectedCategory)
             .success(function (data) {
             	alert(data.actionMessage +" : " + $scope.selectedCategory.categoryName);
+            	$window.location.href = '/gltknbtnBlog/protected/categories/';
             })
             .error(function(data, status, headers) {
             	alert("error update category");

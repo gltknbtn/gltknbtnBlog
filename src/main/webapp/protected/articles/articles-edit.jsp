@@ -94,7 +94,7 @@
 									<label class="col-lg-2 col-md-3 col-sm-3 control-label"></label>
 									<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 										<input type="submit" ng-click="updateArticle(updateArticleForm)"
-											class="btn btn-default pull-right" value="Submint" />
+											class="btn btn-default pull-right" value="Submit" />
 									</div>
 								</div>
 

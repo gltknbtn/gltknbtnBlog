@@ -7,6 +7,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>GltknBtn Blog Admin</title>
 		
 		<link href="<c:url value='/resources/3css/style.css'/>"rel="stylesheet" />
 		<link href="<c:url value='/resources/3css/tools_style.css'/>"rel="stylesheet" />

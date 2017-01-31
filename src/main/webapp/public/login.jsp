@@ -6,9 +6,9 @@
   
   <div class="row" id="pwd-container">
     
-    <div class="col-lg-4 col-md-4 col-sm-4"></div>
+    <div class="col-lg-3 col-md-3 col-sm-3"></div>
     
-    <div class="col-lg-4 col-md-6 col-sm-6 well" ng-controller="loginController">
+    <div class="col-lg-4 col-md-4 col-sm-4 well" ng-controller="loginController">
       <div class="alert alert-danger" ng-class="{'': displayLoginError == true, 'hidden': displayLoginError == false}">
             <spring:message code="login.error" />
         </div>
@@ -26,7 +26,7 @@
         
       </div>
       
-      <div class="col-lg-4 col-md-2 col-sm-2"></div>
+      <div class="col-lg-3 col-md-3 col-sm-3"></div>
 
   </div>
   
