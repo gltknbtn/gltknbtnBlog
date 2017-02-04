@@ -17,4 +17,6 @@ public interface ArticleRepository extends PagingAndSortingRepository<Article, I
     Page<Article> findByCategory(Pageable pageable, Category category, String status);
     
     Article findById(int id);
+
+	Article findByTitleurl(String titleurl);
 }

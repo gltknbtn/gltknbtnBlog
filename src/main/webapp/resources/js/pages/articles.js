@@ -204,9 +204,13 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 
         $http.post(url, $.param($scope.article), config)
             .success(function (data) {
-            	$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
-            	alert(data.actionMessage +" : " + $scope.article.title);
-            	$window.location.href = '/gltknbtnBlog/protected/articles/';
+            	if(data.totalArticles > 0){
+            		$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
+            		alert(data.actionMessage +" : " + $scope.article.title);
+            		$window.location.href = '/gltknbtnBlog/protected/articles/';
+            	}else{
+            		alert(data.actionMessage);
+            	}
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);
