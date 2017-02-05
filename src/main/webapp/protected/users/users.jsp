@@ -22,16 +22,18 @@
                 <thead>
                 <tr>
                     <th scope="col"><spring:message code="user.name"/></th>
-                    <th scope="col"><spring:message code="user.password"/></th>
+                    <%-- <th scope="col"><spring:message code="user.password"/></th> --%>
                     <th scope="col"><spring:message code="user.email"/></th>
+                    <th scope="col"><spring:message code="user.enabled"/></th>
                     <th class="text-center" scope="col"><spring:message code="user.edit"/></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="user in page.source">
                     <td class="tdContactsCentered">{{user.name}}</td>
-                    <td class="tdContactsCentered">{{user.password}}</td>
+                    <!-- <td class="tdContactsCentered">{{user.password}}</td> -->
                     <td class="tdContactsCentered">{{user.email}}</td>
+                    <td class="tdContactsCentered">{{user.enabled}}</td>
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{user.id}}"/>

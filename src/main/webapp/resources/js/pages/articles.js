@@ -3,7 +3,7 @@
 var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin', ['ngRoute']);
 
 // create the controller and inject Angular's $scope
-gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $http) {
+gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $http, $window) {
 	
     $scope.pageToGet = 0;
 
@@ -204,8 +204,13 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 
         $http.post(url, $.param($scope.article), config)
             .success(function (data) {
-            	$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
-            	alert(data.actionMessage +" : " + $scope.article.title);
+            	if(data.totalArticles > 0){
+            		$scope.dataActionMessageCreateArticle = data.actionMessage +" : " + $scope.article.title;
+            		alert(data.actionMessage +" : " + $scope.article.title);
+            		$window.location.href = '/gltknbtnBlog/protected/articles/';
+            	}else{
+            		alert(data.actionMessage);
+            	}
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);
@@ -253,6 +258,7 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
             .success(function (data) {
             	$scope.dataActionMessageUpdateArticle = data.actionMessage +" : " + $scope.selectedArticle.title;
             	alert($scope.dataActionMessageUpdateArticle);
+            	$window.location.href = '/gltknbtnBlog/protected/articles/';
             })
             .error(function(data, status, headers, config) {
             	alert("error update article");
