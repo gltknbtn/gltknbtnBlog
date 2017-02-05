@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html id="ng-app" ng-app="" ng-cloak>
+<html ng-app="gltknbtnBlogAdmin" ng-cloak>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +23,8 @@
 		
 		<script src="<c:url value='/resources/js/3js/jquery.lightbox-0.5.js' />"></script>
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
 		
 			<link href="<c:url value='/resources/3css/editor.css'/>"rel="stylesheet" />
 		<script src="<c:url value='/resources/js/3js/editor.js' />"></script>

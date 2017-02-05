@@ -1,5 +1,8 @@
+//create the module and name it
+var gltknbtnBlogClean = angular.module('gltknbtnBlogClean', ['ngRoute']);
 
-function contactFormController($scope, $http, $location) {
+//create the controller and inject Angular's $scope
+gltknbtnBlogClean.controller('contactFormController', function($scope, $location, $http) {
 
     $scope.url = "/gltknbtnBlog/contactme/";
 
@@ -35,4 +38,6 @@ function contactFormController($scope, $http, $location) {
     
     
 
-}
+});
+
+

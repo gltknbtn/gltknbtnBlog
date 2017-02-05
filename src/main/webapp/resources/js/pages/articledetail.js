@@ -1,5 +1,8 @@
+//create the module and name it
+var gltknbtnBlogClean = angular.module('gltknbtnBlogClean', ['ngRoute']);
 
-function articledetailController($scope, $http, $location) {
+//create the controller and inject Angular's $scope
+gltknbtnBlogClean.controller('articledetailController', function($scope, $location, $http) {
 	
 	$scope.pageToGet = 0;
 	
@@ -114,4 +117,6 @@ function articledetailController($scope, $http, $location) {
 //    	$scope.getSelectedArticle(id);
 //    }
 
-}
+});
+
+

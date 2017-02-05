@@ -1,5 +1,9 @@
 
-function usersController($scope, $http) {
+// create the module and name it
+var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin', ['ngRoute']);
+
+// create the controller and inject Angular's $scope
+gltknbtnBlogAdmin.controller('usersController', function($scope, $location, $http) {
 	
     $scope.pageToGet = 0;
 
@@ -284,4 +288,7 @@ function usersController($scope, $http) {
     }
 
     $scope.getUserList();
-}
+});
+
+
+

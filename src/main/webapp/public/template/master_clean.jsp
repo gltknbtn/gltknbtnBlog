@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html id="ng-app" ng-app="" ng-cloak>
+<html ng-app="gltknbtnBlogClean" ng-cloak>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +27,8 @@
 		<script src="<c:url value='/resources/js/3js/clean-blog.min.js' />"></script>
 		
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
 		
 		<!--[if lt IE 9]>
 		                                <script src="js/html5shiv.js"></script>

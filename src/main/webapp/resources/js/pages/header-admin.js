@@ -1,4 +1,10 @@
-function LocationController($scope, $location) {
+
+
+// create the module and name it
+var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin');
+
+// create the controller and inject Angular's $scope
+gltknbtnBlogAdmin.controller('LocationController', function($scope, $location, $http) {
     if($location.$$absUrl.lastIndexOf('/aboutme') > 0){
         $scope.activeURL = 'aboutme';
     }else if($location.$$absUrl.lastIndexOf('/articles') > 0){
@@ -19,4 +25,8 @@ function LocationController($scope, $location) {
     else{
         $scope.activeURL = 'mainpage';
     }
-}
+});
+
+
+
+
