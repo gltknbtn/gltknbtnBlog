@@ -87,15 +87,6 @@ public class ArticlesController {
     	
     	Article article = getArticleByArticleDTO(articleDTO, articleDTO.getId());
     	
-    	
-    	String titleurl = getTitleUrl(article.getTitle());
-    	if (articleService.findByTitleurl(titleurl) != null) {
-    		ArticleListVO articleListVo = new ArticleListVO();
-    		articleListVo.setActionMessage(messageSource.getMessage("title.allready.exist", null, null, locale));
-    		return new ResponseEntity<ArticleListVO>(articleListVo, HttpStatus.OK); 
-		}
-    	
-    	article.setTitleurl(titleurl);
     	article.setUser(user);
     	article.setCategory(category);
     	
@@ -255,51 +246,4 @@ public class ArticlesController {
     private boolean isSearchActivated(String searchFor) {
         return !StringUtils.isEmpty(searchFor);
     }
-    
-    private String getTitleUrl(String string) {
-
-		String str = string.toLowerCase();
-		char[] charArr = str.toCharArray();
-
-		String newStr = "";
-		for (Character c : charArr) {
-			if (c.equals('ý')) {
-				c = 'i';
-			} else if (c.equals('ö')) {
-				c = 'o';
-			} else if (c.equals('ç')) {
-				c = 'c';
-			} else if (c.equals('þ')) {
-				c = 's';
-			} else if (c.equals('ð')) {
-				c = 'g';
-			}else if (c.equals('ü')) {
-				c = 'u';
-			}else if (c.equals('.')
-					|| c.equals(' ')
-					|| c.equals(',')
-					|| c.equals(':')
-					|| c.equals(')')
-					|| c.equals('(')
-					|| c.equals('/')
-					|| c.equals('\\')
-					|| c.equals('\'')
-					|| c.equals('\"')
-					|| c.equals('?')
-					|| c.equals('*')
-					|| c.equals('&')
-					|| c.equals('$')
-					|| c.equals('£')
-					|| c.equals('<')
-					|| c.equals('>')
-					) {
-				c = '_';
-			}
-
-			newStr += c;
-		}
-
-		return newStr;
-	}
-
 }

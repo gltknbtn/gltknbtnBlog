@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1 ng-bind-html="fetchedArticle.title"></h1>
-                        <h2 class="subheading" ng-bind-html="fetchedArticle.summary"></h2>
-                    <span class="meta">Posted by <a href="#" ng-bind-html="fetchedArticle.user.name"></a> on August 24, 2014</span>
+                        <h1>${selectedArticle.title}</h1>
+                        <h2 class="subheading">${selectedArticle.title} 22</h2>
+                    <span class="meta">Posted by <a href="#">${selectedArticle.user.name}</a> on August 24, 2014</span>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p ng-bind-html="fetchedArticle.description"></p>
+                    <p>
+						${selectedArticle.description}
+                    </p>
 
                     <a href="#">
                         <img class="img-responsive" src="<c:url value="/resources/img/post-sample-image.jpg" />" alt="">
@@ -36,7 +38,7 @@
              
              <hr/>
             
-             <div class="row">
+            <div class="row" ng-init="init('${selectedArticle.id}')">
             	    <!-- Blog Post Content Column -->
 	            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 	                <!-- Comments Form -->
@@ -53,7 +55,7 @@
 	                        <div class="form-group">
 	                            <textarea class="form-control" required ng-model="comment.commentDesc" name="commentDesc" rows="3"></textarea>
 	                        </div>
-	                        <button type="submit" class="btn btn-primary" ng-click="createComment(newCommentForm, fetchedArticle.id);">Submit</button>
+	                        <button type="submit" class="btn btn-primary" ng-click="createComment(newCommentForm,'${selectedArticle.id}');">Submit</button>
 	                    </form>
 	                </div>
 	
@@ -108,7 +110,7 @@
 								<!-- pagination ending-->
 	                
 	            </div>
-            </div> 
+            </div>
             
         </div>
     </article>
@@ -117,3 +119,4 @@
     
    </div>
 
+<script src="<c:url value="/resources/js/pages/articledetail.js" />"></script>

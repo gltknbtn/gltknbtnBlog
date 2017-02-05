@@ -1,9 +1,5 @@
 
-// create the module and name it
-var gltknbtnBlogAdmin = angular.module('gltknbtnBlogAdmin', ['ngRoute']);
-
-// create the controller and inject Angular's $scope
-gltknbtnBlogAdmin.controller('usersController', function($scope, $location, $http, $window) {
+function usersController($scope, $http) {
 	
     $scope.pageToGet = 0;
 
@@ -153,7 +149,6 @@ gltknbtnBlogAdmin.controller('usersController', function($scope, $location, $htt
         $http.post(url, $.param($scope.user), config)
             .success(function (data) {
             	alert(data.actionMessage);
-            	$window.location.href = '/gltknbtnBlog/protected/users/';
             })
             .error(function(data, status, headers, config) {
             	alert("error status: " + status);
@@ -225,7 +220,6 @@ gltknbtnBlogAdmin.controller('usersController', function($scope, $location, $htt
         $http.put(url, $scope.selectedUser, config)
             .success(function (data) {
             	alert(data.actionMessage +" : " + $scope.selectedUser.name);
-            	$window.location.href = '/gltknbtnBlog/protected/users/';
             })
             .error(function(data, status, headers, config) {
             	alert("error update user");
@@ -290,7 +284,4 @@ gltknbtnBlogAdmin.controller('usersController', function($scope, $location, $htt
     }
 
     $scope.getUserList();
-});
-
-
-
+}

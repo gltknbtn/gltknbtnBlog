@@ -19,7 +19,7 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container" ng-controller="aboutmeController">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
@@ -29,4 +29,4 @@
         </div>
     </div>
 
- 
+    <hr>

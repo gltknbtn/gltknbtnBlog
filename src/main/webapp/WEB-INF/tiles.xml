@@ -4,81 +4,100 @@
 <tiles-definitions>
 
 
-	<!-- Master Admin -->
-	<definition name="master-admin.page" template="/public/template/master-admin.jsp">
-		<put-attribute name="header-admin" value="/public/template/header-admin.jsp" />
-		<put-attribute name="footer-admin" value="/public/template/footer-admin.jsp" />
-	</definition>
+    <!-- Master Admin -->
+    <definition name="master-admin.page" template="/public/template/master-admin.jsp">
+        <put-attribute name="header-admin" value="/public/template/header-admin.jsp"/>
+        <put-attribute name="footer-admin" value="/public/template/footer-admin.jsp"/>
+    </definition>
 
+    <!-- Master Clean -->
+    <definition name="master_clean.page" template="/public/template/master_clean.jsp">
+        <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+    </definition>
 
-	<!-- Pages -->
-	<definition name="welcomePage" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/welcomePage.jsp" />
-	</definition>
-
-	<definition name="articleList" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/articles/articles.jsp" />
-	</definition>
-
-
-	<definition name="users" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/users/users.jsp" />
-	</definition>
-
-	<definition name="usercreate" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/users/user-create.jsp" />
-	</definition>
-
-	<definition name="useredit" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/users/user-edit.jsp" />
-	</definition>
-
-
-
-	<definition name="categories" extends="master-admin.page">
-		<put-attribute name="body-admin"
-			value="/protected/categories/categories.jsp" />
-	</definition>
-
-	<definition name="categorycreate" extends="master-admin.page">
-		<put-attribute name="body-admin"
-			value="/protected/categories/category-create.jsp" />
-	</definition>
-
-	<definition name="categoryedit" extends="master-admin.page">
-		<put-attribute name="body-admin"
-			value="/protected/categories/category-edit.jsp" />
-	</definition>
-
-
-
-
-	<definition name="articlecreate" extends="master-admin.page">
-		<put-attribute name="body-admin"
-			value="/protected/articles/articles-create.jsp" />
-	</definition>
-
-	<definition name="articleedit" extends="master-admin.page">
-		<put-attribute name="body-admin"
-			value="/protected/articles/articles-edit.jsp" />
-	</definition>
-
-	<definition name="newComments" extends="master-admin.page">
-		<put-attribute name="body-admin" value="/protected/comments/comments.jsp" />
-	</definition>
-
-
-	<definition name="login" extends="master-admin.page">
-		<put-attribute name="header-admin" value="" />
-		<put-attribute name="footer-admin" value="" />
-		<put-attribute name="body-admin" value="/public/login.jsp" />
-	</definition>
-
-
-
-	<definition name="mainpageclean" template="/public/template/master_clean.jsp">
-	</definition>
-
-
-
+    <!--  Pages -->
+    <definition name="welcomePage" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/welcomePage.jsp"/>
+    </definition>
+    
+    <definition name="articleList" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles.jsp"/>
+    </definition>
+    
+    
+    <definition name="users" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/users.jsp"/>
+    </definition>
+    
+    <definition name="usercreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/user-create.jsp"/>
+    </definition>
+    
+    <definition name="useredit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/users/user-edit.jsp"/>
+    </definition>
+    
+    
+    
+    
+    <definition name="categories" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/categories/categories.jsp"/>
+    </definition>
+    
+    <definition name="categorycreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/categories/category-create.jsp"/>
+    </definition>
+    
+    <definition name="categoryedit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/categories/category-edit.jsp"/>
+    </definition>
+    
+    
+    
+    
+    <definition name="articlecreate" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-create.jsp"/>
+    </definition>
+    
+    <definition name="articleedit" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/articles/articles-edit.jsp"/>
+    </definition>
+    
+    <definition name="newComments" extends="master-admin.page">
+        <put-attribute name="body-admin" value="/protected/comments/comments.jsp"/>
+    </definition>
+    
+    
+    <definition name="login" extends="master-admin.page">
+        <put-attribute name="header-admin" value=""/>
+        <put-attribute name="footer-admin" value=""/>
+        <put-attribute name="body-admin" value="/public/login.jsp"/>
+    </definition>
+    
+    <definition name="mainpageclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/mainpage_clean.jsp"/>
+    </definition>
+    
+    <definition name="aboutmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/aboutme_clean.jsp"/>
+    </definition>
+    
+    <definition name="contactmeclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/contactme_clean.jsp"/>
+    </definition>
+    
+     <definition name="articledetailclean" extends="master_clean.page">
+      <put-attribute name="header_clean" value="/public/template/header_clean.jsp"/>
+        <put-attribute name="footer_clean" value="/public/template/footer_clean.jsp"/>
+        <put-attribute name="body_clean" value="/public/article-detail-clean.jsp"/>
+    </definition>
+    
+    
 </tiles-definitions>

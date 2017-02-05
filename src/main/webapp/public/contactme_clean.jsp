@@ -102,3 +102,6 @@
         </div>
     </div>
 
+    <hr>
+
+<script src="<c:url value="/resources/js/pages/contactForm.js" />"></script>

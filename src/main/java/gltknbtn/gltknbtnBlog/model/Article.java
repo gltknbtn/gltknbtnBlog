@@ -18,7 +18,6 @@ public class Article {
 	private String description;
 	private String createdDate;
 	private String status;
-	private String titleurl;
 	
 	@ManyToOne
 	private Category category;
@@ -30,7 +29,7 @@ public class Article {
 		
 	}
 	
-	public Article(String title, String summary, String description, String createdDate, int id, User user, String status, String titleurl) {
+	public Article(String title, String summary, String description, String createdDate, int id, User user, String status) {
 		super();
 		this.title= title;
 		this.summary= summary;
@@ -38,7 +37,6 @@ public class Article {
 		this.createdDate = createdDate;
 		this.user = user;
 		this.status = status;
-		this.titleurl = titleurl;
 	}
 
     public int getId() {
@@ -92,14 +90,6 @@ public class Article {
     
     public void setStatus(String status) {
 		this.status = status;
-	}
-    
-    public String getTitleurl() {
-		return titleurl;
-	}
-    
-    public void setTitleurl(String titleurl) {
-		this.titleurl = titleurl;
 	}
     
     @JsonBackReference

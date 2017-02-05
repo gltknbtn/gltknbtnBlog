@@ -2,6 +2,7 @@ package gltknbtn.gltknbtnBlog.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import gltknbtn.gltknbtnBlog.model.Article;
 import gltknbtn.gltknbtnBlog.model.Comment;
+import gltknbtn.gltknbtnBlog.model.Contact;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.service.CommentService;
 import gltknbtn.gltknbtnBlog.vo.CommentListVO;
+import gltknbtn.gltknbtnBlog.vo.ContactListVO;
 
 @Controller
 @RequestMapping(value = "/articledetail")
@@ -41,11 +45,16 @@ public class ArticleDetailController {
 	 private int maxResults;
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> fetchArticleById(@PathVariable("id") int articleId,
+    public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
                                     Locale locale) {
+        if (articleId == 0) {
+        	return new ModelAndView("articledetail");
+        }else{
         	Article selectedArticle = articleService.findById(articleId);
         	
-        return new ResponseEntity<Article>(selectedArticle, HttpStatus.OK);
+        	model.addAttribute("selectedArticle", selectedArticle);
+        	return new ModelAndView("articledetailclean");
+        }
 
     }
     

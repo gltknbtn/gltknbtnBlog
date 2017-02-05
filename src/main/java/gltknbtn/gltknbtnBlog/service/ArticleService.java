@@ -66,12 +66,6 @@ public class ArticleService {
     public Article findById(int id) {
     	return articleRepository.findById(id);
     }
-    
-    
-    @Transactional(readOnly = true)
-    public Article findByTitleurl(String titleurl) {
-    	return articleRepository.findByTitleurl(titleurl);
-    }
 
     private boolean shouldExecuteSameQueryInLastPage(int page, Page<Article> result) {
         return isUserAfterOrOnLastPage(page, result) && hasDataInDataBase(result);
