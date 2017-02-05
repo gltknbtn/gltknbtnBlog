@@ -42,7 +42,7 @@
         <div class="row" ng-repeat="article in page.source">
             <div class="col-lg-8 col-md-10">
                 <div class="post-preview">
-                    <a href="<c:url value="/articledetail/{{article.id}}"/>">
+                    <a href="<c:url value="/articledetail/{{article.titleurl}}"/>">
                         <h2 class="post-title">
                             {{article.title}}
                         </h2>

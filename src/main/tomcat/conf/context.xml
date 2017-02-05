@@ -23,7 +23,6 @@
             minEvictableIdleTimeMillis="60000"
             url="jdbc:postgresql://localhost:5432/gltknbtnBlog" />
 <!--             driverClassName="com.mysql.jdbc.Driver" -->
-<!--             url="jdbc:mysql://localhost:3306/fadlarec" /> -->
 
 </Context>
 

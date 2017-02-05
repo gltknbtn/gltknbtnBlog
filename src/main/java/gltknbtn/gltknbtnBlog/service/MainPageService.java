@@ -80,6 +80,7 @@ public class MainPageService {
     		articleDTO.setId(article.getId());
     		articleDTO.setSummary(article.getSummary());
     		articleDTO.setTitle(article.getTitle());
+    		articleDTO.setTitleurl(article.getTitleurl());
     		
     		User user = userRepository.findById(article.getUser().getId());
     		articleDTO.setUserName(user.getName());

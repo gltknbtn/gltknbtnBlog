@@ -40,10 +40,19 @@ public class ArticleDetailController {
 	 @Value("5")
 	 private int maxResults;
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView fetchArticleById(@PathVariable("id") int articleId, Model model,
+    @RequestMapping(value = "/{titleurl}", method = RequestMethod.GET)
+    public ModelAndView fetchArticleById(@PathVariable("titleurl") String titleurl, Model model,
                                     Locale locale) {
-        if (articleId == 0) {
+        
+    	Article selectedArticle = articleService.findByTitleurl(titleurl);
+    	if (selectedArticle==null) {
+			return new ModelAndView("articledetail");
+		}
+    	model.addAttribute("selectedArticle", selectedArticle);
+    	return new ModelAndView("articledetailclean");
+    	
+    	/*
+    	if (articleId == 0) {
         	return new ModelAndView("articledetail");
         }else{
         	Article selectedArticle = articleService.findById(articleId);
@@ -51,6 +60,7 @@ public class ArticleDetailController {
         	model.addAttribute("selectedArticle", selectedArticle);
         	return new ModelAndView("articledetailclean");
         }
+        */
 
     }
     

@@ -9,6 +9,7 @@ public class ArticleDTO {
 		private String userName;
 		private String status;
 		private String categoryName;
+		private String titleurl;
 		
 		
 		public int getId() {
@@ -59,6 +60,12 @@ public class ArticleDTO {
 		}
 		public void setCategoryName(String categoryName) {
 			this.categoryName = categoryName;
+		}
+		public String getTitleurl() {
+			return titleurl;
+		}
+		public void setTitleurl(String titleurl) {
+			this.titleurl = titleurl;
 		}
 		
 }
