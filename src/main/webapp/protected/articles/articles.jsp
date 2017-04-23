@@ -49,7 +49,7 @@
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{article.id}}"/>
-                            <a href="articleedit/{{article.id}}"
+                            <a href="<c:url value='/protected/articles/articleedit/{{article.id}}'/>"
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="article"/>"
                                class="btn btn-default" data-toggle="modal">

@@ -33,7 +33,7 @@
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{category.id}}"/>
-                            <a href="categoryedit/{{category.id}}"
+                            <a href="<c:url value='/protected/categories/categoryedit/{{category.id}}'/>"
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="category"/>"
                                class="btn btn-default" data-toggle="modal">
