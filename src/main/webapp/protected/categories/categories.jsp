@@ -8,6 +8,7 @@
             <spring:message code='categories.header'/>
         </p>
     </h2>
+    
     <h4>
         <div ng-class="{'': state == 'list', 'none': state != 'list'}">
             <p class="text-center">
