@@ -118,6 +118,10 @@ public class ArticlesController {
         }
 
         Article article = getArticleByArticleDTO(articleDto, articleId);
+        
+        String titleurl = getTitleUrl(article.getTitle());
+        article.setTitleurl(titleurl);
+        
         Category category = categoryService.findByCategoryName(articleDto.getCategoryName());
         article.setCategory(category);
         
