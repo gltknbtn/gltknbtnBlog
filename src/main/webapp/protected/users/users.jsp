@@ -37,7 +37,7 @@
                     <td class="width15">
                         <div class="text-center">
                             <input type="hidden" value="{{user.id}}"/>
-                            <a href="<c:url value='/protected/users/useredit/{{user.id}}'/>"
+                            <a ng-disabled="user.name != '${loggedUsername}'" href="<c:url value='/protected/users/useredit/{{user.id}}'/>"
                                role="button"
                                title="<spring:message code="update"/>&nbsp;<spring:message code="user"/>"
                                class="btn btn-default" data-toggle="modal">

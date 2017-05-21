@@ -16,12 +16,12 @@
 	    <link href="<c:url value='/resources/3css/clean-blog.min.css'/>" rel="stylesheet">
 	    <link href="<c:url value='/resources/3css/tools_style.css'/>" rel="stylesheet">
 	    
-	    <!-- Custom Fonts -->
 	    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 		
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		
+		<script src="<c:url value='/resources/js/jquery-1.11.3.min.js' />"></script>
 		
 		<script src="<c:url value='/resources/js/3js/bootstrap.js' />"></script>
 		
@@ -29,7 +29,7 @@
 		
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
+		<script src="<c:url value='/resources/js/angular-route.min.js' />"></script>
 		
 		<!--[if lt IE 9]>
 		                                <script src="js/html5shiv.js"></script>

@@ -18,14 +18,13 @@
 		<link href="<c:url value='/resources/font-awesome/css/font-awesome.min.css'/>"rel="stylesheet" />
 		
 		
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="<c:url value='/resources/js/jquery-1.11.3.min.js' />"></script>
 		<script src="<c:url value='/resources/js/3js/bootstrap.js' />"></script>
 		
 		
 		<script src="<c:url value='/resources/js/3js/jquery.lightbox-0.5.js' />"></script>
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
+		<script src="<c:url value='/resources/js/angular-route.min.js' />"></script>
 		
 			<link href="<c:url value='/resources/3css/editor.css'/>"rel="stylesheet" />
 		<script src="<c:url value='/resources/js/3js/editor.js' />"></script>

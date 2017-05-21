@@ -2,6 +2,9 @@ package gltknbtn.gltknbtnBlog.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,13 +42,19 @@ public class UserController {
     private int maxResults;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView welcome() {
+    public ModelAndView welcome(HttpServletRequest request, Model model) {
+    	
+    	HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("loggedUsername", user.getName());
+    	
         return new ModelAndView("users");
     }
     
     
     @RequestMapping(value = "/usercreate", method = RequestMethod.GET)
     public ModelAndView userCreate() {
+    	
     	return new ModelAndView("usercreate");
     }
     
@@ -98,14 +107,16 @@ public class UserController {
     
     
     @RequestMapping(value = "/useredit/{id}", method = RequestMethod.GET)
-    public ModelAndView fetchUserById(@PathVariable("id") int userId, Model model,
-                                    Locale locale) {
-    	
-    	model.addAttribute("selectedUserId", userId);
-    	
-        return new ModelAndView("useredit");
+    public ModelAndView fetchUserById(
+    								@PathVariable("id") int userId, 
+    								Model model,
+			Locale locale) {
 
-    }
+		model.addAttribute("selectedUserId", userId);
+
+		return new ModelAndView("useredit");
+
+	}
     
     
 
