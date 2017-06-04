@@ -1,0 +1,41 @@
+<project name="gltknbtnBlog" default="compile" basedir=".">
+	<description>
+    simple example build file
+  </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="buildDir" location="${basedir}/target/classes" />
+	<property name="libDir" location="C:\deps" />
+	<property name="metainfDir" location="${buildDir}/META-INF" />
+
+	<path id="classpath">
+		<fileset dir="${libDir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init" depends="clean">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${buildDir}" />
+		<mkdir dir="${metainfDir}" />
+
+		<copy todir="${metainfDir}">
+			<fileset dir="${src}/main/resources/META-INF" includes="**"/>
+		</copy>
+
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${buildDir}" debug="true" debuglevel="lines,vars,source" encoding="Cp1254" >
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${buildDir}" />
+	</target>
+</project>

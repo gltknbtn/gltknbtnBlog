@@ -1,5 +1,6 @@
 package gltknbtn.gltknbtnBlog.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,11 +14,19 @@ public class Article {
     @Id
     @GeneratedValue
     private int id;
+    
+    @Column(length=500)
 	private String title;
-	private String summary;
+	
+    private String summary;
+	
+	@Column(length=10485760)
 	private String description;
+	
 	private String createdDate;
 	private String status;
+	
+	@Column(length=500)
 	private String titleurl;
 	
 	@ManyToOne

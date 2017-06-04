@@ -5,6 +5,7 @@ var gltknbtnBlogClean = angular.module('gltknbtnBlogClean', ['ngRoute']);
 gltknbtnBlogClean.controller('articledetailController', function($scope, $location, $http) {
 	
 	$scope.pageToGet = 0;
+	$scope.displayValidationError = false;
 	
 	  $scope.init = function(selectedArticleId)
 	  {
@@ -47,6 +48,11 @@ gltknbtnBlogClean.controller('articledetailController', function($scope, $locati
     
     $scope.createComment = function (newCommentForm, articleId) {
     	
+    	  if (!newCommentForm.$valid) {
+              $scope.displayValidationError = true;
+              return;
+          }
+    	
 
         $scope.lastAction = 'create';
 
@@ -76,6 +82,7 @@ gltknbtnBlogClean.controller('articledetailController', function($scope, $locati
     	$scope.comment.name = "";
     	$scope.comment.mail = "";
     	$scope.comment.commentDesc = "";
+    	$scope.displayValidationError = false;
     }
     
     

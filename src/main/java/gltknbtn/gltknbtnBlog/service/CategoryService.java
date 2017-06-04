@@ -1,7 +1,10 @@
 package gltknbtn.gltknbtnBlog.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,6 +50,14 @@ public class CategoryService {
     	for (Category category : iter) {
 			allCategories.add(category);
 		}
+    	
+    	Collections.sort(allCategories, new Comparator<Category>() {
+
+			@Override
+			public int compare(Category c1, Category c2) {
+				return c1.getCategoryName().compareTo(c2.getCategoryName());
+			}
+		});
     	 
     	return allCategories;
     }
