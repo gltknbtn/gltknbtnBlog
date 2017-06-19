@@ -3,8 +3,6 @@ package gltknbtn.gltknbtnBlog.vo;
 
 import java.util.List;
 
-import gltknbtn.gltknbtnBlog.model.Article;
-
 public class ArticleListVO {
     private int pagesCount;
     private long totalArticles;
