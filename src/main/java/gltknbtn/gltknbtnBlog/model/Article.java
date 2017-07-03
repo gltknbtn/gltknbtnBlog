@@ -35,6 +35,9 @@ public class Article {
 	@ManyToOne
 	private User user;
 	
+	@Column(length=10485760)
+	private String postBgBase64Str;
+	
 	public Article(){
 		
 	}
@@ -133,4 +136,12 @@ public class Article {
     public int hashCode() {
         return id;
     }
+
+	public String getPostBgBase64Str() {
+		return postBgBase64Str;
+	}
+
+	public void setPostBgBase64Str(String postBgBase64Str) {
+		this.postBgBase64Str = postBgBase64Str;
+	}
 }

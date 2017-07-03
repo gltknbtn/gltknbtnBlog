@@ -27,7 +27,7 @@
 				<div class="col-lg-12 BgWhiteGri Padding_10 MarginBottom_10">
 					<div>
 						<form class="form-horizontal " role="form" name="newArticleForm"
-							novalidate>
+							enctype="multipart/form-data">
 
 							<div
 								ng-class="{'hidden': dataActionMessageCreateArticle == '', 'form-group': dataActionMessageCreateArticle != ''}">
@@ -66,6 +66,21 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- adding post background -->
+							<div class="form-group">
+								<label for="postbg"
+									class="col-lg-2 col-md-3 col-sm-3 control-label">Post
+									BG</label>
+								<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+									<div class="nopadding Padding_0 Margin_0">
+										<input ng-model="photo"
+											onchange="angular.element(this).scope().file_changed(this)"
+											type="file" accept="image/*" />
+									</div>
+								</div>
+							</div>
+
 
 							<div class="form-group">
 								<label for="description"

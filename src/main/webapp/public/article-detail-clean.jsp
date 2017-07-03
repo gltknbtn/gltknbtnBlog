@@ -8,7 +8,7 @@
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->
 	<header class="intro-header"
-		style="background-image: url('<c:url value="/resources/img/post-bg.jpg" />'); margin: 0; padding :0;">
+		style="background-image: url(${selectedArticle.postBgBase64Str}); margin: 0; padding :0;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

@@ -2,6 +2,7 @@ package gltknbtn.gltknbtnBlog.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import gltknbtn.gltknbtnBlog.model.Article;
@@ -72,12 +76,14 @@ public class ArticlesController {
     	return modelAndView;
     }
 
+    @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> create(@ModelAttribute("article") ArticleDTO articleDTO,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     HttpServletRequest request,
                                     Locale locale) {
+    	
     	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
     	articleDTO.setCreatedDate(createdDate);
     	HttpSession httpsession = request.getSession();
@@ -142,6 +148,7 @@ public class ArticlesController {
         article.setSummary(articleDto.getSummary());
         article.setTitle(articleDto.getTitle());
         article.setStatus(articleDto.getStatus());
+        article.setPostBgBase64Str(articleDto.getPostBgBase64Str());
 		return article;
 	}
 

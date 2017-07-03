@@ -11,6 +11,8 @@ public class ArticleDTO {
 		private String categoryName;
 		private String titleurl;
 		
+		private String postBgBase64Str;
+		
 		
 		public int getId() {
 			return id;
@@ -66,6 +68,12 @@ public class ArticleDTO {
 		}
 		public void setTitleurl(String titleurl) {
 			this.titleurl = titleurl;
+		}
+		public String getPostBgBase64Str() {
+			return postBgBase64Str;
+		}
+		public void setPostBgBase64Str(String postBgBase64Str) {
+			this.postBgBase64Str = postBgBase64Str;
 		}
 		
 }
