@@ -6,6 +6,7 @@
 
 <div>
 
+
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
@@ -71,13 +72,14 @@
 							<div class="form-group">
 								<label for="postbg"
 									class="col-lg-2 col-md-3 col-sm-3 control-label">Post
-									BG</label>
+									BG (1900x600)</label>
 								<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 									<div class="nopadding Padding_0 Margin_0">
 										<input ng-model="photo"
 											onchange="angular.element(this).scope().file_changed(this)"
 											type="file" accept="image/*" />
 									</div>
+									<img id="blah" class="img-responsive"  width="200" height="75" src="{{selectedPostBgBase64Str}}"/>
 								</div>
 							</div>
 
@@ -88,6 +90,7 @@
 								<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
 									<div class="nopadding Border_1">
 										<textarea id="txtEditor" name="txtEditor"></textarea>
+										
 									</div>
 								</div>
 							</div>

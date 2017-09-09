@@ -14,7 +14,7 @@
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 					<div class="post-heading">
 						<h1>${selectedArticle.title}</h1>
-						<h2 class="subheading">${selectedArticle.title}</h2>
+						<h2 class="subheading">${selectedArticle.summary}</h2>
 						<span class="meta">Posted by <a href="#">${selectedArticle.user.name}</a>
 							on ${selectedArticle.createdDate}
 						</span>
@@ -31,10 +31,12 @@
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 					<p>${selectedArticle.description}</p>
 
+					<!--
 					<a href="#"> <img class="img-responsive"
 						src="<c:url value="/resources/img/post-sample-image.jpg" />"
 						alt="">
 					</a>
+					-->
 
 				</div>
 			</div>
