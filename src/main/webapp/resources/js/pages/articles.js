@@ -9,6 +9,8 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.state = 'busy';
 
  $scope.lastAction = '';
+ 
+ $scope.isPostBgSelected = false;
 
  $scope.url = "/gltknbtnBlog/protected/articles/";
 
@@ -26,8 +28,11 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.article = {}
 
  $scope.searchFor = ""
+	 
+
 
  $scope.getArticleList = function () {
+	 
      var url = $scope.url;
      $scope.lastAction = 'list';
      $scope.startDialogAjaxRequest();
@@ -182,12 +187,15 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.createArticle = function (newArticleForm) {
  	
 	 
- 	$scope.article.description = $("#txtEditor").Editor("getText");
+ 	$scope.article.description = $("#txtEditor").Editor("getText");;
+ 	
  	$scope.article.owner = $("#owner").val();
  	
  	$scope.article.categoryName = $scope.selectedArticleCategory.categoryName;
  	
  	$scope.article.status = $scope.selectedStatus.id;
+ 	
+ 	$scope.article.postBgBase64Str = $scope.selectedPostBgBase64Str;
  	
      if (!newArticleForm.$valid) {
          $scope.displayValidationError = true;
@@ -221,21 +229,23 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
      
  };
  
- $scope.file_changed = function(element) {
-	 	
-     $scope.$apply(function(scope) {
-         var photofile = element.files[0];
+ $scope.file_changed = function(input) {
+     if (input.files && input.files[0]) {
          var reader = new FileReader();
-         reader.readAsDataURL(photofile);
-         
-         reader.onload = function(e) {
-            // handle onload
-         	$scope.article.postBgBase64Str = reader.result;
-         	
+
+         reader.onload = function (e) {
+             $('#blah')
+                 .attr('src', e.target.result)
+                 .width(200)
+                 .height(75);
+             
+             $scope.selectedPostBgBase64Str = e.target.result;
+             $scope.isPostBgSelected = true;
          };
-         
-     });
-};
+
+         reader.readAsDataURL(input.files[0]);
+     }
+ }
 
  $scope.selectArticle = function (selectedArticleId) {
  	
@@ -245,6 +255,9 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
          .success(function (data) {
          	
          	$scope.selectedArticle = data;
+         	
+         	$scope.selectedPostBgBase64Str = $scope.selectedArticle.postBgBase64Str;
+         	
          	$scope.catName = $scope.selectedArticle.categoryName;
          	$scope.getCategoryList($scope.catName);
          	
@@ -271,6 +284,13 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
      $scope.selectedArticle.categoryName = $scope.selectedArticleCategory.categoryName;
      
      $scope.selectedArticle.description = $("#txtEditor").Editor("getText");
+     
+
+     // edit ekraninda postbg file secili ise:
+     if($scope.isPostBgSelected){
+    	 $scope.selectedArticle.postBgBase64Str = $scope.selectedPostBgBase64Str;
+     }
+     
 
      var config = {}
 
@@ -345,7 +365,6 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
      $scope.getArticleList();
      $scope.displaySearchMessage = false;
  }
- 
  
 
  $scope.getArticleList();

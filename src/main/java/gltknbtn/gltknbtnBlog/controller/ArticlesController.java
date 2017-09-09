@@ -33,6 +33,7 @@ import gltknbtn.gltknbtnBlog.model.Category;
 import gltknbtn.gltknbtnBlog.model.User;
 import gltknbtn.gltknbtnBlog.service.ArticleService;
 import gltknbtn.gltknbtnBlog.service.CategoryService;
+import gltknbtn.gltknbtnBlog.util.Util;
 import gltknbtn.gltknbtnBlog.vo.ArticleDTO;
 import gltknbtn.gltknbtnBlog.vo.ArticleListVO;
 
@@ -92,6 +93,12 @@ public class ArticlesController {
     	Category category = categoryService.findByCategoryName(articleDTO.getCategoryName());
     	
     	Article article = getArticleByArticleDTO(articleDTO, articleDTO.getId());
+    	
+    	String postBgBase64str = article.getPostBgBase64Str();
+    	
+    	if(postBgBase64str!=null && !postBgBase64str.equals("")){
+    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
+    	}
     	
     	
     	String titleurl = getTitleUrl(article.getTitle());
@@ -198,6 +205,7 @@ public class ArticlesController {
     	articleDTO.setUserName(article.getUser().getName());
     	articleDTO.setStatus(article.getStatus());
     	articleDTO.setCategoryName(article.getCategory().getCategoryName());
+    	articleDTO.setPostBgBase64Str(article.getPostBgBase64Str());
     	
     	 return new ResponseEntity<ArticleDTO>(articleDTO, HttpStatus.OK);
     }

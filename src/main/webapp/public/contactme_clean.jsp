@@ -80,7 +80,7 @@
             <!-- Map Column -->
             <div class="col-md-7" style="margin: 0; padding: 0">
                 <!-- Embedded Google Map -->
-                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.6490963979422!2d28.980678315669355!3d41.01105302720243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzM5LjgiTiAyOMKwNTgnNTguMyJF!5e0!3m2!1str!2str!4v1499714310679" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <!-- Contact Details Column -->
             <div class="col-md-5">
