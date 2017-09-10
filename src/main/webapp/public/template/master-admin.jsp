@@ -26,8 +26,9 @@
 		<script src="<c:url value='/resources/js/angular.min.js' />"></script>
 		<script src="<c:url value='/resources/js/angular-route.min.js' />"></script>
 		
-			<link href="<c:url value='/resources/3css/editor.css'/>"rel="stylesheet" />
-		<script src="<c:url value='/resources/js/3js/editor.js' />"></script>
+		<!-- include summernote css/js-->
+		<link href="<c:url value='/resources/3css/summernote.css'/>"rel="stylesheet" />
+		<script src="<c:url value='/resources/js/3js/summernote.js' />"></script>
 		
 		   <!-- Morris Charts JavaScript -->
 		<script src="<c:url value='/resources/js/3js/plugins/morris/raphael.min.js' />"></script>
@@ -42,6 +43,7 @@
 		                                <script src="js/html5shiv.js"></script>
 		                                <script src="js/respond.min.js"></script>
 		                        <![endif]-->
+		                        
 		</head>
 		
 	<body style="padding-top: 0!important;">
