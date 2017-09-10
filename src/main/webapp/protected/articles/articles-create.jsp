@@ -88,9 +88,7 @@
 								<label for="description"
 									class="col-lg-2 col-md-3 col-sm-3 control-label">Description</label>
 								<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
-									<div class="nopadding Border_1">
-										<textarea id="txtEditor" name="txtEditor"></textarea>
-										
+									<div id="summernote" class="nopadding Border_1">
 									</div>
 								</div>
 							</div>
@@ -150,7 +148,13 @@
 </div>
 <script>
 	$(document).ready(function() {
-		$("#txtEditor").Editor();
+		 $('#summernote').summernote({
+			  minHeight: 200,   //set editable area's height
+			  codemirror: { // codemirror options
+			    theme: 'monokai'
+			  }
+			});
+		
 	});
 </script>
 <script src="<c:url value="/resources/js/pages/articles.js" />"></script>

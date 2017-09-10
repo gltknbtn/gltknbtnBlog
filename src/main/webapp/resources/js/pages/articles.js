@@ -187,7 +187,7 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.createArticle = function (newArticleForm) {
  	
 	 
- 	$scope.article.description = $("#txtEditor").Editor("getText");;
+	$scope.article.description = $('#summernote').summernote('code');
  	
  	$scope.article.owner = $("#owner").val();
  	
@@ -267,7 +267,8 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 					$scope.editingArticleStatus= $scope.statusdata.availableStatus[1];
 				}
          	
-         	$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
+         	//$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
+         	$('#summernote').summernote('code', $scope.selectedArticle.description);
          })
          .error(function () {
              alert("error");
@@ -283,7 +284,8 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
      
      $scope.selectedArticle.categoryName = $scope.selectedArticleCategory.categoryName;
      
-     $scope.selectedArticle.description = $("#txtEditor").Editor("getText");
+     //$scope.selectedArticle.description = $("#txtEditor").Editor("getText");
+     $scope.selectedArticle.description = $('#summernote').summernote('code');
      
 
      // edit ekraninda postbg file secili ise:
