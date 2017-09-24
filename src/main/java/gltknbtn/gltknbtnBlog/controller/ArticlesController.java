@@ -1,10 +1,14 @@
 package gltknbtn.gltknbtnBlog.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -51,6 +55,9 @@ public class ArticlesController {
     
     @Autowired
     private MessageSource messageSource;
+    
+    @Autowired
+    ServletContext servletContext;
 
     @Value("5")
     private int maxResults;
@@ -96,9 +103,22 @@ public class ArticlesController {
     	
     	String postBgBase64str = article.getPostBgBase64Str();
     	
-    	if(postBgBase64str!=null && !postBgBase64str.equals("")){
-    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
-    	}
+    	try {
+    		if(postBgBase64str!=null 
+    	    		&& !postBgBase64str.equals("")
+    	    		&& !postBgBase64str.equals("defaultPostBg")){
+    	    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
+    	    	}else if(postBgBase64str.equals("defaultPostBg")){
+    	    		File file = new File( servletContext.getRealPath("/resources/img/defaultPostBg.jpg") );
+    	    		BufferedImage defaultPostBg = ImageIO.read(file);
+    	    		
+    	    		article.setPostBgBase64Str("data:image/jpeg;base64," + Util.bufferedImageToBase64Str(defaultPostBg, "jpg"));
+    	    	}
+    	    	
+		} catch (Exception e) {
+			System.out.println("error while converting postbg");
+			e.printStackTrace();
+		}
     	
     	
     	String titleurl = getTitleUrl(article.getTitle());
@@ -131,6 +151,24 @@ public class ArticlesController {
         }
 
         Article article = getArticleByArticleDTO(articleDto, articleId);
+        
+        String postBgBase64str = article.getPostBgBase64Str();
+    	try {
+    		if(postBgBase64str!=null 
+    	    		&& !postBgBase64str.equals("")
+    	    		&& !postBgBase64str.equals("defaultPostBg")){
+    	    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
+    	    	}else if(postBgBase64str.equals("defaultPostBg")){
+    	    		File file = new File( servletContext.getRealPath("/resources/img/defaultPostBg.jpg") );
+    	    		BufferedImage defaultPostBg = ImageIO.read(file);
+    	    		
+    	    		article.setPostBgBase64Str("data:image/jpeg;base64," + Util.bufferedImageToBase64Str(defaultPostBg, "jpg"));
+    	    	}
+    	    	
+		} catch (Exception e) {
+			System.out.println("error while converting postbg");
+			e.printStackTrace();
+		}
         
         String titleurl = getTitleUrl(article.getTitle());
         article.setTitleurl(titleurl);
