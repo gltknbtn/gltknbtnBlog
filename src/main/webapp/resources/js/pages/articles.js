@@ -11,6 +11,8 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.lastAction = '';
  
  $scope.isPostBgSelected = false;
+ 
+ $scope.visibleSelectingPosgBg = false;
 
  $scope.url = "/gltknbtnBlog/protected/articles/";
 
@@ -22,6 +24,12 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  $scope.displaySearchButton = false;
  $scope.displayCreateArticleButton = false;
  
+ $scope.chckBoxDefaultPostBg = true;
+ $scope.visibleSelectingPosgBg = false;
+ 
+ $scope.chckBoxDefaultPostBgInUpdate = false;
+ $scope.visibleSelectingPosgBgInUpdate = true;
+ 
  $scope.dataActionMessageCreateArticle ="";
  $scope.dataActionMessageUpdateArticle ="";
 
@@ -29,7 +37,31 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 
  $scope.searchFor = ""
 	 
-
+ $scope.checkOrUncheck = function(){
+	 if($scope.visibleSelectingPosgBg){
+		 $scope.visibleSelectingPosgBg = false;
+		 $scope.chckBoxDefaultPostBg = true;
+		 $scope.article.postBgBase64Str ="defaultPostBg";
+	 }else{
+		 $scope.visibleSelectingPosgBg = true;
+		 $scope.chckBoxDefaultPostBg = false;
+		 $scope.article.postBgBase64Str ="";
+	 }
+	 
+ }
+ 
+ $scope.checkOrUncheckInUpdate = function(){
+	 if($scope.visibleSelectingPosgBgInUpdate){
+		 $scope.visibleSelectingPosgBgInUpdate = false;
+		 $scope.chckBoxDefaultPostBgInUpdate = true;
+		 $scope.selectedArticle.postBgBase64Str ="defaultPostBg";
+	 }else{
+		 $scope.visibleSelectingPosgBgInUpdate = true;
+		 $scope.chckBoxDefaultPostBgInUpdate = false;
+		 $scope.selectedArticle.postBgBase64Str ="";
+	 }
+	 
+ }
 
  $scope.getArticleList = function () {
 	 
@@ -186,7 +218,6 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 
  $scope.createArticle = function (newArticleForm) {
  	
-	 
 	$scope.article.description = $('#summernote').summernote('code');
  	
  	$scope.article.owner = $("#owner").val();
@@ -195,18 +226,23 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
  	
  	$scope.article.status = $scope.selectedStatus.id;
  	
- 	$scope.article.postBgBase64Str = $scope.selectedPostBgBase64Str;
- 	
      if (!newArticleForm.$valid) {
          $scope.displayValidationError = true;
          return;
      }
-
+     
+ 	if(!$scope.chckBoxDefaultPostBg
+ 			&& ($scope.selectedPostBgBase64Str == "" || $scope.selectedPostBgBase64Str == null)){
+		return alert("select a post bg");
+	}else if($scope.chckBoxDefaultPostBg){
+		$scope.article.postBgBase64Str ="defaultPostBg";
+	}else{
+		$scope.article.postBgBase64Str = $scope.selectedPostBgBase64Str;
+	}
+    
      $scope.lastAction = 'create';
 
      var url = $scope.url;
-
-     
      
      var config = {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}};
 
@@ -244,6 +280,7 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
          };
 
          reader.readAsDataURL(input.files[0]);
+         
      }
  }
 
@@ -267,7 +304,6 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
 					$scope.editingArticleStatus= $scope.statusdata.availableStatus[1];
 				}
          	
-         	//$("#txtEditor").Editor("setText", $scope.selectedArticle.description);
          	$('#summernote').summernote('code', $scope.selectedArticle.description);
          })
          .error(function () {
@@ -284,9 +320,16 @@ gltknbtnBlogAdmin.controller('articlesController', function($scope, $location, $
      
      $scope.selectedArticle.categoryName = $scope.selectedArticleCategory.categoryName;
      
-     //$scope.selectedArticle.description = $("#txtEditor").Editor("getText");
      $scope.selectedArticle.description = $('#summernote').summernote('code');
-     
+
+     if(!$scope.chckBoxDefaultPostBgInUpdate
+  			&& ($scope.selectedPostBgBase64Str == "" || $scope.selectedPostBgBase64Str == null)){
+ 		return alert("select a post bg");
+ 	}else if($scope.chckBoxDefaultPostBgInUpdate){
+ 		$scope.selectedArticle.postBgBase64Str ="defaultPostBg";
+ 	}else{
+		$scope.selectedArticle.postBgBase64Str = $scope.selectedPostBgBase64Str;
+	}
 
      // edit ekraninda postbg file secili ise:
      if($scope.isPostBgSelected){

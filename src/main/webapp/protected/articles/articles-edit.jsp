@@ -52,9 +52,9 @@
 									<!-- adding post background -->
 							<div class="form-group">
 								<label for="postbg"
-									class="col-lg-2 col-md-3 col-sm-3 control-label">Post
+									class="col-lg-2 col-md-2 col-sm-2 control-label">Post
 									BG (1900x600)</label>
-								<div class="col-lg-9 col-md-9 col-sm-9 PaddingRight_0">
+								<div class="col-lg-3 col-md-3 col-sm-3 PaddingRight_0" ng-show="visibleSelectingPosgBgInUpdate">
 									<div class="nopadding Padding_0 Margin_0">
 										<input ng-model="photo"
 											onchange="angular.element(this).scope().file_changed(this)"
@@ -62,6 +62,9 @@
 									</div>
 									<img id="blah" class="img-responsive"  width="200" height="75" src="{{selectedPostBgBase64Str}}"/>
 								</div>
+								<label class="col-lg-3 col-md-3 col-sm-3"> 
+									<input type="checkbox" ng-checked="chckBoxDefaultPostBgInUpdate" ng-click="checkOrUncheckInUpdate()"> Default Post Bg
+								</label>
 							</div>
 
 								
