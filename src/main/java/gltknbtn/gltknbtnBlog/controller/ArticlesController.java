@@ -90,7 +90,7 @@ public class ArticlesController {
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     HttpServletRequest request,
-                                    Locale locale) {
+                                    Locale locale) throws Exception {
     	
     	String createdDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
     	articleDTO.setCreatedDate(createdDate);
@@ -102,26 +102,10 @@ public class ArticlesController {
     	Article article = getArticleByArticleDTO(articleDTO, articleDTO.getId());
     	
     	String postBgBase64str = article.getPostBgBase64Str();
-    	
-    	try {
-    		if(postBgBase64str!=null 
-    	    		&& !postBgBase64str.equals("")
-    	    		&& !postBgBase64str.equals("defaultPostBg")){
-    	    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
-    	    	}else if(postBgBase64str.equals("defaultPostBg")){
-    	    		File file = new File( servletContext.getRealPath("/resources/img/defaultPostBg.jpg") );
-    	    		BufferedImage defaultPostBg = ImageIO.read(file);
-    	    		
-    	    		article.setPostBgBase64Str("data:image/jpeg;base64," + Util.bufferedImageToBase64Str(defaultPostBg, "jpg"));
-    	    	}
-    	    	
-		} catch (Exception e) {
-			System.out.println("error while converting postbg");
-			e.printStackTrace();
-		}
-    	
-    	
-    	String titleurl = getTitleUrl(article.getTitle());
+
+        setArticlePostBg(article, postBgBase64str);
+
+        String titleurl = getTitleUrl(article.getTitle());
     	if (articleService.findByTitleurl(titleurl) != null) {
     		ArticleListVO articleListVo = new ArticleListVO();
     		articleListVo.setActionMessage(messageSource.getMessage("title.allready.exist", null, null, locale));
@@ -141,11 +125,28 @@ public class ArticlesController {
         return createListAllResponse(page, locale, "message.create.success");
     }
 
+    private void setArticlePostBg(Article article, String postBgBase64str) throws Exception{
+        try {
+            if(postBgBase64str!=null
+                    && !postBgBase64str.equals("")
+                    && !postBgBase64str.equals("defaultPostBg")){
+                    article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
+                }else if(postBgBase64str.equals("defaultPostBg")){
+                    File file = new File( servletContext.getRealPath("/resources/img/defaultPostBg.jpg") );
+                    BufferedImage defaultPostBg = ImageIO.read(file);
+                    article.setPostBgBase64Str("data:image/jpeg;base64," + Util.bufferedImageToBase64Str(defaultPostBg, "jpg"));
+                }
+
+        } catch (Exception e) {
+            throw new Exception("an error occured in setArticlePostBg", e);
+        }
+    }
+
     @RequestMapping(value = "articleedit/{id}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") int articleId,
                                     @RequestBody ArticleDTO articleDto,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
-                                    Locale locale) {
+                                    Locale locale) throws Exception{
         if (articleId != articleDto.getId()) {
             return new ResponseEntity<String>("Bad Request", HttpStatus.BAD_REQUEST);
         }
@@ -153,23 +154,9 @@ public class ArticlesController {
         Article article = getArticleByArticleDTO(articleDto, articleId);
         
         String postBgBase64str = article.getPostBgBase64Str();
-    	try {
-    		if(postBgBase64str!=null 
-    	    		&& !postBgBase64str.equals("")
-    	    		&& !postBgBase64str.equals("defaultPostBg")){
-    	    		article.setPostBgBase64Str(Util.getResizedBase64Str(postBgBase64str, 1900, 600));
-    	    	}else if(postBgBase64str.equals("defaultPostBg")){
-    	    		File file = new File( servletContext.getRealPath("/resources/img/defaultPostBg.jpg") );
-    	    		BufferedImage defaultPostBg = ImageIO.read(file);
-    	    		
-    	    		article.setPostBgBase64Str("data:image/jpeg;base64," + Util.bufferedImageToBase64Str(defaultPostBg, "jpg"));
-    	    	}
-    	    	
-		} catch (Exception e) {
-			System.out.println("error while converting postbg");
-			e.printStackTrace();
-		}
-        
+
+        setArticlePostBg(article, postBgBase64str);
+
         String titleurl = getTitleUrl(article.getTitle());
         article.setTitleurl(titleurl);
         
@@ -206,16 +193,12 @@ public class ArticlesController {
         return new ModelAndView("articleedit");
 
     }
-    
-    
 
     @RequestMapping(value = "/{articleId}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity<?> delete(@PathVariable("articleId") int articleId,
                                     @RequestParam(required = false) String searchFor,
                                     @RequestParam(required = false, defaultValue = DEFAULT_PAGE_DISPLAYED_TO_USER) int page,
                                     Locale locale) {
-
-
         try {
             articleService.delete(articleId);
         } catch (AccessDeniedException e) {
